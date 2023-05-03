@@ -1,0 +1,29 @@
+.pictures-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.main-picture-container {
+    margin-right: 32px;
+}
+
+.secondary-pictures-container {
+    display: grid;
+    gap: 17px;
+}
+
+.first {
+    width: 300px;
+}
+
+.second, .third {
+    width: 140px;
+}
+
+.border {
+    border-radius: 2px;
+    --bs-border-color: #575757;
+    --bs-border-width: 1px;
+}
