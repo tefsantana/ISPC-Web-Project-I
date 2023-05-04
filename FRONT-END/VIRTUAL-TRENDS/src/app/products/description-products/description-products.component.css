@@ -3,7 +3,7 @@
 }
 
 .main-product-container {
-    width: 50%;
+    width: 75%;
 }
 
 .main-product-title {
@@ -27,4 +27,29 @@
 .paragraph {
     font-size: 13px;
     text-align: center;
+}
+
+/** Media queries */
+
+@media screen and (max-width: 768px) {
+    .main-product-container {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main-product-container {
+        margin: 0 auto;
+        width: 75%;
+    }
+
+    .main-product-title {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1500px) {
+    .secondary-pictures-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
