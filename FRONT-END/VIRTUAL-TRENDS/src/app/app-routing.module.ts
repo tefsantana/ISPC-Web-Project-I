@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
-
+import { PanelDeControlComponent } from './sistema-de-talla/panel-de-control/panel-de-control.component';
 const routes: Routes = [
   // Redirección por defecto a Home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,6 +14,9 @@ const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },
   { path: 'product', component: DashboardProductsComponent },
+  { path: 'Sistema-de-talla', component: PanelDeControlComponent },
+
+
   // { path: 'cart', component: CartComponent },
 ];
 
