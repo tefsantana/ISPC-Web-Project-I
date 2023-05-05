@@ -11,7 +11,7 @@ const routes: Routes = [
   //{ path: '**', component: Pagina404Component },
 
   // Rutas de los componentes
-  { path: 'home', component: HomeComponent },
+  //{ path: 'home', component: HomeComponent },
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },
