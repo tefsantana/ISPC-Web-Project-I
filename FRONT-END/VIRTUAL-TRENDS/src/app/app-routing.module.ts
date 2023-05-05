@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
+import { TallaPersonalizadaComponent } from './sistema-de-talla/talla-personalizada/talla-personalizada.component';
 
 const routes: Routes = [
   // Redirección por defecto a Home
@@ -14,6 +15,7 @@ const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },
   { path: 'product', component: DashboardProductsComponent },
+  { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   // { path: 'cart', component: CartComponent },
 ];
 
