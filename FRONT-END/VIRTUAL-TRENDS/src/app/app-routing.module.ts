@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
 import { DashboardContactoComponent } from './contacto/dashboard-contacto/dashboard-contacto.component';
+
 const routes: Routes = [
   // Redirección por defecto a Home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -9,7 +11,7 @@ const routes: Routes = [
   //{ path: '**', component: Pagina404Component },
 
   // Rutas de los componentes
-  // { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },

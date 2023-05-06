@@ -11,7 +11,7 @@
 
 .secondary-pictures-container {
     display: grid;
-    gap: 17px;
+    gap: 16px;
 }
 
 .first {
@@ -24,6 +24,28 @@
 
 .border {
     border-radius: 2px;
-    --bs-border-color: #575757;
-    --bs-border-width: 1px;
+    border: 1px solid #575757;
+}
+
+/** Media queries */
+
+@media screen and (max-width: 768px) {
+    .main-picture-container {
+        margin: 0 auto;
+    }
+
+    .pictures-container {
+        flex-direction: column;
+    }
+
+    .first {
+        width: 150px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+    .secondary-pictures-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
