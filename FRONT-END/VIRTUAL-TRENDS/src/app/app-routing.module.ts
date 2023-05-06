@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
+import { PanelDeControlComponent } from './sistema-de-talla/panel-de-control/panel-de-control.component';
+import { TallaPersonalizadaComponent } from './sistema-de-talla/talla-personalizada/talla-personalizada.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },
   { path: 'product', component: DashboardProductsComponent },
+  { path: 'sistema-de-talla', component: PanelDeControlComponent },
+  { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   // { path: 'cart', component: CartComponent },
 ];
 
