@@ -16,7 +16,7 @@ const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },
   { path: 'product', component: DashboardProductsComponent },
-  { path: 'Sistema-de-talla', component: PanelDeControlComponent },
+  { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   // { path: 'cart', component: CartComponent },
 ];
