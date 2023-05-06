@@ -1,11 +1,11 @@
 <header class="ca-header">
   <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="/home">
+        <img src="./assets/LOGO-VT.png" alt="Logo de Virtual Trends">
+      </a>
+    </div>
     <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="/home">
-          <img src="./assets/LOGO-VT.png" alt="Logo de Virtual Trends">
-        </a>
-      </div>
       <ul>            
         <li>
           <a routerLink="/ruta-del-enlace" class="ca-boton">Productos</a>
@@ -20,7 +20,7 @@
           <a routerLink="/ruta-del-enlace" class="ca-boton">Comunidad</a>
         </li>
         <li><a routerLink="/ruta-del-enlace" class="ca-boton">Cuenta</a></li>
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <a href="#" class="ca-boton dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Menú
           </a>
@@ -28,27 +28,28 @@
             <a routerLink="/ruta-del-enlace" class="dropdown-item">Productos Hombre</a>
             <a routerLink="/ruta-del-enlace" class="dropdown-item">Productos Mujer</a>
           </div>
-        </div>
+        </div> -->
       </ul>
     </div>
   </nav>
-  <script>
+  <!-- <script>
     // código JS para el dropdown menu
     document.addEventListener("DOMContentLoaded", function () {
-      var dropdownMenu = document.querySelectorAll('.dropdown-menu');
-      var dropdownToggle = document.querySelectorAll('.dropdown-toggle');
-      var dropdownArray = Array.prototype.slice.call(dropdownToggle);
-  
-      dropdownArray.forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          var dropdownMenu = el.nextElementSibling;
-          el.classList.toggle('active');
-          dropdownMenu.classList.toggle('active');
-        });
+  var dropdownMenus = document.getElementsByClassName('dropdown-menu');
+  var dropdownToggles = document.getElementsByClassName('dropdown-toggle');
+
+    for (var i = 0; i < dropdownToggles.length; i++) {
+      dropdownToggles[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        var dropdownMenu = this.nextElementSibling;
+        this.classList.toggle('active');
+        dropdownMenu.classList.toggle('active');
       });
-    });
-  </script>
+    }
+  });
+</script>
+-->
+  
 </header>
 
 

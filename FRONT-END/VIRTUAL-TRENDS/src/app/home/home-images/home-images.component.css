@@ -7,16 +7,19 @@
   } 
 
   .main-image-container {
-    display: block;
-    height: 50%;
-    width: 50%;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /*margin: 0 auto;*/
 
     }
 
     .first {
+      border-radius: 2%;
         width: 50%;
-        margin-top: 20%;
+        margin-top: 3%;
     }  
 
 
