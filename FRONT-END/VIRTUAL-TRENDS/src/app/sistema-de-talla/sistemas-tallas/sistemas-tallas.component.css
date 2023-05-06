@@ -32,6 +32,7 @@
 }
 
 .btn-dark {
+  cursor: pointer;
   padding: 10px 0px 8px;
   width: 100%;
   background: #3B3D40;

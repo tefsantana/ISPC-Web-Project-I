@@ -5,7 +5,7 @@
 .popup-title-container {
     position: relative;
     padding: 0px 0% 0px 5%;
-    width: 200px;
+    width: 300px;
     text-align: left;
 }
 
@@ -20,12 +20,12 @@
     position: relative;
     background-color: #F8F8F8;
     width: 400px;
-    height: 880px;
-    margin-top: 14%;
+    height: auto;
+    margin-top: 5%;
     border: 2px solid #575757;
     margin-bottom: 50px;
     border-radius: 6px;
-    padding:10%;
+    padding: 5%;
 }
 
 .form-container{
@@ -89,7 +89,7 @@
 
 #submit-input{
     margin-bottom: 60px;
-    width: 90%;
+    width: 350px;
 }
 
 #submit-button{
@@ -137,7 +137,7 @@
 .exclamation-container{
     position: absolute;
     width: 60%;
-    left: 280px;
+    left: 300px;
     top: 120px;
 }
 
@@ -196,32 +196,35 @@
 
 /** Media queries */
 
-@media screen and (min-width: 768px){
-    
-}
-
 @media screen and (max-width: 768px) {
     .popup-box {
         margin-right: 200;
     }
     .input-container{
-        margin-left: none;
-        width: 80%;
+        margin-left: 70%;
+        width: 200px;
+        height: 40px;
     }
     .popup-title-container {
-        padding: 0px 5% 0px 5%;
+        width: 300px;
+        margin-left: 5%;
     }
-    #exclamation-container{
+    .exclamation-container{
         position: relative;
         top: auto;
         left: auto;
         width: auto;
         text-align: center;
     }
+
+    #exclamation-alert{
+        left: 30%;
+    }
+
     .exclamation-subtitle{
         position: relative;
         top: auto;
-        left: auto;
+        left: -15px;
         text-align: center;
     }
     .exclamation-text{
@@ -229,6 +232,16 @@
         top: auto;
         left: 20%;
         text-align: center;
+    }
+
+    #last-textbox{
+        margin-bottom: 0px;
+    }
+
+    #submit-input{
+        margin-bottom: 60px;
+        left: -55%;
+        width: 250px;
     }
 }
 
