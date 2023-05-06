@@ -1,4 +1,6 @@
 .ca-header {
+    display: flex;
+    background-color: #F7F7F2;
     position: relative;
     /*height: 80px;*/
     /*height: 20vh;/* Establece la altura del navbar */
@@ -10,18 +12,18 @@
   }
   
   .navbar {
-    background-color: hsla(15, 8%, 49%, 0.502);
+    /*background-color: hsla(15, 8%, 49%, 0.502);*/
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding: 1.5em;
   }
   .navbar-logo {
     width: 7rem;
     height: auto;
     float: left;
-    margin-right: 1.70rem; /* ajusta el margen según sea necesario */
+    margin-right: 0.2rem; /* ajusta el margen según sea necesario */
   }
   
   .navbar ul {
@@ -36,7 +38,7 @@
   }
   
   .navbar li {
-    margin: 0 10px;
+    margin: 0 2rem;
   }
   
   .ca-boton {
@@ -48,6 +50,7 @@
     color:#1c1b1b;
     text-decoration: underline #1c1b1b;
     text-underline-offset: 6px; 
+    font-weight: 600;
   }
   
   /* .dropdown {
@@ -88,7 +91,7 @@
     }
   
     .navbar-container {
-      width: 100%;
+      width: 80%;
       padding: 0;
     }
   
@@ -99,7 +102,6 @@
     .navbar li {
       margin: 10px 0;
     }
-
 
     .navbar ul li:nth-child(3) {
     display: none;
