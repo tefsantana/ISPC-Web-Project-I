@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
-
+import { DashboardContactoComponent } from './contacto/dashboard-contacto/dashboard-contacto.component';
 const routes: Routes = [
   // Redirección por defecto a Home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +15,7 @@ const routes: Routes = [
   // { path: 'product/:id', component: DashboardProductsComponent },
   { path: 'product', component: DashboardProductsComponent },
   // { path: 'cart', component: CartComponent },
+  { path: 'contacto', component: DashboardContactoComponent },
 ];
 
 @NgModule({
