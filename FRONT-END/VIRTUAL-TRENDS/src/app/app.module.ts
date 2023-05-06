@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 /*import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';*/
+import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
-import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [		
-    AppComponent,
-      HomeComponent,
+    AppComponent
       /*HeaderComponent,
       FooterComponent*/
    ],
@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HomeModule,
     ProductsModule
   ],
   providers: [],
