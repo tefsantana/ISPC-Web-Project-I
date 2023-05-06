@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 /*import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';*/
-import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
-
+import { SistemaDeTallaModule } from './sistema-de-talla/sistema-de-talla.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [		
@@ -19,9 +19,11 @@ import { ProductsModule } from './products/products.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     HomeModule,
-    ProductsModule
+    ProductsModule,
+    SistemaDeTallaModule,
+    SharedModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
