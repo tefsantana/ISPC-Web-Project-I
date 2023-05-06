@@ -1,0 +1,38 @@
+ .main-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5% 0%;
+    height: 100%;
+  } 
+
+  .main-image-container {
+    display: block;
+    height: 50%;
+    width: 50%;
+    margin: 0 auto;
+
+    }
+
+    .first {
+        width: 50%;
+        margin-top: 20%;
+    }  
+
+
+  /* @media screen and (max-width: 768px) {
+    .main-image-container {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        flex-direction:row;
+    }
+
+    .first {
+        width: 150px;
+        margin-bottom: 16px;
+    }  
+
+    }
+  */
+

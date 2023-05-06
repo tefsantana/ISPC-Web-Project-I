@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { DashboardHomeComponent } from './home/dashboard-home/dashboard-home.component';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
 
 
@@ -11,7 +11,7 @@ const routes: Routes = [
   //{ path: '**', component: Pagina404Component },
 
   // Rutas de los componentes
-  //{ path: 'home', component: HomeComponent },
+  { path: 'home', component: DashboardHomeComponent },
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardProductsComponent },
