@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TallaEstandarComponent } from './talla-estandar/talla-estandar.component';
 
 import { SistemasTallasComponent } from './sistemas-tallas/sistemas-tallas.component';
 import { ImagenComponent } from './imagen/imagen.component';
@@ -13,6 +14,7 @@ import { TallaPersonalizadaComponent } from './talla-personalizada/talla-persona
     ImagenComponent,
     PanelDeControlComponent,
     TallaPersonalizadaComponent
+    TallaEstandarComponent
   ],
   imports: [
     CommonModule
