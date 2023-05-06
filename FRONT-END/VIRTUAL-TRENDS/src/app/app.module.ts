@@ -8,11 +8,13 @@ import { SharedModule } from './shared/shared.module';
 import { FooterComponent } from './shared/footer/footer.component';*/
 import { ProductsModule } from './products/products.module';
 import { HomeComponent } from './home/home.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [		
     AppComponent,
       HomeComponent,
+      ModalComponent,
       /*HeaderComponent,
       FooterComponent*/
    ],
