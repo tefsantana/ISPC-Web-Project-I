@@ -13,7 +13,7 @@ import { TallaPersonalizadaComponent } from './talla-personalizada/talla-persona
     SistemasTallasComponent,
     ImagenComponent,
     PanelDeControlComponent,
-    TallaPersonalizadaComponent
+    TallaPersonalizadaComponent,
     TallaEstandarComponent
   ],
   imports: [

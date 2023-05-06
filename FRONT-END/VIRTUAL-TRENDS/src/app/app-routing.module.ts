@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardProductsComponent } from './products/dashboard-products/dashboard-products.component';
 import { PanelDeControlComponent } from './sistema-de-talla/panel-de-control/panel-de-control.component';
 import { TallaPersonalizadaComponent } from './sistema-de-talla/talla-personalizada/talla-personalizada.component';
+import { TallaEstandarComponent } from './sistema-de-talla/talla-estandar/talla-estandar.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'product', component: DashboardProductsComponent },
   { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
+  { path: 'talla-estandar', component: TallaEstandarComponent },
   // { path: 'cart', component: CartComponent },
 ];
 
