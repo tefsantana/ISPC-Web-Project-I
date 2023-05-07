@@ -1,13 +1,19 @@
 * {
     font-family: 'Josefin Sans',sans-serif;
     color: #575757;
+<<<<<<< HEAD
     background-color: #F7F7F2;
+=======
+>>>>>>> origin/Carla-A-Sp1
 
 }
 
 .main-all-sections {
     /*display: inline-block;*/
+<<<<<<< HEAD
     font-family: 'Josefins Sans',sans-serif;
+=======
+>>>>>>> origin/Carla-A-Sp1
     margin: 0 auto;
     display: flex;
     flex-direction:column;
@@ -21,7 +27,11 @@
 }
 
 .main-nosotros-title {
+<<<<<<< HEAD
     font-size: 1.60rem;
+=======
+    font-size: 26px;
+>>>>>>> origin/Carla-A-Sp1
     border-top: 2px solid #575757;
     border-bottom: 2px solid #575757;
     line-height: 40px;
@@ -42,7 +52,11 @@
 }
 
 .main-comunidad-title {
+<<<<<<< HEAD
     font-size: 1.60rem;
+=======
+    font-size: 26px;
+>>>>>>> origin/Carla-A-Sp1
     border-top: 2px solid #575757;
     border-bottom: 2px solid #575757;
     line-height: 40px;
@@ -56,7 +70,11 @@
 }
 
 .main-productos-title{
+<<<<<<< HEAD
     font-size: 1.60rem;
+=======
+    font-size: 26px;
+>>>>>>> origin/Carla-A-Sp1
     border-top: 2px solid #575757;
     border-bottom: 2px solid #575757;
     line-height: 40px;
@@ -66,6 +84,7 @@
     text-align: center;
 }
 
+<<<<<<< HEAD
 .ca_boton_container {
     margin-top: 2rem;
     flex-direction: column;
@@ -95,6 +114,8 @@
 
 }
 
+=======
+>>>>>>> origin/Carla-A-Sp1
 
 /* .main-nosotros-container,
 .main-comunidad-container,
@@ -119,12 +140,20 @@
     }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 1200px) {
     .main-nosotros-container {
         margin: 0 auto;
         width: 80%;
     }
     
+=======
+/*@media screen and (max-width: 1200px) {
+    .main-nosotros-container {
+        margin: 0 auto;
+        width: 75%;
+    }
+>>>>>>> origin/Carla-A-Sp1
     .main-comunidad-title {
         margin-top: 20px;
     }
@@ -132,5 +161,13 @@
     .main-productos-title {
         margin-top: 20px;
     }
+<<<<<<< HEAD
     
 }
+=======
+}
+
+@media (min-width: 1201px) and (max-width: 1500px) {
+    
+}*/
+>>>>>>> origin/Carla-A-Sp1

@@ -30,11 +30,11 @@
 /** Media queries */
 
 @media screen and (max-width: 768px) {
-    .main-picture-container {
+    .image-container {
         margin: 0 auto;
     }
 
-    .pictures-container {
+    .main-image-container {
         flex-direction: column;
     }
 
