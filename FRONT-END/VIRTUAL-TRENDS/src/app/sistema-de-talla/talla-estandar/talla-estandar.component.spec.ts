@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { TallaEstandarComponent } from './talla-estandar.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('TallaEstandarComponent', () => {
+  let component: TallaEstandarComponent;
+  let fixture: ComponentFixture<TallaEstandarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ TallaEstandarComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(TallaEstandarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

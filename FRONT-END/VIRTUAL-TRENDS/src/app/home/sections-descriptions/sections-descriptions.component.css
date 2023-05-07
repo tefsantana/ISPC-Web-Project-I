@@ -1,0 +1,136 @@
+* {
+    font-family: 'Josefin Sans',sans-serif;
+    color: #575757;
+    background-color: #F7F7F2;
+
+}
+
+.main-all-sections {
+    /*display: inline-block;*/
+    font-family: 'Josefins Sans',sans-serif;
+    margin: 0 auto;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    align-content: center;
+    /*clear: both;*/
+    width: 75%;
+  }
+.main-nosotros-container {
+    width: 75%;
+}
+
+.main-nosotros-title {
+    font-size: 1.60rem;
+    border-top: 2px solid #575757;
+    border-bottom: 2px solid #575757;
+    line-height: 40px;
+    font-weight: 500;
+    padding: 5px 12px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.paragraph {
+    font-size: 13px;
+    text-align: center;
+}
+
+
+.main-comunidad-container{
+    width: 75%;
+}
+
+.main-comunidad-title {
+    font-size: 1.60rem;
+    border-top: 2px solid #575757;
+    border-bottom: 2px solid #575757;
+    line-height: 40px;
+    font-weight: 500;
+    padding: 5px 12px 0px;
+    width: 100%;
+    text-align: center;
+}
+.main-productos-container{
+    width: 75%;
+}
+
+.main-productos-title{
+    font-size: 1.60rem;
+    border-top: 2px solid #575757;
+    border-bottom: 2px solid #575757;
+    line-height: 40px;
+    font-weight: 500;
+    padding: 5px 12px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.ca_boton_container {
+    margin-top: 2rem;
+    flex-direction: column;
+    align-content: center;
+    display: flex;
+
+}
+.btn-primary {
+    margin-top: 0.20rem;
+    margin-bottom: 0.40rem;
+    border-radius: 0.10rem;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #F7F7F2;
+    /*text-emphasis-color: #F7F7F2;*/
+    background-color:#191B1D;
+    /*border-bottom: #181819;*/
+
+}
+
+.btn-primary:hover {
+    font-weight: 600;
+    font-size: 1rem;
+    color:#575757 ;
+    background-color:#F7F7F2;
+    border-bottom: #191B1D;
+
+}
+
+
+/* .main-nosotros-container,
+.main-comunidad-container,
+.main-productos-container {
+    margin: 0 auto;
+}
+ */
+
+/** Media queries */
+
+@media screen and (max-width: 768px) {
+    
+    .main-nosotros-container {
+        /*margin: 0 auto;*/
+        width: 75%;
+    }
+    .main-comunidad-container {
+        width: 75%;
+    }
+    .main-productos-container {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main-nosotros-container {
+        margin: 0 auto;
+        width: 80%;
+    }
+    
+    .main-comunidad-title {
+        margin-top: 20px;
+    }
+
+    .main-productos-title {
+        margin-top: 20px;
+    }
+    
+}
