@@ -16,8 +16,4 @@ export class FooterComponent implements OnInit {
   ngOnInit(){
 
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/Carla-A-Sp1
