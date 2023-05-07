@@ -15,7 +15,3 @@ export class HomeImagesComponent {
 }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Carla-A-Sp1

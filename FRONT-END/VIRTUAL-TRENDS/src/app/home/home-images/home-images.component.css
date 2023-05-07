@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .main-container {
   display: flex;
   justify-content: center;
@@ -20,7 +19,7 @@
   .first {
     border-radius: 2%;
       width: 50%;
-      margin-top: 0.25%;
+      margin-top: 0.2%;
       margin-bottom: 2%;
   }  
 
@@ -38,47 +37,3 @@
   }  
   }
 */
-=======
- .main-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 5% 0%;
-    height: 100%;
-  } 
-
-  .main-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    /*margin: 0 auto;*/
-
-    }
-
-    .first {
-      border-radius: 2%;
-        width: 60%;
-        margin-top: 0.25%;
-        margin-bottom: 2%;
-    }  
-
-
-  /* @media screen and (max-width: 768px) {
-    .main-image-container {
-        height: 100%;
-        width: 100%;
-        margin: 0 auto;
-        flex-direction:row;
-    }
-
-    .first {
-        width: 150px;
-        margin-bottom: 16px;
-    }  
-
-    }
-  */
-
->>>>>>> origin/Carla-A-Sp1
