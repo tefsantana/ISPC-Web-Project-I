@@ -11,7 +11,7 @@ export class SistemasTallasComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.estandarSS.$tallaEstandar.subscribe((valor)=>(this.tofEstandar = valor));
+    this.estandarSS.$tallaEstandar.subscribe((valor)=>{this.tofEstandar = valor});
     
     this.personalizadoSS.$tallePersonalizado.subscribe((valor)=> {this.tofPersonalizado = valor});
   }
@@ -30,7 +30,7 @@ export class SistemasTallasComponent implements OnInit {
 
   }
  
-  constructor(public estandarSS: SwEstandarService, private personalizadoSS: SwPersonalizadoService){
+  constructor(private estandarSS: SwEstandarService, private personalizadoSS: SwPersonalizadoService){
 
   }
 

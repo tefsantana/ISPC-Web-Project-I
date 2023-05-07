@@ -10,13 +10,13 @@ export class TallaEstandarComponent implements OnInit{
   ngOnInit(): void {
     
   }
-  constructor (public estandarSS: SwEstandarService){
+  constructor (private estandarSS: SwEstandarService){
 
   }
 
   cerrarEstandar(){
 
-    this.estandarSS.$tallaEstandar.emit(false);
+    this.estandarSS.$tallaEstandar.emit(false)
 
   }
 }
