@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 /*import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';*/
 import { ProductsModule } from './products/products.module';
+import { SistemaDeTallaModule } from './sistema-de-talla/sistema-de-talla.module';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -19,8 +20,9 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
-    ProductsModule
+    ProductsModule,
+    SistemaDeTallaModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
