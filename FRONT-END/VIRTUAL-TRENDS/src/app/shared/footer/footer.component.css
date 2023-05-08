@@ -33,7 +33,6 @@
     width: 100%;
     display: flex;
     background-color: #F7F7F2;
-    padding: 20px;
     font-family: 'Archivo', sans-serif;
     font-size: 0.75rem;
     color: #575757;
@@ -49,8 +48,8 @@
   
   .ca-menu.ca-footer-menu {
     margin-top: 5em;
+    text-align: center;
   }
-  
 
   .ca-footer-menu {
     list-style: none;
