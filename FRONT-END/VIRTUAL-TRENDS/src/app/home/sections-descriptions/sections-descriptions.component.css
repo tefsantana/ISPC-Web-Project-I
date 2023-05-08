@@ -6,16 +6,30 @@
 }
 
 .main-all-sections {
-    /*display: inline-block;*/
+    display: inline-block;
     font-family: 'Josefins Sans',sans-serif;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     flex-direction:column;
     align-items: center;
     align-content: center;
     /*clear: both;*/
     width: 75%;
+    /*justify-content: center;*/
   }
+
+.main-container{
+    width: 75%;
+}
+
+
+
+/*.paragraph {
+    font-size: 0.90rem;
+    text-align: center;
+    line-height: 1.5em;
+}*/
+
 .main-nosotros-container {
     width: 75%;
 }
@@ -31,16 +45,6 @@
     text-align: center;
 }
 
-.paragraph {
-    font-size: 14px;
-    text-align: center;
-    line-height: 1.5em;
-}
-
-
-.main-comunidad-container{
-    width: 75%;
-}
 
 .main-comunidad-title {
     font-size: 1.60rem;
@@ -68,12 +72,14 @@
 }
 
 .ca_boton_container {
+    width: 90%;
     flex-direction: column;
     align-content: center;
     display: flex;
+
 }
 
-.products-button {
+.all-products-button {
     padding: 15px;
     background: #3B3D40;
     color: #F7F7F2;
@@ -86,8 +92,8 @@
     font-family: 'Archivo', sans-serif;
 }
 
-.products-button:hover {
-    background: black;
+.all-products-button:hover {
+    background: #191B1D;
 }
 
 /* .main-nosotros-container,
@@ -100,6 +106,11 @@
 /** Media queries */
 
 @media screen and (max-width: 768px) {
+    
+    .main-container {
+        /*margin: 0 auto;*/
+        width: 80%;
+    }
     
     .main-nosotros-container {
         /*margin: 0 auto;*/
@@ -114,17 +125,42 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .main-nosotros-container {
-        margin: 0 auto;
+    .main-container {
+        /*margin: 0 auto;*/
+        width: 80%;
+    }
+    .main-nosotros-title
+    {
         width: 100%;
+        margin-top: 20px;
     }
     
     .main-comunidad-title {
+        width: 100%;
         margin-top: 20px;
     }
 
     .main-productos-title {
+        width: 100%;
         margin-top: 20px;
+    }
+    
+}
+
+@media screen and (max-width: 2500px) {
+    .main-container {
+        /*margin: 0 auto;*/
+        width: 100%;
+    }
+    
+    .main-comunidad-title {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .main-productos-title {
+        width: 100%;
+        margin-top: 30px;
     }
     
 }
