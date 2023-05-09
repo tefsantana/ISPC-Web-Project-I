@@ -4,7 +4,6 @@
 }
 
 .main-product-container {
-    width: 75%;
     text-align-last: center;
 }
 
@@ -38,7 +37,6 @@
 
 .sizes-button {
     padding: 10px 0px 8px;
-    width: 75%;
     background: #3B3D40;
     color: #F7F7F2;
     font-weight: 500;
@@ -49,6 +47,7 @@
     font-size: 16px;
     font-family: 'Archivo', sans-serif;
     cursor: pointer;
+    width: 100%;
 }
 
 .sizes-button:hover {
@@ -95,7 +94,7 @@
 
     .sizes-button {
         width: 75%;
-        margin: 40px auto 0px;
+        margin: 40px auto;
         display: flex;
         justify-content: center;
     }
@@ -107,8 +106,8 @@
         margin: 0 auto;
     }
     .sizes-button {
-        width: 50%;
-        margin: 40px auto 0px;
+        width: 75%;
+        margin: 40px auto;
         display: flex;
         justify-content: center;
     }
@@ -120,8 +119,8 @@
         margin: 0 auto;
     }
     .sizes-button {
-        width: 50%;
-        margin: 40px auto 0px;
+        width: 75%;
+        margin: 40px auto;
         display: flex;
         justify-content: center;
     }
