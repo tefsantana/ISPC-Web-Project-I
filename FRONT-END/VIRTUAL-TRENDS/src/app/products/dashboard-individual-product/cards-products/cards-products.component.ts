@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavigationService } from '../../../services/navigation/navigation.service';
 
 type Color = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'orange' | 'salmon' | 'cyan';
 
@@ -10,9 +12,13 @@ type Color = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'o
 
 export class CardsProductsComponent {
   selectedColor: Color = null;
-  constructor() { }
+  constructor(private router: Router, private navigationService: NavigationService) { }
 
   selectColor(color: Color) {
     this.selectedColor = color;
+  }
+
+  navigate() {
+    this.navigationService.navigate('sistema-de-talla');
   }
 }
