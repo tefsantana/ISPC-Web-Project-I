@@ -9,10 +9,54 @@ export class NavigationService {
     constructor(private router: Router) {}
 
     /**
-     * Navigates to the specified path
-     * @param path The path to navigate to
+     * Navigates to 'Home' landing page
      */
-    navigate(path: string): void {
-        this.router.navigate([path]);
+    navigateToHome(): void {
+        this.router.navigate(['/home']);
+    }
+
+    /**
+     * Navigates to 'Sistema de talla' landing page
+     */
+    navigateToSistemaDeTalla(): void {
+        this.router.navigate(['/sistema-de-talla']);
+    }
+
+    /**
+     * Navigates to 'Talle Estandar' landing page.
+     */
+    
+    navigateToTallaEstandar(): void {
+        this.router.navigate(['/talla-estandar']);
+    }
+
+    /**
+     * Navigates to 'Talle Personalizada' landing page.
+     */
+    
+    navigateToTallaPersonalizada(): void {
+        this.router.navigate(['/talla-personalizada']);
+    }
+
+    /**
+     * Navigates to 'Product/:id' landing page for individual product.
+     */
+    navigateToProduct(): void {
+        this.router.navigate(['/product']);
+    }
+
+    /**
+     * Navigates to 'Product/:id' landing page for individual product.
+     */
+    navigateToProducts(): void {
+        this.router.navigate(['/products']);
+    }
+
+    /**
+     * Navigates to 'Contacto' landing page.
+     */
+
+    navigateToContacto(): void {
+        this.router.navigate(['/contacto']);
     }
 }

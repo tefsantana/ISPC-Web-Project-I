@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NavigationService } from '../../../services/navigation/navigation.service';
-
-type Color = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'orange' | 'salmon' | 'cyan';
-
+import { Products } from '../../../utils/products';
 @Component({
   selector: 'app-cards-products',
   templateUrl: './cards-products.component.html',
@@ -11,14 +8,14 @@ type Color = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'o
 })
 
 export class CardsProductsComponent {
-  selectedColor: Color = null;
-  constructor(private router: Router, private navigationService: NavigationService) { }
+  selectedColor: Products.Colors = null;
+  constructor(private navigationService: NavigationService) { }
 
-  selectColor(color: Color) {
+  selectColor(color: Products.Colors) {
     this.selectedColor = color;
   }
 
   navigate() {
-    this.navigationService.navigate('sistema-de-talla');
+    this.navigationService.navigateToSistemaDeTalla();
   }
 }

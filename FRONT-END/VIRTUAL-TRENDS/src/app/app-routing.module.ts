@@ -6,6 +6,7 @@ import { PanelDeControlComponent } from './sistema-de-talla/panel-de-control/pan
 import { TallaPersonalizadaComponent } from './sistema-de-talla/talla-personalizada/talla-personalizada.component';
 import { TallaEstandarComponent } from './sistema-de-talla/talla-estandar/talla-estandar.component';
 import { DashboardContactoComponent } from './contacto/dashboard-contacto/dashboard-contacto.component';
+import { DashboardAllProductsComponent } from './products/dashboard-all-products/dashboard-all-products.component';
 
 const routes: Routes = [
   // Redirección por defecto a Home
@@ -20,6 +21,7 @@ const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   // { path: 'product/:id', component: DashboardIndividualProductComponent },
   { path: 'product', component: DashboardIndividualProductComponent },
+  { path: 'products', component: DashboardAllProductsComponent},
   { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   { path: 'talla-estandar', component: TallaEstandarComponent },
