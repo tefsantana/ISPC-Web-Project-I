@@ -46,7 +46,7 @@ export class NavigationService {
     }
 
     /**
-     * Navigates to 'Product/:id' landing page for individual product.
+     * Navigates to 'Products' landing where it shows all the products.
      */
     navigateToProducts(): void {
         this.router.navigate(['/products']);

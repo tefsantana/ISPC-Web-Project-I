@@ -21,6 +21,8 @@ export namespace Products {
         sizes?: Sizes[];
         /** Type of product. */
         type: string;
+        /** Favorite */
+        favorite?: boolean;
     }
 
     interface Pictures {
