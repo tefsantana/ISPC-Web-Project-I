@@ -44,7 +44,7 @@
   .ca-boton {
     text-decoration: none;
     color: #575757;
-    transition: color 1s;
+    transition: color 0.5s;
   }
   
   .ca-boton:hover {

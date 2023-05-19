@@ -18,7 +18,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10%;
-    margin: 0px 5px;
+    margin: 10px;
     border: 1px solid #575757;
     display: inline-block;
     cursor: pointer;
@@ -29,7 +29,11 @@
     box-shadow: 0px 0px 50px 8px rgba(0,0,0,0.52);
 }
 
-.table-colors {
+.box-shadow {
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.52);
+}
+
+.colors-container {
     border-collapse: separate;
     border-spacing: 3em 0.5em;
     margin: auto;
@@ -52,6 +56,12 @@
 
 .sizes-button:hover {
     background: black;
+}
+
+.colors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /** Box colors */
