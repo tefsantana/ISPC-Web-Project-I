@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { Products } from 'src/app/utils/products';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProductCardComponent implements OnInit {
   @Input() hasFavorite: boolean = false;
   @Input() hasAmount: boolean = false;
 
-  constructor() {
+  constructor(private navigationService: NavigationService) {
   }
 
   ngOnInit() {
@@ -35,6 +36,18 @@ export class ProductCardComponent implements OnInit {
         }
       }
     });
+  }
+
+  actionateFavorite(e: any) {
+    this.products.forEach((element: Products.Product) => {
+      if (element.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
+        element.favorite = !element.favorite;
+      }
+    });
+  }
+
+  navigate() {
+    this.navigationService.navigateToProduct();
   }
 
 }

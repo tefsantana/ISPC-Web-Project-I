@@ -23,7 +23,7 @@
           "colors": ["dark-red", "dark-green", "purple-grey", "orange", "coral", "cyan"],
           "sizes": ["M", "L", "XL"],
           "type": "Remera",
-          "favorite": false,
+          "favorite": true,
           "amount": 2
         },
         {
