@@ -23,6 +23,7 @@ export namespace Products {
         type: string;
         /** Favorite */
         favorite?: boolean;
+        amount?: number;
     }
 
     interface Pictures {

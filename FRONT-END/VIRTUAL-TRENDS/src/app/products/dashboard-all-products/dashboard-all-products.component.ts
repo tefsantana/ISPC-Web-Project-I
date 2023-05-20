@@ -9,6 +9,8 @@ import { Products } from '../../utils/products';
 })
 export class DashboardAllProductsComponent {
   products: any = [];
+  hasFavorite: boolean = false;
+  hasAmount: boolean = false;
   constructor(private GetProductsService: GetProductsService) {}
 
   ngOnInit(): void {

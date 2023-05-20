@@ -24,7 +24,6 @@ export class CardsProductsComponent {
         document.getElementById(element.id)?.classList.remove('box-shadow');
       }
     });
-    console.log(this.selectedColor);
   }
 
   navigate() {

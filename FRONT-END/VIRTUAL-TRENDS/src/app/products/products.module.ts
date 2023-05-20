@@ -7,9 +7,10 @@ import { CardsProductsComponent } from './dashboard-individual-product/cards-pro
 import { PicturesComponent } from './dashboard-individual-product/pictures/pictures.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { DashboardAllProductsComponent } from './dashboard-all-products/dashboard-all-products.component';
+import { ProductCardComponent } from './dashboard-all-products/product-card/product-card.component';
 
 @NgModule({
-  declarations: [DashboardIndividualProductComponent, DescriptionProductsComponent, CardsProductsComponent, PicturesComponent, DashboardAllProductsComponent],
+  declarations: [DashboardIndividualProductComponent, DescriptionProductsComponent, CardsProductsComponent, PicturesComponent, DashboardAllProductsComponent, ProductCardComponent],
   imports: [
     CommonModule,
     RouterLink,
