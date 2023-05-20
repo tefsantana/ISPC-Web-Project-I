@@ -23,7 +23,8 @@
           "colors": ["dark-red", "dark-green", "purple-grey", "orange", "coral", "cyan"],
           "sizes": ["M", "L", "XL"],
           "type": "Remera",
-          "favorite": false
+          "favorite": true,
+          "amount": 2
         },
         {
           "id": 2864,
@@ -48,7 +49,8 @@
           "colors": ["dark-red", "dark-green", "purple-grey", "orange", "coral", "cyan"],
           "sizes": ["S", "M", "L", "XL"],
           "type": "Pantalón",
-          "favorite": false
+          "favorite": false,
+          "amount": 0
         },
         {
           "id": 2543,
@@ -73,7 +75,8 @@
           "colors": ["dark-red", "dark-green", "purple-grey", "orange", "coral", "cyan"],
           "sizes": ["S", "M", "XL"],
           "type": "Accesorio",
-          "favorite": false
+          "favorite": false,
+          "amount": 1
         }
     ]
 }
