@@ -14,5 +14,6 @@ export class HeaderComponent implements OnInit {
 
   navigate() {
     this.navigationService.navigateToProducts();
+    this.navigationService.navigateToContacto();
   }
 }
