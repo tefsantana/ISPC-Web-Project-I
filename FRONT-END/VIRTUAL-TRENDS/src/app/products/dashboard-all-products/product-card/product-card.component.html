@@ -1,8 +1,10 @@
 <div class="card-container" *ngFor="let product of products" id="{{product.id}}">
-  <img class="picture" src="https://picsum.photos/200/300" alt="" (click)="navigate()">
+  <img class="picture" src="https://picsum.photos/200/300" alt="" (click)="navigate()" title="Ver {{product.name}}">
   <div class="text-container">
-    <h1>{{product.name}}</h1>
-    <p class="price">Precio: <b>${{product.price}}</b></p>
+    <div (click)="navigate()">
+      <h1>{{product.name}}</h1>
+      <p class="price">Precio: <b>${{product.price}}</b></p>
+    </div>
     <div class="amount-buttons" *ngIf="hasAmount">
       <button (click)="substract($event)" id="substract-button-{{product.id}}" [disabled]="(product.amount === 0)">-</button>
       <div>{{product.amount}}</div>
@@ -10,7 +12,7 @@
     </div>
   </div>
   <div class="favorite-buttons-container" *ngIf="hasFavorite">
-    <img (click)="actionateFavorite($event)" *ngIf="(product.favorite)" id="favorite-active-button-{{product.id}}" class="favorite-pic" src="/assets/Banderin-Activo.png" alt="Desmarcar como favorito">
-    <img (click)="actionateFavorite($event)" *ngIf="(!product.favorite)" id="favorite-inactive-button-{{product.id}}" class="favorite-pic" src="/assets/Banderin-inactivo.png" alt="Marcar como favorito">
+    <img (click)="actionateFavorite($event)" *ngIf="(product.favorite)" id="favorite-active-button-{{product.id}}" class="favorite-pic" src="/assets/Banderin-Activo.png" alt="Desmarcar como favorito" title="Desmarcar como favorito">
+    <img (click)="actionateFavorite($event)" *ngIf="(!product.favorite)" id="favorite-inactive-button-{{product.id}}" class="favorite-pic" src="/assets/Banderin-inactivo.png" alt="Marcar como favorito" title="Guardar como favorito">
   </div>
 </div>
