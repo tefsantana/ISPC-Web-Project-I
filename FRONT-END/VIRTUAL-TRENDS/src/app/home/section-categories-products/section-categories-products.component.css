@@ -1,8 +1,10 @@
 .main-container{
-    width: 75%;
+    width: 80%;
 }
 
 .card {
+    max-width: 80%;
+    height: 100%;
     border-radius: 2%;
 
 }
@@ -12,14 +14,15 @@
 }
 
 .my-product-card:nth-child(2n+1) {
-    margin-right: 20px;
+    margin-right: 4em;
   }
   
 .my-product-card:nth-child(2n) {
-    margin-left: 20px;
+    margin-left: 4em;
 }
 .my-product-card {
-    position: relative;
+    position: absolute;
+    align-items: center;
     overflow: hidden;
   }
   
@@ -52,6 +55,6 @@
 }
 
 #accesorios-card {
-    display: flexbox;
+    display: flex;
 }
   
