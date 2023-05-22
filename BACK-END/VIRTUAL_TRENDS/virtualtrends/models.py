@@ -20,10 +20,10 @@ class Usuario(models.Model):
     dni = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20, blank=False)
     apellido = models.CharField(max_length=20, blank=False)
-    tel_cel = models.IntegerField(max_length=20, blank=False)
+    tel_cel = models.IntegerField(blank=False)
     dir_calle = models.CharField(max_length=40, blank=False)
-    dir_numero = models.IntegerField(max_length=7, blank=False)
-    cp = models.IntegerField(max_length=7, blank=False)
+    dir_numero = models.IntegerField(blank=False)
+    cp = models.IntegerField(blank=False)
     ciudad = models.CharField(max_length=20, blank=False)
     provincia = models.CharField(max_length=20, blank=False)
     ph = models.CharField(max_length=30, blank=False)
@@ -117,7 +117,7 @@ class Contacto(models.Model):
     id_con = models.AutoField(primary_key=True)
     msj = models.TextField(max_length=1000, blank=False)
     email = models.CharField(max_length=50, blank=False)
-    tel = models.IntegerField(max_length=15, blank=False)
+    tel = models.IntegerField(blank=False)
     nombre = models.CharField(max_length=20, blank=False)
     class Meta:
         db_table = 'contacto'
@@ -149,7 +149,7 @@ class Productos(models.Model):
     id_prod = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=20, blank=False)
     desc = models.TextField(max_length=200, blank=False)
-    stock = models.IntegerField(max_length=10, blank=False)
+    stock = models.IntegerField(blank=False)
     precio = models.DecimalField(decimal_places=2, max_digits=10, blank=False)
     talle_personalizado = models.BooleanField(default=True)
     eliminar = models.BooleanField(default=False)
@@ -273,7 +273,7 @@ class EnvioDeCompras(models.Model):
     id_env = models.ForeignKey(Envio, to_field='id_env', on_delete=models.PROTECT)
     id_comp = models.ForeignKey(Compras, to_field='id_comp', on_delete=models.PROTECT)
     destino_calle = models.CharField(max_length=30, blank=False)
-    destino_numero = models.IntegerField(max_length=10, blank=False)
+    destino_numero = models.IntegerField(blank=False)
     class Meta:
         db_table = 'envio_compra'
         verbose_name = 'En de las compras concretadas'
@@ -316,8 +316,8 @@ class Newsletter(models.Model):
 class ProductosEnCarrito(models.Model):
     id_prod = models.ForeignKey(Productos, to_field='id_prod', on_delete=models.CASCADE)
     id_car = models.ForeignKey(Carrito, to_field='id_car', on_delete=models.CASCADE)
-    cantidad = models.IntegerField(max_length=4, default=1, blank=False)
-    talla = models.IntegerField(max_length=7, default=1, blank=False)
+    cantidad = models.IntegerField(default=1, blank=False)
+    talla = models.IntegerField(default=1, blank=False)
     espersonalizado = models.BooleanField(default=False)
     class Meta:
         db_table = 'prod_carrito'
