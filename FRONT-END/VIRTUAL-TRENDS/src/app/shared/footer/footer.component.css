@@ -29,6 +29,7 @@
 }
 
   .ca-footer {
+    flex-direction: column;
     font-family: 'Archivo',sans-serif;
     width: 100%;
     display: flex;
@@ -133,6 +134,7 @@
   }
   
   .ca-grid_item_center {
+    align-items: center;
     width: 100%;
     /*margin-bottom: 0.75rem;*/
     display: inline;
@@ -144,6 +146,47 @@
     display: flexbox;
     margin-bottom: 0.75rem;
     text-align: left;
+  }
+
+  /* CSS para NEWSLETTER*/
+
+  .newsletter {
+    margin-top: 2em;
+    width: 500px;
+    height: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+  }
+  
+  .newsletter-title {
+    color: #3B3D40;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  
+  .newsletter-input {
+    border: 1px solid #646363;
+    display: flex;
+    align-items: center;
+  }
+  
+  .newsletter-input input {
+    flex: 1;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    font-size: 14px;
+    color: #877873;
+  }
+  
+  .newsletter-input button {
+    width: 112px;
+    height: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #F7F7F2;
+    background-color: #646363;
+    border: none;
   }
 
   @media screen and (min-width: 768px) {
