@@ -12,6 +12,7 @@ export class DashboardIndividualProductComponent {
   description: string = '';
   colors: Products.Colors[] = [];
   pictures: Products.Pictures[] = [];
+  isLoading: boolean = false;
 
   constructor(private GetProductsService: GetProductsService) { }
 
@@ -25,6 +26,10 @@ export class DashboardIndividualProductComponent {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.loadProduct();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
   }
 }
