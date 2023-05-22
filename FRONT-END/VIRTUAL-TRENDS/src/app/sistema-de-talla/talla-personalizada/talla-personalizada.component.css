@@ -124,16 +124,22 @@
     background: none;
     top: 20px;
     right: 20px;
-    background-image: url(../../../assets/Boton-cierre.bmp);
+    background-image: url(../../../assets/CRUZ.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    image-resolution: 100%;
+    border-radius: 15%;
     height: 22px;
-    width: auto;
+    width: 22px;
 }
 
 .close-button:active{
     border: none;
     outline: none;
     background: none;
-    background-image: url(../../../assets/Boton-cierre-activo.bmp);
+    background-image: url(../../../assets/CRUZ-CLARA.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .exclamation-container{
