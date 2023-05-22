@@ -10,34 +10,58 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 .contenedor-in {
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: #f7f7f2;
-    margin: 5% auto;
-    box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(12px);
-    width: 500px;
-    height: 475px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-family: 'Archivo','sans-serif';
+    background-color: #F8F8F8;
+    margin: 25%;
+    box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+    width: 35em;
+    height: 38em;
     border-radius: 5px;
     border: 2px solid #575757;
-    gap: 40px;
-    align-items: center;
+    gap: 1.5em;
+
 }
 
 .head-in{
+    /*display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    display: flex;*/
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;*/
+
+    /*display: flex;
+    justify-content: flex-end;  
+    align-items: center; */
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    padding: 1em;
+
 }
 
 .close-in{
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
+    position: absolute;
+    width: 1.45em;
+    height: 1.45em;
+    border-radius: 4px;
     border: 1px solid #575757;
-    margin-right: 15px;
-    margin-top: 15px;
+    top: 1em;
+    left: 1em;
+    margin-right: auto;
+    margin-left: 90%;
 }
 
 .close-in:hover{
@@ -45,15 +69,39 @@
     color: #f7f7f2;
     
 }
+.subtitle-in{
+    color: #575757;
+    font-family:'Archivo','sans-serif';
+    margin-top: 1em;
+    align-items: center;
+    font-size: 1em;
+}
 
 .title-in{
-    color: #575757;
-    font-family:Arial, Helvetica, sans-serif;
+    margin-top: auto; /* Ajusta el margen superior según sea necesario */
+    margin-bottom: 0.5em;
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-top: 0.5em; /* Ajusta el margen superior según sea necesario */
+}
+
+
+#titulo-cuenta {
+    border-top: 1px solid #575757;
+    border-bottom: 1px solid #575757;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    align-items: center;
+    font-family:'Josefin Sans','sans-serif';
+    margin-top: 1.5em;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 2em;
     font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 16px;
-    margin-top: 30px;
+    color: #575757;
+    padding: 15px 0px;
+    margin-left: 15px;
+    flex-grow: 1;
 }
 
 .btn-in{
@@ -93,7 +141,7 @@
 }
 .recu-in{
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 12px;
     line-height: 12px;
     display: flex;
