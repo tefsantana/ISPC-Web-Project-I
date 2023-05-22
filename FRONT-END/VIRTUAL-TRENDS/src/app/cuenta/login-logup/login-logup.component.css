@@ -54,21 +54,32 @@
 
 .close-in{
     position: absolute;
-    width: 1.45em;
-    height: 1.45em;
+    width: 22px;
+    height: 22px;
     border-radius: 4px;
-    border: 1px solid #575757;
     top: 1em;
     left: 1em;
+    border: 1px solid #575757;
     margin-right: auto;
     margin-left: 90%;
+    background-image: url(../../../assets/CRUZ.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .close-in:hover{
-    background-color: #575757;
-    color: #f7f7f2;
+    background-image: url(../../../assets/CRUZ-CLARA.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     
 }
+
+.close-in:active{   
+    background-image: url(../../../assets/CRUZ.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .subtitle-in{
     color: #575757;
     font-family:'Archivo','sans-serif';
