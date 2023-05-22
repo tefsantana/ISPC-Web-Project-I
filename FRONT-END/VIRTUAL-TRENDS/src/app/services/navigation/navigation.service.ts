@@ -59,4 +59,15 @@ export class NavigationService {
     navigateToContacto(): void {
         this.router.navigate(['/contacto']);
     }
+
+    navigateToCuenta(): void {
+        this.router.navigate(['/cuenta']);
+    }
+
+    navigateToRegistro() {
+        this.router.navigate(['/registro']);
+      }
+
+
+
 }
