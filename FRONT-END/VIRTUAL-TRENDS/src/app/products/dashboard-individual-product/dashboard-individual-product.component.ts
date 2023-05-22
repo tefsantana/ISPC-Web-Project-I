@@ -30,6 +30,6 @@ export class DashboardIndividualProductComponent {
     this.loadProduct();
     setTimeout(() => {
       this.isLoading = false;
-    }, 3000);
+    }, 2000);
   }
 }

@@ -19,7 +19,7 @@ export class DashboardAllProductsComponent {
     this.loadProducts();
     setTimeout(() => {
       this.isLoading = false;
-    }, 3000);
+    }, 2000);
   }
 
   public loadProducts() {

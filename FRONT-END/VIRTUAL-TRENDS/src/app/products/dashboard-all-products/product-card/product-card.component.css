@@ -19,6 +19,7 @@
     transition: background-color .5s;
     width: 350px;
     margin-bottom: 16px;
+    height: 152px;
 }
 
 .card-container:hover {
@@ -53,7 +54,7 @@ h1 {
     font-weight: 500;
     margin: 0;
     font-family: 'Archivo', sans-serif;
-    padding: 20px 0px;
+    padding: 10px 0px;
 }
 
 h1, .price, .picture {
@@ -63,17 +64,21 @@ h1, .price, .picture {
 .amount-buttons {
     display: flex;
     align-items: center;
-    margin: 10px 0px;
+    margin-bottom: 10px;
     justify-content: space-evenly;
     cursor:default;
 }
 
 button {
     cursor: pointer;
+    border: solid 2px #656565;
+    width: 30px;
+    height: 30px;
 }
 
 button:disabled {
     cursor: not-allowed;
+    border: solid 2px rgba(126, 125, 125, 0.3);
 }
 
 .favorite-pic {
