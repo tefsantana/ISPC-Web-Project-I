@@ -1,21 +1,23 @@
   .popup{
-    position: absolute;
-    left: 7.03%;
+    position: flex;
+    margin-left: 7.03%;
     right: 56.37%;
-    top: 850px;
+    margin-top: 100px;
     margin-bottom: 11.72%;
     width: 500px;
     height: 475px;
     border: 2px solid #3b3d40;
     border-radius: 6px;
     background-color: #f7f7f2 ;
+    transform: translateX(-50%, -50%);
+    transform: translateY(-50%, -50%);
   }
   
   .cerrar{
     cursor: pointer;
-    position: absolute;
+    position: relative;
     top: 10px;
-    right: 10px;
+    left: 465px;
     width: 22px;
     height: 22px;
     background-color: #f7f7f2;
@@ -37,6 +39,7 @@
   .contornoarriba {
     margin-top: 42px;
     width: 401px;
+    margin-left:10%;
     color:#3b3d40;
   }
   
@@ -54,6 +57,7 @@
   .contornoabajo {
     top: 14px;
     width: 401px;
+    margin-left:10%;
     color:#3b3d40;
   }
   
@@ -82,13 +86,13 @@
     font-weight: 700;
     color: #f7f7f2;
     width: 195;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%,-50%);
-  }
+    top:32.5%;
+    left: 27.5%;
+    position: relative;
+    transform: translateX(-50%, -50%);
+    transform: translateY(-50%, -50%);
+    }
+
   .bdt {
     display: flex;
     justify-content: center;
