@@ -30,6 +30,7 @@
 
   .ca-footer {
     flex-direction: column;
+    position: relative;
     font-family: 'Archivo',sans-serif;
     width: 100%;
     display: flex;
@@ -151,6 +152,10 @@
   /* CSS para NEWSLETTER*/
 
   .newsletter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
     margin-top: 2em;
     width: 500px;
     height: 40px;
