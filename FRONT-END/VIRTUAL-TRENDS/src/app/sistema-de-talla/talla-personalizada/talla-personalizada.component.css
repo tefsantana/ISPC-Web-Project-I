@@ -118,7 +118,7 @@
 .close-button{
     cursor: pointer;
     position: absolute;
-    border: none;
+    border: 1px solid #575757;
     outline: none;
     background: none;
     top: 20px;
@@ -126,17 +126,19 @@
     background-image: url(../../../assets/CRUZ.png);
     background-repeat: no-repeat;
     background-size: contain;
-    image-resolution: 100%;
-    border-radius: 15%;
+    border-radius: 6px;
     height: 22px;
     width: 22px;
 }
 
-.close-button:active{
-    border: none;
-    outline: none;
-    background: none;
+.close-button:hover{
     background-image: url(../../../assets/CRUZ-CLARA.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.close-button:active{
+    background-image: url(../../../assets/CRUZ.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
