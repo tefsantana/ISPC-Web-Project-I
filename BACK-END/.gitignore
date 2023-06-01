@@ -1,2 +1,8 @@
 #ENTORNO-VIRTUAL
 CAvenv/
+
+#PYTHON ARCHIVOS 
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
