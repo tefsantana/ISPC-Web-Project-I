@@ -1,4 +1,4 @@
-VIRTUAL TRENDS BACKEND
+**VIRTUAL TRENDS BACKEND**
 
 Backend para E-commerce de la marca VIRTUAL TRENDS que ofrece indumentaria y accesorios personalizados utilizando sistemas de representación 3D que permiten mostrar la proyección de prendas que aún no han sido materializadas.
 
