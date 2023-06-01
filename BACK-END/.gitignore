@@ -1,5 +1,5 @@
 #ENTORNO-VIRTUAL
-CAvenv/
+env/
 
 #PYTHON ARCHIVOS 
 __pycache__/
