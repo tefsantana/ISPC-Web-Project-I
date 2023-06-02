@@ -9,6 +9,7 @@ export class RecibirTallasService {
   constructor(private http:HttpClient) { 
 
   }
+  
   tallasDisponibles: string[] = [
     "XS",
     "M",
