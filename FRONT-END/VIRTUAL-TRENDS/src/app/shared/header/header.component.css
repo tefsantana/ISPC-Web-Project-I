@@ -134,7 +134,7 @@
   background-color: #F7F7F2;
   justify-content: center;
   align-items: center;
-  height: 100vh;/* Ajusta la altura del navbar según sea necesario */
+  height: 20vh;/* Ajusta la altura del navbar según sea necesario */
 }
 
 .navbar {
