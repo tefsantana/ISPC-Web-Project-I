@@ -1,28 +1,38 @@
+header {
+  margin: 0%;
+  padding: 0%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .ca-header {
     display: flex;
     background-color: #F7F7F2;
     position: relative;
-    /*height: 80px;*/
-    /*height: 20vh;/* Establece la altura del navbar */
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    height: 20vh; /* Establece la altura del navbar en un 10% de la altura de la ventana */
     align-items: center;
   }
   
   .navbar {
-    /*background-color: hsla(15, 8%, 49%, 0.502);*/
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5em;
+    /*padding: 1.5em;*/
+    /*margin-top: 1em;*/
   }
+  .navbar-toggler {
+    display: none;
+  }
+
   .navbar-logo {
     width: 7rem;
     height: auto;
     float: left;
+    margin-top: 2em;
     margin-right: 0.2rem; /* ajusta el margen según sea necesario */
   }
   
@@ -31,6 +41,7 @@
     display: flex;
     align-items: center;
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
     color: #575757;
     text-transform: uppercase;
     margin: 0;
@@ -55,41 +66,18 @@
     cursor: pointer;
   }
   
-  /* .dropdown {
-    position: relative;
-    display: inline-block;
-    text-transform: uppercase;
-  }
-  
-  .dropbtn {
-    background-color: transparent;
-    color: #575757;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 1.2rem;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropdown-content {
+  .navbar-toggler-button {
     display: none;
-    position: absolute;
-    z-index: 1;
-    background-color: #242526;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 5px;
   }
   
-  .dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-  }
-   */
 
-   @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
+    .ca-hamburguesa-menu {
+      margin-right: 2rem; /* Ajusta el margen según sea necesario */
+    }
+    
     .navbar {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
     }
   
     .navbar-container {
@@ -101,13 +89,33 @@
       margin: 0 0 1rem 0;
     }
   
-    .navbar li {
-      margin: 10px 0;
+    .navbar-toggler {
+      display: block;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
-
-    .navbar ul li:nth-child(3) {
-    display: none;
+  
+    .navbar-toggler-icon {
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      background-color: #1c1b1b;
+      border-radius: 2px;
     }
-
-
+  
+    .navbar ul {
+      display: none;
+      flex-direction: column;
+      padding: 0;
+      margin-top: 1rem;
+    }
+  
+    .navbar ul li {
+      margin: 0;
+    }
+  
+    .navbar-toggler.active + .navbar-container ul {
+      display: flex;
+    }
   }

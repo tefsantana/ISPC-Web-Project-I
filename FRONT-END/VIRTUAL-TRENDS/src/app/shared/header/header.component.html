@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="navbar-container">
-      <ul>
+      <ul class="navbar-list">
         <li>
           <a (click)="navigate()" class="ca-boton">Productos</a>
         </li>
@@ -33,66 +33,14 @@
           </div>
         </div> -->
       </ul>
+      <div class="ca-hamburguesa-menu">
+        <button class="navbar-toggler" type="button" aria-label="Toggle Navigation" aria-controls="navbarMenu" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
     </div>
-  </nav>
-  <!-- <script>
-    // código JS para el dropdown menu
-    document.addEventListener("DOMContentLoaded", function () {
-  var dropdownMenus = document.getElementsByClassName('dropdown-menu');
-  var dropdownToggles = document.getElementsByClassName('dropdown-toggle');
-    for (var i = 0; i < dropdownToggles.length; i++) {
-      dropdownToggles[i].addEventListener('click', function (e) {
-        e.preventDefault();
-        var dropdownMenu = this.nextElementSibling;
-        this.classList.toggle('active');
-        dropdownMenu.classList.toggle('active');
-      });
-    }
-  });
-</script>
--->
-  
+  </nav>  
 </header>
-
-
-
-<!-- <header class="ca-header">
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="/home">
-          <img src="./assets/LOGO-VT.png" alt="Logo de Virtual Trends">
-        </a>
-      </div>
-      <ul>            
-        <li>
-          <a routerLink="/ruta-del-enlace" class="ca-boton">Productos</a>
-        </li>
-        <li>
-          <a routerLink="/ruta-del-enlace" class="ca-boton">Carrito</a>
-        </li>
-        <li>
-          <a routerLink="/ruta-del-enlace" class="ca-boton">Nosotros</a>
-        </li>
-        <li>
-          <a routerLink="/ruta-del-enlace" class="ca-boton">Comunidad</a>
-        </li>
-        <li><a routerLink="/ruta-del-enlace" class="ca-boton">Cuenta</a></li>
-        <div class="dropdown">
-          <a href="#" class="ca-boton dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menú
-          </a>
-        </div>
-      </ul>
-      
-      </div>
-  </nav>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a routerLink="/ruta-del-enlace" class="dropdown-item">Productos Hombre</a>
-    <a routerLink="/ruta-del-enlace" class="dropdown-item">Productos Mujer</a>
-  </div>
-</header>
- -->
 
 
 
