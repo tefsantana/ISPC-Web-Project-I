@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavigationService } from '../../../services/navigation/navigation.service';
 import { Products } from '../../../utils/products';
+import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 @Component({
   selector: 'app-cards-products',
   templateUrl: './cards-products.component.html',
@@ -11,7 +12,7 @@ export class CardsProductsComponent {
   selectedColor: string = '';
   @Input() colors: Products.Colors[] = [];
 
-  constructor(private navigationService: NavigationService) {
+  constructor(private navigationService: NavigationService, private productData: ProductDataService) {
   }
 
   selectColor(event: any) {
@@ -19,6 +20,7 @@ export class CardsProductsComponent {
       if (element.id === event.target.id) {
         this.selectedColor = element.id;
         document.getElementById(element.id)?.classList.add('box-shadow');
+        this.productData.enviarDatos("color", this.selectedColor);
       }
       else {
         document.getElementById(element.id)?.classList.remove('box-shadow');
