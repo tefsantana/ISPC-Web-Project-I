@@ -17,10 +17,18 @@ export class TallaEstandarComponent implements OnInit{
   seleccionado: string=""
   activos: string[] = this.recibirTallas.enviarTallasDisponibles()
   product_ID: any
+  colorSeleccionado: string = ''
+  stock: number = 0
 
   ngOnInit() {
     this.productData.recibirDatos("id_producto").subscribe(dato => {
       this.product_ID = dato;
+    });
+    this.productData.recibirDatos("color").subscribe(dato => {
+      this.colorSeleccionado = dato;
+    });
+    this.productData.recibirDatos("cantidad").subscribe(dato => {
+      this.stock = dato;
     });
   }
 
@@ -43,6 +51,8 @@ export class TallaEstandarComponent implements OnInit{
 
   agregar_al_carrito(){
     console.log(this.product_ID)
+    console.log(this.colorSeleccionado);
+    console.log(this.stock);
   }
 }
 
