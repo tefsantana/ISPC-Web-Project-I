@@ -79,7 +79,7 @@ class NewsletterAdmin(admin.ModelAdmin):
     list_display = ['email']
 
 class ProductosEnCarritoAdmin(admin.ModelAdmin):
-    list_display = ('id_prod', 'id_car', 'cantidad', 'talla', 'espersonalizado')
+    list_display = ('id_prod', 'id_car', 'cantidad', 'talla','color', 'espersonalizado')
         
 
 admin.site.register(Carrito,CarritoAdmin)
