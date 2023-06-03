@@ -1,27 +1,3 @@
-/* .ca-footer {
-    font-family: 'Josefin Sans', sans-serif;
-    color: #575757;
-    display: flex;
-    justify-content: space-between;
-    padding: 40px 80px;
-  }
-  
-  .ca-grid__item {
-    margin-right: 20px;
-  }
-  
-  .ca-footer_text {
-    font-size: 12px;
-    font-weight: 500;
-    color: #191B1D;
-  }
-  
-  .rk-menu.rk-footer-menu a {
-    color: #191B1D;
-    font-size: 12px;
-    font-weight: 500;
-  } */
-
   /* Estilos para el footer */
 *{
   background-color:#F7F7F2;
@@ -138,6 +114,14 @@
     align-items: center;
     width: 100%;
     /*margin-bottom: 0.75rem;*/
+    display: inline;
+    text-align: center;
+  }
+
+  .ca-grid_item_center_newsletter{
+    align-items: center;
+    margin: 5% 5% 5% 5%;
+    width: 85%;
     display: inline;
     text-align: center;
   }
@@ -300,4 +284,16 @@ color: #F7F7F2;
     .ca-grid_center {
       width: 40%;
     }
+
   }
+
+  /*@media screen and (min-width: 768px){
+    .newsletter-input {
+      height: 80%;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+    }
+
+  }*/
+  
