@@ -1,7 +1,6 @@
 import { Component, OnInit, ɵcoerceToBoolean } from '@angular/core';
 import { SwEstandarService } from 'src/app/services/sw-estandar.service';
 import { RecibirTallasService } from 'src/app/services/tallas-services/recibir-tallas.service';
-import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 
 @Component({
   selector: 'app-talla-estandar',
@@ -10,18 +9,15 @@ import { ProductDataService } from 'src/app/services/data-services/product-data.
 })
 export class TallaEstandarComponent implements OnInit{
 
-  constructor (private estandarSS: SwEstandarService, private recibirTallas: RecibirTallasService, private productData: ProductDataService){
+  constructor (private estandarSS: SwEstandarService, private recibirTallas: RecibirTallasService){
 
   }
   
   seleccionado: string=""
   activos: string[] = this.recibirTallas.enviarTallasDisponibles()
-  product_ID: any
-
-  ngOnInit() {
-    this.productData.recibirDatos().subscribe(dato => {
-      this.product_ID = dato;
-    });
+  
+  ngOnInit(): void {
+    
   }
 
   esActivo(talle: string){
@@ -40,9 +36,5 @@ export class TallaEstandarComponent implements OnInit{
     this.estandarSS.$tallaEstandar.emit(false)
 
   }
-  
-  agregar_al_carrito(){
-    
-    console.log(this.product_ID)
-  }
 }
+

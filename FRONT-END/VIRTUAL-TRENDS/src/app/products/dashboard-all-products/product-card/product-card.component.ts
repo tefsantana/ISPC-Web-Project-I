@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { Products } from 'src/app/utils/products';
-import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 
 @Component({
   selector: 'app-product-card',
@@ -13,7 +12,7 @@ export class ProductCardComponent implements OnInit {
   @Input() hasFavorite: boolean = false;
   @Input() hasAmount: boolean = false;
 
-  constructor(private navigationService: NavigationService, private productData: ProductDataService) {
+  constructor(private navigationService: NavigationService) {
   }
 
   ngOnInit() {
@@ -47,11 +46,8 @@ export class ProductCardComponent implements OnInit {
     });
   }
 
-  navigate(id: any) {
-    this.productData.enviarDatos(id);
+  navigate() {
     this.navigationService.navigateToProduct();
-
-    
   }
 
 }

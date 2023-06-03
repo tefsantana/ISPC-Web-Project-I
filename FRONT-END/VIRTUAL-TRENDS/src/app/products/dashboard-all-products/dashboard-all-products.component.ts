@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GetProductsService } from '../../services/products-services/getProducts.service';
 import { Products } from '../../utils/products';
-import { ProductDataService } from 'src/app/services/data-services/product-data.service';
+
 @Component({
   selector: 'app-dashboard-all-products',
   templateUrl: './dashboard-all-products.component.html',
@@ -12,7 +12,7 @@ export class DashboardAllProductsComponent {
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
-  constructor(private GetProductsService: GetProductsService, private ProductData: ProductDataService) {}
+  constructor(private GetProductsService: GetProductsService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -20,9 +20,6 @@ export class DashboardAllProductsComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
-
-    this.ProductData.enviarDatos(null)
-
   }
 
   public loadProducts() {

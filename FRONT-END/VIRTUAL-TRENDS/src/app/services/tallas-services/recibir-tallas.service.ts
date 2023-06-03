@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ProductDataService } from '../data-services/product-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecibirTallasService {
 
-  constructor(private http:HttpClient, private ProductData: ProductDataService) { 
+  constructor(private http:HttpClient) { 
 
   }
-  
   tallasDisponibles: string[] = [
     "XS",
     "M",
