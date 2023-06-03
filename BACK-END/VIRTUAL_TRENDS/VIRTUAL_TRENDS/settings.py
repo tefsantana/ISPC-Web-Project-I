@@ -54,9 +54,11 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+
 # CORS_ALLOWED_ORIGINS = [
 #     'http://localhost/',
 # ]
+
 
 ROOT_URLCONF = 'VIRTUAL_TRENDS.urls'
 
