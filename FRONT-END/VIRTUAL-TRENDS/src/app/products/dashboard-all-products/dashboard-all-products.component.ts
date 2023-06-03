@@ -21,10 +21,6 @@ export class DashboardAllProductsComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
-
-    this.productData.enviarDatos("id_producto", null)
-    this.productData.enviarDatos("cantidad", null)
-
   }
 
   public loadProducts() {

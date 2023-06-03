@@ -20,35 +20,40 @@ export class ProductCardComponent implements OnInit {
   }
 
   substract(e: any) {
-    this.products.forEach((element: Products.Product) => {
-      if (element.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
-        if (element.amount) {
-          element.amount = element.amount - 1;
+    this.products.forEach((product: Products.Product) => {
+      if (product.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
+        if (product.amount) {
+          product.amount = product.amount - 1;
         }
       }
     });
   }
 
   add(e: any) {
-    this.products.forEach((element: Products.Product) => {
-      if (element.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
-        if (element.amount || element.amount === 0) {
-          element.amount = element.amount + 1;
+    this.products.forEach((product: Products.Product) => {
+      if (product.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
+        if (product.amount || product.amount === 0) {
+          product.amount = product.amount + 1;
         }
       }
     });
   }
 
   actionateFavorite(e: any) {
-    this.products.forEach((element: Products.Product) => {
-      if (element.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
-        element.favorite = !element.favorite;
+    this.products.forEach((product: Products.Product) => {
+      if (product.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
+        product.favorite = !product.favorite;
       }
     });
   }
 
-  navigate(propiedad: string, id: any) {
+  navigate(propiedad: string, id: number) {
     this.productData.enviarDatos(propiedad, id);
+    this.products.forEach((product: Products.Product) => {
+      if (product.id === id) {
+        this.productData.enviarDatos("cantidad", product.amount);
+      }
+    });
     this.navigationService.navigateToProduct();
   }
 
