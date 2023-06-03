@@ -21,7 +21,8 @@ export class DashboardAllProductsComponent {
       this.isLoading = false;
     }, 2000);
 
-    this.ProductData.enviarDatos(null)
+    this.ProductData.enviarDatos("id_producto", null)
+    this.ProductData.enviarDatos("cantidad", null)
 
   }
 
