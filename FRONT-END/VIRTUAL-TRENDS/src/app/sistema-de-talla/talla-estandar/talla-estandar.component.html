@@ -34,5 +34,6 @@
                              (click)="toggleSeleccionado('XL')" class="botoncitodetalla" value="XL">
 
       </div>
-      <input type="submit" class="agregaralcashito" value="AGREGAR AL CARRITO">
+      <input type="submit" class="agregaralcashito"(click)="agregar_al_carrito()" value="AGREGAR AL CARRITO">
+      <p>{{product_ID}}</p>
     </div>
