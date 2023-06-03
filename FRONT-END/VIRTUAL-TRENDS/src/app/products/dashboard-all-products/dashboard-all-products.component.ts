@@ -9,7 +9,7 @@ import { ProductDataService } from 'src/app/services/data-services/product-data.
   styleUrls: ['./dashboard-all-products.component.css']
 })
 export class DashboardAllProductsComponent {
-  products: any = [];
+  products: Products.Product[] = [];
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
@@ -28,7 +28,7 @@ export class DashboardAllProductsComponent {
   }
 
   public loadProducts() {
-    this.GetProductsService.get('http://localhost:3000/products').subscribe((data: any) => {
+    this.GetProductsService.get().subscribe((data: any) => {
       this.products = data;
     });
   }
