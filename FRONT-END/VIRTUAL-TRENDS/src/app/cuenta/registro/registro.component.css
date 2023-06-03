@@ -14,21 +14,20 @@
     background-color: #F8F8F8;
     margin: 5% auto;
     box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(12px);
-    width: 41.75em;
-    height: 66.6875em;
+    max-width: 41.75em;
+    height: auto;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     border: 2px solid #575757;
-    gap: 40px;
+    gap: 20px 0px;
     align-items: center;
 }
 
 .head-reg{
     display: flex;
-    justify-content: space-between;
     width: 100%;
+    justify-content: right;
 }
 
 .close-reg{
@@ -40,35 +39,25 @@
     margin-top: 15px;
     background-image: url(../../../assets/CRUZ.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
+    transition: background-image 0.3s;
 }
 
 .close-reg:hover{
     background-image: url(../../../assets/CRUZ-CLARA.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    
-}
-
-.close-reg:active{
-    background-image: url(../../../assets/CRUZ.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 .title-reg{
     color: #575757;
     font-family:'Josefin Sans','sans-serif';
     font-style: normal;
-    width: 25.5625em;
+    width: 70%;
     font-weight: 500;
     font-size: 24px;
-    margin-top: 42px;
     border-top: 1px solid #575757;
     border-bottom: 1px solid #575757;
     text-align: center;
     padding: 15px 0px;
-    margin-left: 15px;
 }
 
 .form-reg{
@@ -142,7 +131,8 @@ p{
     border: none;
     font-weight: bold;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-    margin-top: 30px;
+    margin: 30px 0px 20px;
+    transition: color 0.3s, background-color 0.3s, border 0.3s;
 }
 
 .btn-reg:hover{
@@ -150,4 +140,25 @@ p{
     color: #575757;
     border: 1px solid #575757;
 
+}
+
+
+@media screen and (max-width: 700px) {
+    .body-reg {
+        flex-direction: column-reverse;
+        margin-top: 0px;
+    }
+
+    .right-reg {
+        width: 100%;
+        padding-top: 0px;
+    }
+
+    .contenedor-reg {
+        margin: 10px;
+    }
+
+    .left-reg {
+        width: 100%;
+    }
 }
