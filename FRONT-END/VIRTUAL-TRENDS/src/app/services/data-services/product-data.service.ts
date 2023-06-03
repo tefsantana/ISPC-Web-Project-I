@@ -11,6 +11,7 @@ export class ProductDataService {
     "id_usuario": 0,
     "cantidad": 0,
     "talla": "",
+    "color": "",
     "personalizado": false
   });
 
