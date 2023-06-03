@@ -46,6 +46,3 @@ export class TallaEstandarComponent implements OnInit{
     console.log(this.product_ID)
   }
 }
-
-
-this.https.get("https://localhost:8000/api/test")
