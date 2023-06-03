@@ -10,7 +10,7 @@ import { ProductDataService } from 'src/app/services/data-services/product-data.
 })
 export class TallaEstandarComponent implements OnInit{
 
-  constructor (private estandarSS: SwEstandarService, private recibirTallas: RecibirTallasService, private ProductData: ProductDataService){
+  constructor (private estandarSS: SwEstandarService, private recibirTallas: RecibirTallasService, private productData: ProductDataService){
 
   }
 

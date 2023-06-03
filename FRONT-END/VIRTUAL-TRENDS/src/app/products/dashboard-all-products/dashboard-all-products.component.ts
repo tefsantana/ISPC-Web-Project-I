@@ -13,7 +13,7 @@ export class DashboardAllProductsComponent {
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
-  constructor(private GetProductsService: GetProductsService, private ProductData: ProductDataService) {}
+  constructor(private GetProductsService: GetProductsService, private productData: ProductDataService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -22,8 +22,8 @@ export class DashboardAllProductsComponent {
       this.isLoading = false;
     }, 2000);
 
-    this.ProductData.enviarDatos("id_producto", null)
-    this.ProductData.enviarDatos("cantidad", null)
+    this.productData.enviarDatos("id_producto", null)
+    this.productData.enviarDatos("cantidad", null)
 
   }
 

@@ -13,7 +13,7 @@ export class ProductCardComponent implements OnInit {
   @Input() hasFavorite: boolean = false;
   @Input() hasAmount: boolean = false;
 
-  constructor(private navigationService: NavigationService, private ProductData: ProductDataService) {
+  constructor(private navigationService: NavigationService, private productData: ProductDataService) {
   }
 
   ngOnInit() {
