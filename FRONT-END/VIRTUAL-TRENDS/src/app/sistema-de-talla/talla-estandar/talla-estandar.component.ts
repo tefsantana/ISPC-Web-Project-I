@@ -19,7 +19,7 @@ export class TallaEstandarComponent implements OnInit{
   product_ID: any
 
   ngOnInit() {
-    this.productData.recibirDatos().subscribe(dato => {
+    this.productData.recibirDatos("id_producto").subscribe(dato => {
       this.product_ID = dato;
     });
   }
@@ -42,7 +42,6 @@ export class TallaEstandarComponent implements OnInit{
   }
   
   agregar_al_carrito(){
-    
     console.log(this.product_ID)
   }
 }
