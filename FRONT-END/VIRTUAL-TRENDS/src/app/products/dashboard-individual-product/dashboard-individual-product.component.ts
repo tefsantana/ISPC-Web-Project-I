@@ -17,7 +17,7 @@ export class DashboardIndividualProductComponent {
   constructor(private GetProductsService: GetProductsService) { }
 
   public loadProduct() {
-    this.GetProductsService.get('http://localhost:3000/products').subscribe((data: any) => {
+    this.GetProductsService.get().subscribe((data: any) => {
       this.title = data[0].name;
       this.description = data[0].description;
       this.colors = data[0].colors;

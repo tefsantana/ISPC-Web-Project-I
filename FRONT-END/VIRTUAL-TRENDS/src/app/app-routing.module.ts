@@ -10,13 +10,11 @@ import { DashboardAllProductsComponent } from './products/dashboard-all-products
 import { LoginLogupComponent } from './cuenta/login-logup/login-logup.component';
 import { CuentaModule } from './cuenta/cuenta.module';
 import { RegistroComponent } from './cuenta/registro/registro.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 const routes: Routes = [
   // Redirección por defecto a Home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '', redirectTo: '/sistema-de-talla', pathMatch: 'full'},
-  // Ruta para la página 404 cuando no encuentre la URL
-  //{ path: '**', component: Pagina404Component },
 
   // Rutas de los componentes
   { path: 'home', component: DashboardHomeComponent },
@@ -30,8 +28,12 @@ const routes: Routes = [
   { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   { path: 'talla-estandar', component: TallaEstandarComponent },
-  // { path: 'cart', component: CartComponent },
+  // { path: 'cart', component: CartComponent }, 
   { path: 'contacto', component: DashboardContactoComponent },
+  
+    // Ruta para la página 404 cuando no encuentre la URL
+  { path: '404', component: ErrorPageComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '/404'},
 ];
 
 @NgModule({

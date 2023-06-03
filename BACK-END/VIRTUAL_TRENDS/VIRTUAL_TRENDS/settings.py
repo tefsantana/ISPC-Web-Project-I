@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,6 +58,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost',
     ]
 
+
 ROOT_URLCONF = 'VIRTUAL_TRENDS.urls'
 
 TEMPLATES = [
@@ -85,13 +86,13 @@ WSGI_APPLICATION = 'VIRTUAL_TRENDS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'dbvirtualtrends',
-        'USER':'root',
-        'PASSWORD':'asd2022013',
-        'HOST':'localhost',
-        'PORT':'3306',
-        'OPTIONS':{
-            'sql_mode':'traditional',
+        'NAME': 'nombre-de-la-base-de-datos',
+        'USER': 'nombre-de-usuario',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
         }
     }
 }

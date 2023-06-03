@@ -13,11 +13,26 @@
         <div class="talle">TALLE ESTÁNDAR</div>
         </div>
       <div class="bdt">
-        <button class="botoncitodetalla" data-size="XS">XS</button>
-        <button class="botoncitodetalla" data-size="S">S</button>
-        <button class="botoncitodetalla" data-size="M">M</button>
-        <button class="botoncitodetalla" data-size="L">L</button>
-        <button class="botoncitodetalla" data-size="XL">XL</button>
+        <input type="button" [ngClass]="{'inactivo': !esActivo('XS'), 'activo': esActivo('XS')}"
+                             [class.seleccionado]="seleccionado === 'XS'" 
+                             (click)="toggleSeleccionado('XS')" class="botoncitodetalla" value="XS">
+                             
+        <input type="button" [ngClass]="{'inactivo': !esActivo('S'), 'activo': esActivo('S')}"
+                             [class.seleccionado]="seleccionado === 'S'" 
+                             (click)="toggleSeleccionado('S')" class="botoncitodetalla" value="S">
+
+        <input type="button" [ngClass]="{'inactivo': !esActivo('M'), 'activo': esActivo('M')}"
+                             [class.seleccionado]="seleccionado === 'M'" 
+                             (click)="toggleSeleccionado('M')" class="botoncitodetalla" value="M">
+
+        <input type="button" [ngClass]="{'inactivo': !esActivo('L'), 'activo': esActivo('L')}"
+                             [class.seleccionado]="seleccionado === 'L'" 
+                             (click)="toggleSeleccionado('L')" class="botoncitodetalla" value="L">
+
+        <input type="button" [ngClass]="{'inactivo': !esActivo('XL'), 'activo': esActivo('XL')}"
+                             [class.seleccionado]="seleccionado === 'XL'" 
+                             (click)="toggleSeleccionado('XL')" class="botoncitodetalla" value="XL">
+
       </div>
-      <button class="agregaralcashito">AGREGAR AL CARRITO</button>
+      <button type="button" class="agregaralcashito" (click)="agregar_al_carrito()">AGREGAR AL CARRITO</button>
     </div>

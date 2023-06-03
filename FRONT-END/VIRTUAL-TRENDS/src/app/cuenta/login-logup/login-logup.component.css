@@ -18,9 +18,9 @@
     background-color: #F8F8F8;
     margin: 5% auto 0 auto;
     box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(12px);
-    width: 35em;
-    height: 38em;
+    max-width: 35em;
+    min-width: 100px;
+    height: auto;
     border-radius: 5px;
     border: 2px solid #575757;
     gap: 1.5em;
@@ -28,56 +28,25 @@
 }
 
 .head-in{
-    /*display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    display: flex;*/
-    /*display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;*/
-
-    /*display: flex;
-    justify-content: flex-end;  
-    align-items: center; */
-
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    padding: 1em;
-
+    justify-content: right;
 }
 
 .close-in{
-    position: absolute;
     width: 22px;
     height: 22px;
-    border-radius: 4px;
-    top: 1em;
-    left: 1em;
+    border-radius: 6px;
+    margin: 15px 15px 0 0;
     border: 1px solid #575757;
-    margin-right: auto;
-    margin-left: 90%;
     background-image: url(../../../assets/CRUZ.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
+    transition: background-image 0.3s;
 }
 
 .close-in:hover{
     background-image: url(../../../assets/CRUZ-CLARA.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    
-}
-
-.close-in:active{   
-    background-image: url(../../../assets/CRUZ.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 .subtitle-in{
@@ -110,9 +79,8 @@
     line-height: 2em;
     font-style: normal;
     color: #575757;
-    padding: 15px 0px;
-    margin-left: 15px;
-    flex-grow: 1;
+    padding: 15px 0px 10px;
+    width: 80%;
 }
 
 .btn-in{
@@ -123,6 +91,7 @@
     color: #575757;
     font-weight: bold;
     background-color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-in:hover{
@@ -139,7 +108,15 @@
     border: none;
     font-weight: bold;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    margin-bottom: 30px;
 }
+
+.text-in {
+    text-align: center;
+    width: 300px;
+}
+
 .btn-up:hover{
     background-color: #ffffff;
     color: #575757;
@@ -158,8 +135,11 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    border: 0px;
     color: #575757;
+    margin-bottom: 20px;
 }
+
 .form-in{
     display: flex;
     flex-direction: column;
@@ -175,4 +155,10 @@
     top: 20px;
     padding-left: 10px;
     margin-left: 10px;
+}
+
+@media screen and (max-width: 575px) {
+    .contenedor-in {
+        margin: 10px;
+    }
 }

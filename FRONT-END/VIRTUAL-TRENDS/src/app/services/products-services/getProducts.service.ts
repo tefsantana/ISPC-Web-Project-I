@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Products } from '../../utils/products';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,8 @@ export class GetProductsService {
     
   }
 
-  public get(url: string) {
-    return this.http.get(url); // GET
+  public get() {
+    /** Método GET para obtener todos los productos.*/
+    return this.http.get(this.apiUrl);
   }
 }

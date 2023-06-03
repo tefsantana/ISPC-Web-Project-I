@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GetProductsService } from '../../services/products-services/getProducts.service';
 import { Products } from '../../utils/products';
+import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 
 @Component({
   selector: 'app-dashboard-all-products',
@@ -8,11 +9,11 @@ import { Products } from '../../utils/products';
   styleUrls: ['./dashboard-all-products.component.css']
 })
 export class DashboardAllProductsComponent {
-  products: any = [];
+  products: Products.Product[] = [];
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
-  constructor(private GetProductsService: GetProductsService) {}
+  constructor(private GetProductsService: GetProductsService, private productData: ProductDataService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -23,7 +24,7 @@ export class DashboardAllProductsComponent {
   }
 
   public loadProducts() {
-    this.GetProductsService.get('http://localhost:3000/products').subscribe((data: any) => {
+    this.GetProductsService.get().subscribe((data: any) => {
       this.products = data;
     });
   }

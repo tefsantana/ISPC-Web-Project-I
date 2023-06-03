@@ -1,8 +1,8 @@
 <div class="products-container">
   <div *ngFor="let product of products; odd as isOdd; even as isEven;" id="{{product.id}}" class="card-container" [ngClass]="{'odd': isOdd, 'even': isEven}">
-    <img class="picture" src="{{product.icon}}" alt="" (click)="navigate()" title="Ver {{product.name}}">
+    <img class="picture" src="{{product.icon}}" alt="" (click)="navigate('id_producto', product.id)" title="Ver {{product.name}}">
     <div class="text-container">
-      <div (click)="navigate()">
+      <div (click)="navigate('id_producto', product.id)">
         <h1>{{product.name}}</h1>
         <p class="price">Precio: <b>${{product.price}}</b></p>
       </div>
