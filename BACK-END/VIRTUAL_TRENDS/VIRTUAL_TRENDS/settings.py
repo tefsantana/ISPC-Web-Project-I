@@ -55,9 +55,9 @@ MIDDLEWARE = [
 ]
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost/',
-# ]
+#CORS_ALLOWED_ORIGINS = [
+#   'http://localhost/',
+#<]
 
 
 ROOT_URLCONF = 'VIRTUAL_TRENDS.urls'
@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'VIRTUAL_TRENDS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nombre-de-la-base-de-datos',
-        'USER': 'nombre-de-usuario',
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'NAME': 'dbvirtualtrends',
+        'USER': 'root',
+        'PASSWORD': "asd2022013",
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

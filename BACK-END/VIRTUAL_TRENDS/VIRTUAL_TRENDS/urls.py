@@ -20,5 +20,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', ProductosView.as_view(), name='productos')
+    path('productos/', ProductosView.as_view(), name='productos'),
+    path('app/', include('virtualtrends.urls')),
 ]
