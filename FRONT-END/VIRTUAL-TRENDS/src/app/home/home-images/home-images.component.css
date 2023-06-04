@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /*margin: 0 auto;*/
+
   }
 
   .first {
@@ -19,19 +21,4 @@
       margin-top: 0.2%;
       margin-bottom: 2%;
   }  
-
-
-@media screen and (max-width: 768px) {
-  .main-image-container {
-      height: 100%;
-      width: 100%;
-      margin: 0 auto;
-      flex-direction:row;
-  }
-  .first {
-      width: 300px;
-      height: 300px;
-      margin-bottom: 16px;
-  }
-}
 

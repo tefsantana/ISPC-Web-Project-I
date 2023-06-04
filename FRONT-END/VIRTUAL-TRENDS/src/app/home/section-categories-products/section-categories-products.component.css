@@ -1,25 +1,27 @@
 .main-container{
-    width: 80%;
+    width: 100%;
 }
 
 .card {
-    max-width: 80%;
-    height: 100%;
+    /*max-width: 80%;
+    height: auto;*/
     border-radius: 2%;
 
 }
 .card-img img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
 }
 
-.my-product-card:nth-child(2n+1) {
+.my-product-card {
     margin-right: 4em;
   }
   
-.my-product-card:nth-child(2n) {
-    margin-left: 4em;
-}
+  .my-product-card:last-child {
+    margin-right: 0;
+  }
+  
+
 .my-product-card {
     position: absolute;
     align-items: center;
@@ -54,7 +56,11 @@
     font-family: 'Archivo', sans-serif;
 }
 
-#accesorios-card {
-    display: flex;
-}
-  
+
+@media screen and (max-width: 599px){
+
+    .row {
+        justify-content: center;
+        margin: 1em 1em;
+      }
+  }
