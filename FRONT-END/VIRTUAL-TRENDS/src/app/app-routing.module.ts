@@ -11,6 +11,8 @@ import { LoginLogupComponent } from './cuenta/login-logup/login-logup.component'
 import { CuentaModule } from './cuenta/cuenta.module';
 import { RegistroComponent } from './cuenta/registro/registro.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { CarritoModule } from './carrito/carrito.module';
+import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 
 const routes: Routes = [
   // Redirección por defecto a Home
@@ -28,7 +30,7 @@ const routes: Routes = [
   { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   { path: 'talla-estandar', component: TallaEstandarComponent },
-  // { path: 'cart', component: CartComponent }, 
+  { path: 'carrito', component: PantallaDelCarritoComponent }, 
   { path: 'contacto', component: DashboardContactoComponent },
   
     // Ruta para la página 404 cuando no encuentre la URL

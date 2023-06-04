@@ -53,6 +53,14 @@ export class NavigationService {
     }
 
     /**
+     * Navigates to 'Carrito' landing page.
+     */
+
+    navigateToCarrito(): void {
+        this.router.navigate(['/carrito']);
+    }
+
+    /**
      * Navigates to 'Contacto' landing page.
      */
 

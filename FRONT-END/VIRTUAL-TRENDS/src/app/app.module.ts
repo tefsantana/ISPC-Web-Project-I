@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
 import { SistemaDeTallaModule } from './sistema-de-talla/sistema-de-talla.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CarritoModule } from './carrito/carrito.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsModule,
     SistemaDeTallaModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    CarritoModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
