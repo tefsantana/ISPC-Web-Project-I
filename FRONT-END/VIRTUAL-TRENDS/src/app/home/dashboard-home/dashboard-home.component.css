@@ -11,12 +11,17 @@ body{
     height: 100%;
   }
 
-  @media screen and (max-width: 2500px) {
-    .main-image-container {
-      width: 100%;
-    }
+  .main-container {
+    flex-direction: column;
+  }
   
-    .image-container {
-      margin-right: 0px;
-    }
-}
+  .main-image-container {
+    width: 100%;
+  }
+
+  .image-container {
+    margin-right: 0px;
+  }
+  .main-all-sections {
+      flex-direction: column;
+  }

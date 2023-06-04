@@ -91,8 +91,8 @@
     font-size: 16px;
     font-family: 'Archivo', sans-serif;
     cursor: pointer;
-    padding: 20px 40px;
-    align-self: center;
+    /*padding: 20px 40px;
+    align-self: center;*/
 }
 
 .all-products-button:hover {
