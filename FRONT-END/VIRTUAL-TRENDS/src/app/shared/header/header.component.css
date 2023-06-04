@@ -35,8 +35,10 @@ header{
 
 
 .navbar-nav {
+  display: flex;
   align-items: center;
   margin-right: 0;
+  margin-left: auto;
   justify-content: space-between;
 }
 
@@ -46,7 +48,7 @@ header{
   transition: color 0.5s;
   font-size: 1.1rem; 
   text-transform: uppercase;
-  margin: 0 0.5em;
+  margin: 0 0.65em;
 }
 
 .nav-link:hover {
