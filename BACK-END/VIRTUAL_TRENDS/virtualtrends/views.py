@@ -67,3 +67,21 @@ class UsuarioView (View):
         user.ph = request.POST ["ph"]
         user.save () 
         return redirect ("/")
+    
+class ProductoAlCarritoView (View):
+    def get (self, request):
+        pass
+    def post (self, request):
+
+        producto=request.data.get('id_producto')
+        producto=request.data.get('id_usuario')
+        producto=request.data.get('talla')
+        producto=request.data.get('color')
+        producto=request.data.get('cantidad')
+        producto=request.data.get('personalizado')
+
+    def put (self, request):
+        pass
+    def delelte (self, request):
+        pass
+    

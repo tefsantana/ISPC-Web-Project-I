@@ -14,6 +14,6 @@ export class ProductCarritoService {
     this.productData.productoCarrito().subscribe(Producto => {
       this.producto=Producto;
     } )
-    this.http.post("http://localhost:8000/")
+    this.http.post("http://localhost:8000/api/producto-al-carrito", this.producto)
   }
 }
