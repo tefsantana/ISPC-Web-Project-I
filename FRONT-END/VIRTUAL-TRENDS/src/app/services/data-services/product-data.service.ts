@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators"
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +26,9 @@ export class ProductDataService {
   recibirDatos(propiedad: string) {
     return this.product_ID.pipe(map(datos => datos[propiedad]));
   }
+
+  productoCarrito (){
+    return this.product_ID;
+  }
 }
+
