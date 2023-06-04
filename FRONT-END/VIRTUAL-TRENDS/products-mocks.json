@@ -1,7 +1,7 @@
 {
     "products": [
         {
-          "id": 2678,
+          "id": 1,
           "name": "CORALITA ASIMÉTRICA 2678",
           "description": "Remera confeccionada en textil semi translúcido, compuesto en un  65% viscosa - 35% poliéster. El modelo utilizado es en color coral. Posee detalles en el frente y espalda, dada por un corte en el lado izquierdo que da como resultado un ruedo asimétrico.",
           "price": 500,
@@ -27,7 +27,7 @@
           "amount": 2
         },
         {
-          "id": 2864,
+          "id": 2,
           "name": "AZAFRÁN TÓXICO 2864",
           "description": "Pantalón de jean con rasgaduras elegantes. El modelo utilizado es en color rojo oscuro. Posee un estampado leve de líneas irregulares.",
           "price": 600,
@@ -53,7 +53,7 @@
           "amount": 0
         },
         {
-          "id": 2543,
+          "id": 3,
           "name": "PANTERA OSCURA 2543",
           "description": "Guantes de cuero ecológico con un brillo peculiar. Con un largo de 30cm, estos guantes recubren el antebrazo apegándose al mismo. El modelo utilizado es en negro.",
           "price": 300,
@@ -79,7 +79,7 @@
           "amount": 1
         },
         {
-          "id": 2447,
+          "id": 4,
           "name": "BLOODY MARY 2447",
           "description": "Vestido liso y brillante de seda. El modelo utilizado es coral. El largo del vestido puede variar según lo que desee el cliente. Se amolda fácilmente al cuerpo.",
           "price": 700,

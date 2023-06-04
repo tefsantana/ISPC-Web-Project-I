@@ -2,6 +2,7 @@ import { Component, OnInit, ɵcoerceToBoolean } from '@angular/core';
 import { SwEstandarService } from 'src/app/services/sw-estandar.service';
 import { RecibirTallasService } from 'src/app/services/tallas-services/recibir-tallas.service';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-talla-estandar',
@@ -10,12 +11,17 @@ import { ProductDataService } from 'src/app/services/data-services/product-data.
 })
 export class TallaEstandarComponent implements OnInit{
 
-  constructor (private estandarSS: SwEstandarService, private recibirTallas: RecibirTallasService, private productData: ProductDataService){
+  constructor (
+    private estandarSS: SwEstandarService,
+    private recibirTallas: RecibirTallasService, 
+    private productData: ProductDataService,
+    private navigation: NavigationService,
+    ){
 
   }
 
   seleccionado: string=""
-  activos: string[] = this.recibirTallas.enviarTallasDisponibles()
+  activos: any[] = []
   product_ID: any
   colorSeleccionado: string = ''
   stock: number = 0
@@ -23,6 +29,9 @@ export class TallaEstandarComponent implements OnInit{
   ngOnInit() {
     this.productData.recibirDatos("id_producto").subscribe(dato => {
       this.product_ID = dato;
+    });
+    this.recibirTallas.enviarTallasDisponibles().subscribe(tallas => {
+      this.activos = tallas
     });
     this.productData.recibirDatos("color").subscribe(dato => {
       this.colorSeleccionado = dato;
@@ -50,9 +59,11 @@ export class TallaEstandarComponent implements OnInit{
   }
 
   agregar_al_carrito(){
-    console.log(this.product_ID)
-    console.log(this.colorSeleccionado);
-    console.log(this.stock);
+    console.log(this.activos)
+    console.log(this.seleccionado)
+    this.productData.enviarDatos('talla', this.seleccionado)
+    this.productData.enviarDatos('personalizado', false)
+    this.navigation.navigateToCarrito()
   }
 }
 
