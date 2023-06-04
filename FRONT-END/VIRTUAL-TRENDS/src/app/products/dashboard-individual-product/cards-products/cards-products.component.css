@@ -58,6 +58,11 @@
     background: black;
 }
 
+.sizes-button:disabled {
+    color:#666;
+    background:#ccc;
+}
+
 .colors {
     display: flex;
     flex-wrap: wrap;

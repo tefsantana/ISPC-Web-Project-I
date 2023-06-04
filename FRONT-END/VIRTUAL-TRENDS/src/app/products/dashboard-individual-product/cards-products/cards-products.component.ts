@@ -10,12 +10,14 @@ import { ProductDataService } from 'src/app/services/data-services/product-data.
 
 export class CardsProductsComponent {
   selectedColor: string = '';
+  isDisabled: boolean = true;
   @Input() colors: Products.Colors[] = [];
 
   constructor(private navigationService: NavigationService, private productData: ProductDataService) {
   }
 
   selectColor(event: any) {
+    this.isDisabled = false;
     Array.from(document.getElementsByClassName('color-box')).forEach(element => {
       if (element.id === event.target.id) {
         this.selectedColor = element.id;
