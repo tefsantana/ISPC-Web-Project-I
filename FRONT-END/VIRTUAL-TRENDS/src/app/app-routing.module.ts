@@ -11,6 +11,7 @@ import { LoginLogupComponent } from './cuenta/login-logup/login-logup.component'
 import { CuentaModule } from './cuenta/cuenta.module';
 import { RegistroComponent } from './cuenta/registro/registro.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.component';
 import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 
@@ -24,15 +25,17 @@ const routes: Routes = [
   { path: 'cuenta', component: LoginLogupComponent },
   // { path: 'register', component: RegisterComponent },
   { path: 'registro', component: RegistroComponent },
+  // {path: 'editar-cuenta', component: EditarCuentaComponent},
+  {path: 'editar-cuenta', component: EditarCuentaComponent},
   // { path: 'product/:id', component: DashboardIndividualProductComponent },
   { path: 'product', component: DashboardIndividualProductComponent },
   { path: 'products', component: DashboardAllProductsComponent},
   { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
   { path: 'talla-estandar', component: TallaEstandarComponent },
-  { path: 'carrito', component: PantallaDelCarritoComponent }, 
+  { path: 'carrito', component: PantallaDelCarritoComponent },
   { path: 'contacto', component: DashboardContactoComponent },
-  
+
     // Ruta para la página 404 cuando no encuentre la URL
   { path: '404', component: ErrorPageComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/404'},
