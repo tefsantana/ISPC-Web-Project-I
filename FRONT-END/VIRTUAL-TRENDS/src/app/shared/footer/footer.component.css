@@ -150,7 +150,8 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 53%;*/
-    margin-top: 1.25em;
+    margin-top: 0.90em;
+    margin-bottom: 2.25em;
     width: 100%;
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
@@ -237,25 +238,12 @@
     order: 2;
   }
 
-  @media screen and (min-width: 768px) {
-    .ca-grid_item {
-      width: 30%;
-      /*margin-bottom: 0;*/
-    }
-  
-    .ca-grid_center {
-      width: 40%;
-    }
-
-  }
 
   @media screen and (min-width: 599px) and (max-width: 767px) {
     
     .ca-menu__link {
-    
-      font-size: 12px;
-      line-height: 1.65em;
-      
+      font-size: 13px;
+      /*line-height: 1.65em;*/ 
     }
 
     .ca-grid_item_center_newsletter{
