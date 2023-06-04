@@ -32,7 +32,7 @@
   
   .ca-menu.ca-footer-menu {
     margin-top: 5em;
-    text-align: center;
+    text-align: start;
   }
 
   .ca-footer-menu {
@@ -48,17 +48,22 @@
   
   .ca-menu__link {
     flex-grow: 1;
-    line-height: 1.1;
+    line-height: 1.9;
     text-decoration: none;
     color: #191B1D;
-    font-size: 14px;
+    margin-top: 20px 20px 20px;
+    font-size: 0.85rem;
     font-weight: 500;
-    margin-right: 20px;
-
   }
   
+  .ca-links-info {
+    margin-left: 1rem;
+    
+  }
+
   .ca-menu__link:hover {
     color: #575757;
+    text-decoration: underline;
   }
   
   .ca-menu__link.active {
@@ -81,7 +86,6 @@
   .ca-footer_by a {
     color: #191B1D;
     text-decoration: none;
-    font-size: 14px;
     font-weight: 700;
   }
   
@@ -136,7 +140,7 @@
     width: 100%;
     display: flexbox;
     margin-bottom: 0.75rem;
-    text-align: left;
+    text-align: right;
   }
 
   /* CSS para NEWSLETTER*/
@@ -148,7 +152,6 @@
     bottom: 53%;*/
     margin-top: 1.25em;
     width: 100%;
-    /*height: 40px;*/
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
     order: 1;
@@ -178,7 +181,7 @@
     font-size: 14px;
     color: #877873;
     border: none; /* Elimina el borde */
-    background-color: transparent; /* Establece el fondo transparente */
+    background-color: transparent; 
     border-radius: 0;
   }
   
@@ -237,7 +240,7 @@
   @media screen and (min-width: 768px) {
     .ca-grid_item {
       width: 30%;
-      margin-bottom: 0;
+      /*margin-bottom: 0;*/
     }
   
     .ca-grid_center {
@@ -246,7 +249,24 @@
 
   }
 
+  @media screen and (min-width: 599px) and (max-width: 767px) {
+    
+    .ca-menu__link {
+    
+      font-size: 12px;
+      line-height: 1.65em;
+      
+    }
+
+    .ca-grid_item_center_newsletter{
+      height: 65%;
+    }
+   
+    
+  }
+
   @media screen and (max-width: 599px){
+
     .ca-grid {
       grid-template-columns: 1fr;
       justify-content: center; /* Centra los elementos en la columna */
