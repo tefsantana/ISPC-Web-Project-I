@@ -7,13 +7,16 @@ import { ProductDataService } from './product-data.service';
 })
 export class ProductCarritoService {
 
-  constructor(private http: HttpClient, private productData: ProductDataService) { }
   producto: any[];
+
+  constructor(private http: HttpClient, private productData: ProductDataService) {
+    this.producto=[]
+   }
 
   agregarCarrito(){
     this.productData.productoCarrito().subscribe(Producto => {
       this.producto=Producto;
     } )
-    this.http.post("http://localhost:8000/")
+    //this.http.post("http://localhost:8000/")
   }
 }
