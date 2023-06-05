@@ -15,7 +15,7 @@ import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.comp
 import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   // Redirección por defecto a Home
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
