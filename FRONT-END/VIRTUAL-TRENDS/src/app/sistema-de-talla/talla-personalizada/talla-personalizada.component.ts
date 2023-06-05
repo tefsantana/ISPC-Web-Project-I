@@ -2,7 +2,7 @@ import { Component, OnInit, ɵcoerceToBoolean } from '@angular/core';
 import { SwPersonalizadoService } from 'src/app/services/sw-personalizado.service';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { FormControl } from '@angular/forms'
+import { FormControl, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-talla-personalizada',
@@ -19,7 +19,9 @@ export class TallaPersonalizadaComponent implements OnInit{
   }
   constructor(private personalizadoSS: SwPersonalizadoService,
               private productData: ProductDataService,
-              private navigation: NavigationService){
+              private navigation: NavigationService,
+              private formBuilder: FormBuilder)
+              {
 
   }
   
