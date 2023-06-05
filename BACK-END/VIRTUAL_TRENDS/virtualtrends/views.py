@@ -97,12 +97,6 @@ class ProductoAlCarritoView (View):
 
         producto_en_carrito.save()
 
-        response_data = {
-            'id_car': id_car
-            }
-        return JsonResponse(response_data, status=201)
-
-
     def put (self, request):
         pass
     def delelte (self, request):
