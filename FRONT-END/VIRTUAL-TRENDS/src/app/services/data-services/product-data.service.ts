@@ -15,7 +15,13 @@ export class ProductDataService {
     "personalizado": false
   });
 
-  constructor(private dni: DniDataService) { }
+  constructor(private dni: DniDataService) { 
+    this.dni.recibirDNI().subscribe(dni => {
+      let datos = this.product_info.getValue();
+      datos.id_usuario = dni;
+      this.product_info.next(datos);
+    });
+  }
 
   enviarDatos(propiedad: string, valor: any) {
     let datos = this.product_info.getValue();
@@ -28,10 +34,6 @@ export class ProductDataService {
   }
 
   productoCarrito (){
-    let dni_temp = this.dni.recibirDNI()
-    let datos = this.product_info.getValue()
-    datos.id_usuario = dni_temp
-    this.product_info.next(datos)
     return this.product_info;
   }
 }

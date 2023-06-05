@@ -7,15 +7,18 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class DniDataService {
 
   private dni: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  test: number = 8
+
 
   constructor() { }
 
-  enviarDNI(numero: number){
+  enviarDNI(){
+    let numero = this.test
     this.dni.next(numero)
   }
 
   recibirDNI(){
-    return this.dni
+    return this.dni.asObservable()
   }
 
 }
