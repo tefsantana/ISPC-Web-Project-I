@@ -7,6 +7,7 @@ from .serializers import LoginSerializer, ProductSerializer, ColorProducSerializ
 from rest_framework import status
 from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto
 
+from .models import Newsletter
 
 # Create your views here.
 
@@ -152,3 +153,11 @@ class RegistroView(APIView):
         login.save()
 
         return Response({'mensaje': 'Usuario registrado exitosamente'})
+
+
+class NewsletterView (View):
+    def post (self, request):
+        newsletter = Newsletter()
+        newsletter.email = request.POST ["email"]
+        newsletter.save()
+        
