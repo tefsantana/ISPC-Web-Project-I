@@ -2,7 +2,7 @@ import { Component, OnInit, ɵcoerceToBoolean } from '@angular/core';
 import { SwPersonalizadoService } from 'src/app/services/sw-personalizado.service';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { FormControl, FormBuilder } from '@angular/forms'
+import { FormControl, FormBuilder, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-talla-personalizada',
@@ -12,7 +12,7 @@ import { FormControl, FormBuilder } from '@angular/forms'
 })
 export class TallaPersonalizadaComponent implements OnInit{
 
-  talle_personalizado = new FormControl('',[],[])
+  form: any
 
   ngOnInit(): void {
     
@@ -23,6 +23,23 @@ export class TallaPersonalizadaComponent implements OnInit{
               private formBuilder: FormBuilder)
               {
 
+                this.form = this.formBuilder.group({
+                  cuello:[0,[Validators.required, Validators.maxLength(3)]],
+                  busto:[0,[Validators.required, Validators.maxLength(3)]],
+                  conRodilla:[0,[Validators.required, Validators.maxLength(3)]],
+                  largTalle:[0,[Validators.required, Validators.maxLength(3)]],
+                  conCintura:[0,[Validators.required, Validators.maxLength(3)]],
+                  conCadera:[0,[Validators.required, Validators.maxLength(3)]],
+                  largManga:[0,[Validators.required, Validators.maxLength(3)]],
+                  conMuneca:[0,[Validators.required, Validators.maxLength(3)]],
+                  largPierna:[0,[Validators.required, Validators.maxLength(3)]],
+                  alturaRodilla:[0,[Validators.required, Validators.maxLength(3)]],
+                })
+
+  }
+
+  get tallaPersonalizada(): any {
+    return this.form.value;
   }
   
   cerrarPersonalizado(){
