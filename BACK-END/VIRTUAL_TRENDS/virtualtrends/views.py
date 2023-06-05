@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import Talla, TallaDelProducto
+from .models import Talla, TallaDelProducto, ProductosEnCarrito
 from virtualtrends.models import Usuario
 
 # Create your views here.
@@ -71,14 +71,33 @@ class UsuarioView (View):
 class ProductoAlCarritoView (View):
     def get (self, request):
         pass
+    
     def post (self, request):
 
-        producto=request.data.get('id_producto')
-        producto=request.data.get('id_usuario')
-        producto=request.data.get('talla')
-        producto=request.data.get('color')
-        producto=request.data.get('cantidad')
-        producto=request.data.get('personalizado')
+        dni = request.data.get('id_usuario')
+        try:
+            carrito = Carrito.objects.get(dni=dni)
+            id_car = carrito.id_car
+        except Carrito.DoesNotExist:
+            carrito = Carrito.objects.create(dni=dni)
+            id_car = carrito.id_car
+
+        producto_en_carrito = ProductosEnCarrito(
+            id_prod=request.data.get('id_producto'),
+            id_car=id_car,
+            cantidad=request.data.get('cantidad'),
+            talla=request.data.get('talla'),
+            color=request.data.get('color'),
+            espersonalizado=request.data.get('personalizado')
+        )
+
+        producto_en_carrito.save()
+
+        response_data = {
+            'id_car': id_car
+            }
+        return JsonResponse(response_data, status=201)
+
 
     def put (self, request):
         pass
