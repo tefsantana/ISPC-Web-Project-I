@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import Talla, TallaDelProducto
 from virtualtrends.models import Usuario
+from .models import Newsletter
 
 # Create your views here.
 
@@ -67,3 +68,10 @@ class UsuarioView (View):
         user.ph = request.POST ["ph"]
         user.save () 
         return redirect ("/")
+
+class NewsletterView (View):
+    def post (self, request):
+        newsletter = Newsletter()
+        newsletter.email = request.POST ["email"]
+        newsletter.save()
+        
