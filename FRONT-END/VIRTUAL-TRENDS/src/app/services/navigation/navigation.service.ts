@@ -74,5 +74,9 @@ export class NavigationService {
 
     navigateToRegistro() {
         this.router.navigate(['/registro']);
-      }
+    }
+
+    navigateToErrorPage() {
+        this.router.navigate(['/**']);
+    }
 }

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { GetProductsService } from '../../services/products-services/getProducts.service';
 import { Products } from '../../utils/products';
 import { ProductsFactoryService } from 'src/app/services/products-services/productsFactory.service';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-dashboard-individual-product',
@@ -17,7 +18,7 @@ export class DashboardIndividualProductComponent {
   isLoading: boolean = false;
   id: number = 0;
 
-  constructor(private GetProductsService: GetProductsService, private ProductsFactoryService: ProductsFactoryService, private productData: ProductDataService) { }
+  constructor(private ProductsFactoryService: ProductsFactoryService, private productData: ProductDataService, private NavigationService: NavigationService) { }
   
   public loadProduct() {
     this.ProductsFactoryService.getProducts().subscribe((data: Products.Product[]) => {
@@ -36,6 +37,9 @@ export class DashboardIndividualProductComponent {
         pictures: this.pictures
       });
     });
+    if (this.title === '') {
+      this.NavigationService.navigateToErrorPage();
+    }
   }
 
   ngOnInit(): void {

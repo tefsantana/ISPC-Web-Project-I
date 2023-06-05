@@ -52,7 +52,7 @@
         },
         {
           "id": 3,
-          "name": "TOTEBAG",
+          "name": "TOTEBAG REVERTIDO",
           "description": "Bolso de mano de cuero. Contiene breteles para ajustar las tiras del bolso. El modelo utilizado es negro.",
           "price": 300,
           "icon": "assets/products/03_TOTEBAG/03_TOTEBAG_Custom_View_2.webp",
@@ -127,7 +127,7 @@
         },
         {
           "id": 6,
-          "name": "SUMMERTOP",
+          "name": "SUMMERTOP PASTEL",
           "description": "Top elegante de seda con volado en la parte inferior. El modelo utilizado es cyan. Se amolda fácilmente al cuerpo.",
           "price": 300,
           "icon": "assets/products/29_SUMMERTOP/29_SUMMERTOP_Custom_View_5.webp",
