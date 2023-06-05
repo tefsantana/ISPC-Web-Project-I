@@ -2,6 +2,7 @@ import { Component, OnInit, ɵcoerceToBoolean } from '@angular/core';
 import { SwPersonalizadoService } from 'src/app/services/sw-personalizado.service';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-talla-personalizada',
@@ -10,6 +11,9 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
 
 })
 export class TallaPersonalizadaComponent implements OnInit{
+
+  talle_personalizado = new FormControl('',[],[])
+
   ngOnInit(): void {
     
   }
