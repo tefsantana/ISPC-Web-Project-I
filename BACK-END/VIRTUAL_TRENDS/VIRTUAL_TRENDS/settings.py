@@ -60,6 +60,10 @@ MIDDLEWARE = [
 #     'http://localhost/',
 # ]
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000/'
+]
+
 
 ROOT_URLCONF = 'VIRTUAL_TRENDS.urls'
 
@@ -90,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'dbvirtualtrends',
         'USER':'root',
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'PASSWORD': '',
         'HOST':'localhost',
         'PORT':'3306',
         'OPTIONS':{

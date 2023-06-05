@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import LoginSerializer, ProductSerializer, ColorProducSerializer, ImgProducSerializer
 from rest_framework import status
-from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto
+from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito
 
 
 # Create your views here.
@@ -71,6 +71,37 @@ class UsuarioView (View):
         user.ph = request.POST ["ph"]
         user.save () 
         return redirect ("/")
+    
+class ProductoAlCarritoView (View):
+    def get (self, request):
+        pass
+    
+    def post (self, request):
+
+        dni = request.data.get('id_usuario')
+        try:
+            carrito = Carrito.objects.get(dni=dni)
+            id_car = carrito.id_car
+        except Carrito.DoesNotExist:
+            carrito = Carrito.objects.create(dni=dni)
+            id_car = carrito.id_car
+
+        producto_en_carrito = ProductosEnCarrito(
+            id_prod=request.data.get('id_producto'),
+            id_car=id_car,
+            cantidad=request.data.get('cantidad'),
+            talla=request.data.get('talla'),
+            color=request.data.get('color'),
+            espersonalizado=request.data.get('personalizado')
+        )
+
+        producto_en_carrito.save()
+
+    def put (self, request):
+        pass
+    def delelte (self, request):
+        pass
+    
 class LoginListView(APIView):
     def get(self, request):
         logins = Login.objects.all()
