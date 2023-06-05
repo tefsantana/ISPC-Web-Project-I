@@ -6,6 +6,7 @@ import { SistemasTallasComponent } from './sistemas-tallas/sistemas-tallas.compo
 import { ImagenComponent } from './imagen/imagen.component';
 import { PanelDeControlComponent } from './panel-de-control/panel-de-control.component';
 import { TallaPersonalizadaComponent } from './talla-personalizada/talla-personalizada.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TallaPersonalizadaComponent } from './talla-personalizada/talla-persona
     TallaEstandarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
   ]
 })
 export class SistemaDeTallaModule { }
