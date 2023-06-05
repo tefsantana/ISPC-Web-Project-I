@@ -3,6 +3,7 @@ import { SwEstandarService } from 'src/app/services/sw-estandar.service';
 import { RecibirTallasService } from 'src/app/services/tallas-services/recibir-tallas.service';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { ProductCarritoService } from 'src/app/services/data-services/product-carrito.service';
 
 @Component({
   selector: 'app-talla-estandar',
@@ -16,6 +17,7 @@ export class TallaEstandarComponent implements OnInit{
     private recibirTallas: RecibirTallasService, 
     private productData: ProductDataService,
     private navigation: NavigationService,
+    private productCarrito: ProductCarritoService,
     ){
 
   }
@@ -63,6 +65,7 @@ export class TallaEstandarComponent implements OnInit{
     console.log(this.seleccionado)
     this.productData.enviarDatos('talla', this.seleccionado)
     this.productData.enviarDatos('personalizado', false)
+    this.productCarrito.agregarCarrito()
     this.navigation.navigateToCarrito()
   }
 }

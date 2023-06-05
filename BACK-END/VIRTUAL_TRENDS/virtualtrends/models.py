@@ -27,7 +27,7 @@ class Usuario(models.Model):
     ciudad = models.CharField(max_length=20, blank=False)
     provincia = models.CharField(max_length=20, blank=False)
     ph = models.CharField(max_length=30, blank=False)
-    id_lvl = models.ForeignKey(Niveluser, to_field='id_lvl', on_delete=models.PROTECT)
+    id_lvl = models.ForeignKey(Niveluser, to_field='id_lvl', on_delete=models.PROTECT, default=1)
 
     class Meta:
         db_table = 'usuario'
@@ -286,7 +286,7 @@ class EnvioDeCompras(models.Model):
 # Usuario y contraseña de los usuarios. 
 
 class Login(models.Model):
-    email = models.CharField(max_length=50, primary_key=True)
+    email = models.EmailField(max_length=50, primary_key=True)
     psw = models.CharField(max_length=30, blank=False)
     dni = models.ForeignKey(Usuario, to_field='dni', on_delete=models.CASCADE)
     class Meta:

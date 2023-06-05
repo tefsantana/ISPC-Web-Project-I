@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,11 +52,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost/',
+# ]
+
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200',
+    'http://localhost:8000/'
 ]
 
 
@@ -86,13 +92,13 @@ WSGI_APPLICATION = 'VIRTUAL_TRENDS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dbvirtualtrends',
-        'USER': 'root',
+        'NAME':'dbvirtualtrends',
+        'USER':'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
+        'HOST':'localhost',
+        'PORT':'3306',
+        'OPTIONS':{
+            'sql_mode':'traditional',
         }
     }
 }

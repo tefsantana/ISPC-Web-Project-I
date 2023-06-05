@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('productos/', ProductosView.as_view(), name='productos'),
     path('api/', include('virtualtrends.urls')),
-    path('editar-cuenta/<int:pk>', UsuarioView.as_view(), name='editar-usuario')    
+    path('editar-cuenta/<int:pk>', UsuarioView.as_view(), name='editar-usuario'),
 ]

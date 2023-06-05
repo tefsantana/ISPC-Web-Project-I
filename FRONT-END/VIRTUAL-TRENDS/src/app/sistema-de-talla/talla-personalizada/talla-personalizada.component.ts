@@ -1,5 +1,8 @@
 import { Component, OnInit, ɵcoerceToBoolean } from '@angular/core';
 import { SwPersonalizadoService } from 'src/app/services/sw-personalizado.service';
+import { ProductDataService } from 'src/app/services/data-services/product-data.service';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { FormControl, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-talla-personalizada',
@@ -8,10 +11,17 @@ import { SwPersonalizadoService } from 'src/app/services/sw-personalizado.servic
 
 })
 export class TallaPersonalizadaComponent implements OnInit{
+
+  talle_personalizado = new FormControl('',[],[])
+
   ngOnInit(): void {
     
   }
-  constructor(private personalizadoSS: SwPersonalizadoService){
+  constructor(private personalizadoSS: SwPersonalizadoService,
+              private productData: ProductDataService,
+              private navigation: NavigationService,
+              private formBuilder: FormBuilder)
+              {
 
   }
   
@@ -19,6 +29,11 @@ export class TallaPersonalizadaComponent implements OnInit{
 
     this.personalizadoSS.$tallePersonalizado.emit(false)
 
+  }
+
+  agregar_al_carrito(){
+    this.productData.enviarDatos('personalizado', true)
+    this.navigation.navigateToCarrito()
   }
 
 }

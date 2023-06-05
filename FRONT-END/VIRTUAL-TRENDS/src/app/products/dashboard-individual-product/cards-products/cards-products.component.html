@@ -5,6 +5,6 @@
             <div class="color-box {{color}}" *ngFor="let color of colors" (click)="selectColor($event)" id="{{color}}"></div>
         </div>
     </div>
-    <button class="sizes-button" (click)="navigate()">ELEGÍ TU SISTEMA DE TALLE</button>
+    <button class="sizes-button" [disabled]="isDisabled" (click)="navigate()">ELEGÍ TU SISTEMA DE TALLE</button>
 </div>
 <router-outlet></router-outlet>
