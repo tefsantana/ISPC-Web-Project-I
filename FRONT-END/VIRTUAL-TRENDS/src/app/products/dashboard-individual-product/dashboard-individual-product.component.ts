@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GetProductsService } from '../../services/products-services/getProducts.service';
 import { Products } from '../../utils/products';
+import { ProductsFactoryService } from 'src/app/services/products-services/productsFactory.service';
+import { ProductDataService } from 'src/app/services/data-services/product-data.service';
 
 @Component({
   selector: 'app-dashboard-individual-product',
@@ -13,20 +15,28 @@ export class DashboardIndividualProductComponent {
   colors: Products.Colors[] = [];
   pictures: Products.Pictures[] = [];
   isLoading: boolean = false;
+  id: number = 0;
 
-  constructor(private GetProductsService: GetProductsService) { }
-
+  constructor(private GetProductsService: GetProductsService, private ProductsFactoryService: ProductsFactoryService, private productData: ProductDataService) { }
+  
   public loadProduct() {
-    this.GetProductsService.get().subscribe((data: any) => {
-      this.title = data[0].name;
-      this.description = data[0].description;
-      this.colors = data[0].colors;
-      this.pictures = data[0].pictures;
+    this.ProductsFactoryService.getProducts().subscribe((data: Products.Product[]) => {
+      data.map((product: Products.Product) => {
+        if (product.id === this.id) {
+          this.title = product.name;
+          this.description = product.description;
+          this.colors = product.colors;
+          this.pictures = product.pictures;
+        }
+      });
     });
   }
 
   ngOnInit(): void {
     this.isLoading = true;
+    this.productData.recibirDatos("id_producto").subscribe(dato => {
+      this.id = dato;
+    });
     this.loadProduct();
     setTimeout(() => {
       this.isLoading = false;

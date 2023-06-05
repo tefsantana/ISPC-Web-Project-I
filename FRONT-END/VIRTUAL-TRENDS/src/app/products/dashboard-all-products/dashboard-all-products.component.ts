@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GetProductsService } from '../../services/products-services/getProducts.service';
 import { Products } from '../../utils/products';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
+import { ProductsFactoryService } from 'src/app/services/products-services/productsFactory.service';
 
 @Component({
   selector: 'app-dashboard-all-products',
@@ -13,7 +14,7 @@ export class DashboardAllProductsComponent {
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
-  constructor(private GetProductsService: GetProductsService, private productData: ProductDataService) {}
+  constructor(private GetProductsService: GetProductsService, private ProductsFactoryService: ProductsFactoryService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -26,6 +27,7 @@ export class DashboardAllProductsComponent {
   public loadProducts() {
     this.GetProductsService.get().subscribe((data: any) => {
       this.products = data;
+      this.ProductsFactoryService.saveProductsList(this.products);
     });
   }
 }
