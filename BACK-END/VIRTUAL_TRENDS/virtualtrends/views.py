@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import LoginSerializer, ProductSerializer, ColorProducSerializer, ImgProducSerializer
 from rest_framework import status
-from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito
+from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados
 
 from .models import Newsletter
 
@@ -51,6 +51,51 @@ class TallaDeProductoView(View):
     def delete(self, request):
         pass
     
+class CrearTallaPersonalizada(View):
+    def get(self, request):
+        pass
+    def post(self, request):
+        pass
+    def put(self, request):
+        
+        talla = request.data
+        dni_entrante = talla['dni']
+
+        talla_personalizada = get_object_or_404(TallesPersonalizados, dni = dni_entrante)
+
+        if talla_personalizada:
+            talla_personalizada.cuello = ['cuello']
+            talla_personalizada.busto = ['busto']
+            talla_personalizada.con_rodilla = ['conRodilla']
+            talla_personalizada.larg_talle = ['largTalle']
+            talla_personalizada.con_cintura = ['conCintura']
+            talla_personalizada.con_cadera = ['conCadera']
+            talla_personalizada.larg_manga = ['largManga']
+            talla_personalizada.con_muneca = ['conMuneca']
+            talla_personalizada.larg_pierna = ['largPierna']
+            talla_personalizada.altura_rodilla = ['alturaRodilla']
+        else:
+            talla_personalizada = TallesPersonalizados(
+                cuello = talla['cuello'],
+                busto = talla['busto'],
+                con_rodilla = talla['conRodilla'],
+                larg_talle = talla['largTalle'],
+                con_cintura = talla['conCintura'],
+                con_cadera = talla['conCadera'],
+                larg_manga = talla['largManga'],
+                con_muneca = talla['conMuneca'],
+                larg_pierna = talla['largPierna'],
+                altura_rodilla = talla['alturaRodilla'],
+                dni = talla['dni']
+            )
+        
+        talla_personalizada.save()
+
+        return Response({'message': 'Talle personalizado creado/actualizado con éxito'}, status=status.HTTP_201_CREATED)
+
+
+    def delete(self, request):
+        pass
 
 
 class UsuarioView (View):
@@ -77,7 +122,7 @@ class ProductoAlCarritoView (View):
     def get (self, request):
         pass
     
-    def post (self, request):
+    def put (self, request):
 
         dni = request.data.get('id_usuario')
         try:
@@ -98,7 +143,7 @@ class ProductoAlCarritoView (View):
 
         producto_en_carrito.save()
 
-    def put (self, request):
+    def post (self, request):
         pass
     def delelte (self, request):
         pass

@@ -1,7 +1,7 @@
 <div>
     <div class="popup-box">
 
-        <form [formGroup]="form" class="formulario">
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="formulario">
 
             <div class="popup-title-container  row">
 
@@ -63,7 +63,7 @@
                     </div>
                         
                     <div class="input-container">
-                        <button class="btn btn-dark" (click)="agregar_al_carrito()">ENVIAR</button>
+                        <button class="btn btn-dark" type="submit" (click)="agregar_al_carrito()">ENVIAR</button>
                     </div>
 
                 </div>
