@@ -1,9 +1,5 @@
 from django.urls import path
-<<<<<<< HEAD
-from .views import TallaDeProductoView, LoginListView, LoginUpdateView, LoginQueryView, ProductListView, ImgProducView, RegistroView
-=======
-from .views import TallaDeProductoView, LoginListView, LoginUpdateView, LoginQueryView, ProductListView, ImgProducView, ColorProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada
->>>>>>> dev-Sprint3
+from .views import TallaDeProductoView, LoginListView, LoginUpdateView, LoginQueryView, ProductListView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada
 
 urlpatterns = [
     path('talla-de-producto/', TallaDeProductoView.as_view(), name='talle-de-producto'),
