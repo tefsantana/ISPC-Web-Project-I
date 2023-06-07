@@ -23,4 +23,7 @@ export class HeaderComponent implements OnInit {
   navigateToCuenta(){
     this.navigationService.navigateToCuenta();  
   }
+  navigateToCarrito(){
+    this.navigationService.navigateToCarrito();
+  }
 }

@@ -60,6 +60,10 @@ MIDDLEWARE = [
 #   'http://localhost/',
 #<]
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000/'
+]
+
 
 ROOT_URLCONF = 'VIRTUAL_TRENDS.urls'
 
@@ -88,13 +92,13 @@ WSGI_APPLICATION = 'VIRTUAL_TRENDS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dbvirtualtrends',
-        'USER': 'root',
-        'PASSWORD': "asd2022013",
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
+        'NAME':'dbvirtualtrends',
+        'USER':'root',
+        'PASSWORD': '',
+        'HOST':'localhost',
+        'PORT':'3306',
+        'OPTIONS':{
+            'sql_mode':'traditional',
         }
     }
 }
@@ -140,3 +144,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
