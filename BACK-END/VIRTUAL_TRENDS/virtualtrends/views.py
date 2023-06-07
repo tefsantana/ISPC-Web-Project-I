@@ -186,17 +186,30 @@ class LoginQueryView(APIView):
 class ProductListView(APIView):
     def get(self, request):
         products = Productos.objects.all()
-        serializer = ProductSerializer(products, many = True)
-        return Response(serializer.data)
-    
-class ColorProducView(APIView):
-    def get(self, request, id_prod):
-        color = ColoresProductos.objects.filter(id_prod=id_prod)
-        a = []
-        for obj in color:
-            col = obj.id_color.__str__()
-            a.append(col)
-            response_data = {'colores': a}
+        lib = []
+        for prod in products:
+            color = ColoresProductos.objects.filter(id_prod=prod.id_prod)
+            picture = ImagenesProducto.objects.filter(id_prod=prod.id_prod)
+            a = []
+            b = []
+            for obj in color:
+                col = obj.id_color.__str__()
+                a.append(col)
+            for obj2 in picture:
+                img = obj2.img
+                b.append(img)
+            
+            lib.append ({
+                'id':prod.id_prod, 
+                'name': prod.nombre,
+                'description':prod.desc,
+                'price': prod.precio, 
+                'icon': b[0], 
+                'pictures': b, 
+                'colors': a, 
+                'type': prod.id_cat.__str__(),
+                })
+        response_data={'products': lib}
         return JsonResponse(response_data)
 
 class ImgProducView(APIView):

@@ -56,9 +56,9 @@ MIDDLEWARE = [
 ]
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost/',
-# ]
+#CORS_ALLOWED_ORIGINS = [
+#   'http://localhost/',
+#<]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000/'
