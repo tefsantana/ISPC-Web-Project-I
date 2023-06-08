@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Login
-from .models import Productos, ColoresProductos, ImagenesProducto, Colores
+from .models import Productos, ColoresProductos, ImagenesProducto, Colores, Login, Favoritos
 
 class LoginSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,4 +25,9 @@ class ImgProducSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImagenesProducto
         fields = ['img']
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favoritos
+        fields = ['favorite']
 
