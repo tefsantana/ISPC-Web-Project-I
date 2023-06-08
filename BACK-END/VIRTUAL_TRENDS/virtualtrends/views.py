@@ -3,37 +3,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import LoginSerializer, ProductSerializer, ColorProducSerializer, ImgProducSerializer
+from .serializers import FavoriteSerializer, LoginSerializer, ProductSerializer, ColorProducSerializer, ImgProducSerializer
 from rest_framework import status
-from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados
-
-from .models import Newsletter
+from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Newsletter, Favoritos
 
 # Create your views here.
-
-class ProductosView(View):
-    def get(self, request):
-        datos = {
-            'productos': [{
-                'name': 'producto 1',
-                'price': 1000
-            },
-            {
-                'name': 'producto 2',
-                'price': 2000
-            },
-            {
-                'name': 'producto 3',
-                'price': 3000
-            }]
-        }
-        return JsonResponse(datos)
-    def post(self, request):
-        pass
-    def put(self, request):
-        pass
-    def delete(self, request):
-        pass
 
 class TallaDeProductoView(View):
     def get(self, request):
@@ -190,6 +164,10 @@ class ProductListView(APIView):
         for prod in products:
             color = ColoresProductos.objects.filter(id_prod=prod.id_prod)
             picture = ImagenesProducto.objects.filter(id_prod=prod.id_prod)
+            if (Favoritos.objects.filter(id_prod=prod.id_prod)):
+                favorite = True
+            else:
+                favorite = False
             a = []
             b = []
             for obj in color:
@@ -208,9 +186,11 @@ class ProductListView(APIView):
                 'pictures': b, 
                 'colors': a, 
                 'type': prod.id_cat.__str__(),
+                'amount': prod.stock,
+                'favorite': favorite
                 })
         response_data={'products': lib}
-        return JsonResponse(response_data)
+        return JsonResponse(response_data, json_dumps_params={'ensure_ascii': False})
 
 class ImgProducView(APIView):
     def get(self, request, id_prod):
@@ -243,6 +223,51 @@ class RegistroView(APIView):
 
         return Response({'mensaje': 'Usuario registrado exitosamente'})
 
+class FavoritesView(APIView):
+    def get (self, request):
+        pass
+        # dni = request.data.get('dni')
+        # dni = 11111111
+        # favoriteProductsList = []
+        # newFavoriteList = []
+        # favorites = Favoritos.objects.filter(dni=dni)
+        # for fav in favorites:
+        #     favoriteProductsList.append(fav.id_prod)
+        # for fav in favorites:
+        #     favoriteProductsList.append(fav.id_prod)
+        # products = Productos.objects.filter(id_prod__in=favoriteProductsList)
+
+        # for prod in products:
+        #     color = ColoresProductos.objects.filter(id_prod=prod.id_prod)
+        #     picture = ImagenesProducto.objects.filter(id_prod=prod.id_prod)
+        #     a = []
+        #     b = []
+        #     for obj in color:
+        #         col = obj.id_color.__str__()
+        #         a.append(col)
+        #     for obj2 in picture:
+        #         img = obj2.img
+        #         b.append(img)
+            
+        #     newFavoriteList.append ({
+        #         'id':prod.id_prod, 
+        #         'name': prod.nombre,
+        #         'description':prod.desc,
+        #         'price': prod.precio, 
+        #         'icon': b[0], 
+        #         'pictures': b, 
+        #         'colors': a, 
+        #         'type': prod.id_cat.__str__(),
+        #         'amount': prod.stock,
+        #         'favorite': True
+        #         })
+        # response_data={'favoriteProducts': favoriteProductsList}
+        # return JsonResponse(response_data, json_dumps_params={'ensure_ascii': False})
+    
+    def post (self, request, dni):
+        fav = Favoritos.objects.filter(dni=dni)
+        serializer = FavoriteSerializer(fav, many=True)
+        return Response(serializer.data)
 
 class NewsletterView (View):
     def post (self, request):
