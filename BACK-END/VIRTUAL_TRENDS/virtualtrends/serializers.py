@@ -20,7 +20,7 @@ class ColorProducSerializer(serializers.ModelSerializer):
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Colores
-        field = ['nombre', 'exa']
+        fields = ['nombre', 'exa']
 
 class ImgProducSerializer(serializers.ModelSerializer):
     class Meta:
