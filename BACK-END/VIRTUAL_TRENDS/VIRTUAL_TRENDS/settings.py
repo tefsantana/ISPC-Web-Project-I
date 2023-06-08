@@ -56,9 +56,13 @@ MIDDLEWARE = [
 ]
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost/',
-# ]
+#CORS_ALLOWED_ORIGINS = [
+#   'http://localhost/',
+#<]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000/'
+]
 
 
 ROOT_URLCONF = 'VIRTUAL_TRENDS.urls'
@@ -90,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'dbvirtualtrends',
         'USER':'root',
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'PASSWORD': '',
         'HOST':'localhost',
         'PORT':'3306',
         'OPTIONS':{
@@ -140,3 +144,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
