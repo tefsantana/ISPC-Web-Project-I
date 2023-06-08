@@ -14,7 +14,7 @@
 .card-container {
     display: flex;
     border-radius: 15px;
-    border: solid 1px #575757;
+    border: solid 1px darkgrey;
     background-color: #F8F8F8;
     transition: background-color .5s;
     width: 350px;

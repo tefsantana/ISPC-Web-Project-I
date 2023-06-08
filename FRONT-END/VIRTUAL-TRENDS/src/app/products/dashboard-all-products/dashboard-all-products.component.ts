@@ -26,7 +26,7 @@ export class DashboardAllProductsComponent {
 
   public loadProducts() {
     this.GetProductsService.get().subscribe((data: any) => {
-      this.products = data;
+      this.products = data.products;
       this.ProductsFactoryService.saveProductsList(this.products);
     });
   }
