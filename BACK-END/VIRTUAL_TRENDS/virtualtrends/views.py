@@ -226,50 +226,33 @@ class RegistroView(APIView):
         return Response({'mensaje': 'Usuario registrado exitosamente'})
 
 class FavoritesView(APIView):
-    def get (self, request):
-        pass
-        # dni = request.data.get('dni')
-        # dni = 11111111
-        # favoriteProductsList = []
-        # newFavoriteList = []
-        # favorites = Favoritos.objects.filter(dni=dni)
-        # for fav in favorites:
-        #     favoriteProductsList.append(fav.id_prod)
-        # for fav in favorites:
-        #     favoriteProductsList.append(fav.id_prod)
-        # products = Productos.objects.filter(id_prod__in=favoriteProductsList)
-
-        # for prod in products:
-        #     color = ColoresProductos.objects.filter(id_prod=prod.id_prod)
-        #     picture = ImagenesProducto.objects.filter(id_prod=prod.id_prod)
-        #     a = []
-        #     b = []
-        #     for obj in color:
-        #         col = obj.id_color.__str__()
-        #         a.append(col)
-        #     for obj2 in picture:
-        #         img = obj2.img
-        #         b.append(img)
+    def get(self, request, dni):
+        favoritos = Favoritos.objects.select_related('id_prod').filter(dni=dni)
+        serialized_data = []
+        
+        for favorito in favoritos:
+            listcolor = []
+            listimg = []
+            colors = ColoresProductos.objects.select_related('id_color').filter(id_prod = favorito.id_prod.id_prod)
+            imgs = ImagenesProducto.objects.filter(id_prod = favorito.id_prod.id_prod)
+            for color in colors:
+                listcolor.append(color.id_color.nombre)
+            for img in imgs:
+                listimg.append(img.img)
+            serialized_data.append({
+                'id': favorito.id_prod.id_prod,
+                'name': favorito.id_prod.nombre,
+                'description': favorito.id_prod.desc,
+                'amount': favorito.id_prod.stock,
+                'colors': listcolor,
+                'img' : listimg,
+                'icon': listimg[0],
+                'price': str(favorito.id_prod.precio),
+                'type': favorito.id_prod.id_cat.id_cat,
+                'favorite': True,
+            })
             
-        #     newFavoriteList.append ({
-        #         'id':prod.id_prod, 
-        #         'name': prod.nombre,
-        #         'description':prod.desc,
-        #         'price': prod.precio, 
-        #         'icon': b[0], 
-        #         'pictures': b, 
-        #         'colors': a, 
-        #         'type': prod.id_cat.__str__(),
-        #         'amount': prod.stock,
-        #         'favorite': True
-        #         })
-        # response_data={'favoriteProducts': favoriteProductsList}
-        # return JsonResponse(response_data, json_dumps_params={'ensure_ascii': False})
-    
-    def post (self, request, dni):
-        fav = Favoritos.objects.filter(dni=dni)
-        serializer = FavoriteSerializer(fav, many=True)
-        return Response(serializer.data)
+        return Response(serialized_data)
 
 class NewsletterView (View):
     def post (self, request):
