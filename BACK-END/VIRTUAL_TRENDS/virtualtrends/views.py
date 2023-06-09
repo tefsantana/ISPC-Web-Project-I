@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from .serializers import LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
 from rest_framework import status
 from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+import mercadopago
+import json
 
 # Create your views here.
 
@@ -258,5 +260,39 @@ class NewsletterView (View):
         newsletter.email = request.POST ["email"]
         newsletter.save()
 
+class ProcessPaymentAPIView(APIView):
+    def post(self, request):
+        try:
+            request_values = json.loads(request.body)
+            payment_data = {
+                "transaction_amount": float(request_values["transaction_amount"]),
+                "token": request_values["token"],
+                "installments": int(request_values["installments"]),
+                "payment_method_id": request_values["issuer_id"],
+                "payer": {
+                    "email": request_values["payer"]["email"],
+                    "identification": {
+                        "type": request_values["payer"]["identification"]["type"],
+                        "number": request_values["payer"]["identification"]["number"],
+                    },
+                },
+            }
 
-        
+            sdk = mercadopago.SDK("ACCESS_TOKEN")
+
+            payment_response = sdk.payment().create(payment_data)
+
+            payment = payment_response["response"]
+            status = {
+                "id": payment["id"],
+                "status": payment["status"],
+                "status_detail": payment["status_detail"],
+            }
+
+            return Response(data={"body": status, "statusCode": payment_response["status"]}, status=201)
+        except Exception as e:
+            return Response(data={"body": payment_response}, status=400)
+
+class retornarPagado(APIView): # Retornar custom json
+    def get(self, request):
+        return Response({"respuesta": "aprobado"})
