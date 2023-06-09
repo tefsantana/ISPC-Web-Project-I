@@ -12,6 +12,7 @@ export class ProductCardComponent implements OnInit {
   @Input() products: Products.Product[] = [];
   @Input() hasFavorite: boolean = false;
   @Input() hasAmount: boolean = false;
+  @Input() disabledRedirect: boolean = false;
 
   constructor(private navigationService: NavigationService, private productData: ProductDataService) {
   }
@@ -50,7 +51,7 @@ export class ProductCardComponent implements OnInit {
   navigate(propiedad: string, id: number) {
     this.productData.enviarDatos(propiedad, id);
     this.products.forEach((product: Products.Product) => {
-      if (product.id === id) {
+      if (product.id === id && this.hasAmount) {
         this.productData.enviarDatos("cantidad", product.amount);
       }
     });

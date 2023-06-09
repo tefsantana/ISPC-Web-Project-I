@@ -20,7 +20,7 @@ class ColorProducSerializer(serializers.ModelSerializer):
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Colores
-        field = ['nombre', 'exa']
+        fields = ['nombre', 'exa']
 
 class ImgProducSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,7 +30,7 @@ class ImgProducSerializer(serializers.ModelSerializer):
 class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favoritos
-        fields = ['favorite']
+        fields = ['id_prod', 'dni']
 
 
 """ User = get_user_model()

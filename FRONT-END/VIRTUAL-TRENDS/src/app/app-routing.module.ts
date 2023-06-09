@@ -14,6 +14,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.component';
 import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
+import { FavoritesComponent } from './favorites/favorites-page/favorites.component';
 
 export const routes: Routes = [
   // Redirección por defecto a Home
@@ -26,7 +27,7 @@ export const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   { path: 'registro', component: RegistroComponent },
   // {path: 'editar-cuenta', component: EditarCuentaComponent},
-  {path: 'editar-cuenta', component: EditarCuentaComponent},
+  { path: 'editar-cuenta', component: EditarCuentaComponent },
   // { path: 'product/:id', component: DashboardIndividualProductComponent },
   { path: 'product', component: DashboardIndividualProductComponent },
   { path: 'products', component: DashboardAllProductsComponent},
@@ -35,10 +36,11 @@ export const routes: Routes = [
   { path: 'talla-estandar', component: TallaEstandarComponent },
   { path: 'carrito', component: PantallaDelCarritoComponent },
   { path: 'contacto', component: DashboardContactoComponent },
+  { path: 'favoritos', component: FavoritesComponent },
 
-    // Ruta para la página 404 cuando no encuentre la URL
+  // Ruta para la página 404 cuando no encuentre la URL
   { path: '404', component: ErrorPageComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/404'},
+  { path: '**', pathMatch: 'full', redirectTo: '/404' },
 ];
 
 @NgModule({

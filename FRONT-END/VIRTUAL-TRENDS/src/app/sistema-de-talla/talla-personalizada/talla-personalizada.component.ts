@@ -29,22 +29,84 @@ export class TallaPersonalizadaComponent implements OnInit{
               {
 
                 this.form = this.formBuilder.group({
-                  cuello:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  busto:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  conRodilla:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  largTalle:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  conCintura:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  conCadera:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  largManga:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  conMuneca:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  largPierna:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
-                  alturaRodilla:[0,[Validators.required, Validators.maxLength(3), Validators.min(1)]],
+                  cuello:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  busto:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  conRodilla:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  largTalle:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  conCintura:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  conCadera:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  largManga:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  conMuneca:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  largPierna:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
+                  alturaRodilla:[0,[Validators.required, Validators.max(99), Validators.min(1)]],
                 })
 
   }
 
+  get Cuello(){
+
+    return this.form.get("cuello")
+
+  }
+  
+  get Busto(){
+
+    return this.form.get("busto")
+
+  }
+  
+  get ConRodilla(){
+
+    return this.form.get("conRodilla")
+
+  }
+  
+  get LargTalle(){
+
+    return this.form.get("largTalle")
+
+  }
+  
+  get ConCintura(){
+
+    return this.form.get("conCintura")
+
+  }
+  
+  get ConCadera(){
+
+    return this.form.get("conCadera")
+
+  }
+  
+  get LargManga(){
+
+    return this.form.get("largManga")
+
+  }
+  
+  get ConMuneca(){
+
+    return this.form.get("conMuneca")
+
+  }
+  
+  get LargPierna(){
+
+    return this.form.get("largPierna")
+
+  }
+  
+  get AlturaRodilla(){
+
+    return this.form.get("alturaRodilla")
+
+  }
+
   get tallaPersonalizada(): any {
+
     return this.form.value;
+  
   }
   
   cerrarPersonalizado(){
