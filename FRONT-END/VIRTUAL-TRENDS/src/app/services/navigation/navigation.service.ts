@@ -79,4 +79,12 @@ export class NavigationService {
     navigateToErrorPage() {
         this.router.navigate(['/**']);
     }
+
+    navigateToEditarCuenta() {
+        this.router.navigate(['/editar-cuenta'])
+    }
+
+    navigateToFavoritos() {
+        this.router.navigate(['/favoritos'])
+    }
 }
