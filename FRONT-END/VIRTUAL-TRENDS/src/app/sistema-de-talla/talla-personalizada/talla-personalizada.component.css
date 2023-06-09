@@ -40,9 +40,13 @@
     width: 100%;
     height: 40px;
     border-radius: 3px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     margin-left: 20px;
     font-family: 'archivo';
+}
+
+p{
+    margin-bottom: 5px;
 }
 
 .text-container{
@@ -159,7 +163,7 @@
 .exclamation-container{
     position: relative;
     width: 150px;
-    top: 120px;
+    top: 10%;
 }
 
 #exclamation-alert{
