@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { DescriptionProductsComponent } from './dashboard-individual-product/description-products/description-products.component';
@@ -16,6 +16,10 @@ import { ProductCardComponent } from './dashboard-all-products/product-card/prod
     RouterLink,
     RouterModule,
     AppRoutingModule
-  ]
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ],
+  exports: [ProductCardComponent]
 })
 export class ProductsModule { }
