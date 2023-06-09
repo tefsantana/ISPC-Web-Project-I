@@ -165,3 +165,10 @@
     background-color: #3B3D40;
     color: #f7f7f2;
   }
+
+  .alert-text{
+    position: relative;
+    color:#BB7A80;
+    font-size: 12px;
+    text-align: center;
+}

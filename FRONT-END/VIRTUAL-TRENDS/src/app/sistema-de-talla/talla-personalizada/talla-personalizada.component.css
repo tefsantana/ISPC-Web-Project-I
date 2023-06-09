@@ -7,6 +7,7 @@
     padding: 0px 0% 0px 5%;
     width: 65%;
     text-align: left;
+    margin-bottom: 35px;
 }
 
 .popup-title{
@@ -65,7 +66,7 @@
 }
 
 .input-container>input{
-    position: re;
+    position: relative;
     height: 100%;
     margin-left: 10%;
     width: 90%;
@@ -77,9 +78,21 @@
     display: flex;
 }
 
-#first-textbox{
-    margin-top: 35px;
+
+
+.alert-text > p{
+    color:#BB7A80;
+    font-size: 12px;
 }
+
+.alert-border{
+    border: 1px solid #BB7A80;
+}
+
+.alert-border > h1{
+    color:#BB7A80;
+}
+
 
 #last-textbox{
     margin-bottom: 40px;
