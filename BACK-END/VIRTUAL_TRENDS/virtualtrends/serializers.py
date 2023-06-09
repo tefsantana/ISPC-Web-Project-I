@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Productos, ColoresProductos, ImagenesProducto, Colores, Login, Favoritos
+#from django.contrib.auth import get_user_model
 
 class LoginSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,4 +31,38 @@ class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favoritos
         fields = ['favorite']
+
+
+""" User = get_user_model()
+
+class UserSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(required=True)
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password']
+        extra_kwargs = {
+            'email': {'required': True},
+            'username': {'required': True}
+        }
+
+    def validate_password(self, value):
+        if len(value) < 8:
+            raise serializers.ValidationError("La contraseña debe tener al menos 8 caracteres.")
+        
+        if not any(char.isdigit() for char in value):
+            raise serializers.ValidationError("La contraseña debe contener al menos un número.")
+        
+        return value
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        user = self.Meta.model(**validated_data)
+        if password is not None:
+            user.set_password(password)
+        user.save()
+        return user
+ """
 

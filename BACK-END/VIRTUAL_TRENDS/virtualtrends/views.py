@@ -274,4 +274,6 @@ class NewsletterView (View):
         newsletter = Newsletter()
         newsletter.email = request.POST ["email"]
         newsletter.save()
+
+
         

@@ -1,4 +1,6 @@
 from django.db import models
+#from django.contrib.auth.models import AbstractUser
+
 
 # Tabla para agregar los niveles de usuario/rol que cumplen.
 class Niveluser(models.Model):
@@ -327,3 +329,12 @@ class Newsletter(models.Model):
         return self.email
     def _str_(self):
         return self.email
+    
+""" class CustomUser(AbstractUser):
+    email = models.EmailField(
+        max_length=150, unique=True
+    )
+USERNAME_FIELD='email'
+REQUIRED_FIELDS = ['username','password'] """
+
+
