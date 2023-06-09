@@ -11,56 +11,164 @@
             <div class="row">
                 <div class="form-container col-8">
 
-                    <div class="input-container text-container" id="first-textbox">
-                        <h1>Contorno cuello</h1>
-                        <input class="vertical-center" type="number" formControlName="cuello">
-        
+                    <div class="alert-text">
+                        <p *ngIf="(Cuello.errors?.required || Cuello.errors?.min) && Cuello?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="Cuello.errors?.max && Cuello?.touched">
+                            Demasiados caracteres
+                        </p>
                     </div>
-                    <div class="input-container text-container">
+                    <div class="input-container text-container" [ngClass]="{'alert-border': Cuello?.errors && Cuello?.touched}" id="first-textbox">
+                        <h1 >Contorno cuello</h1>
+                        <input class="vertical-center" type="number" formControlName="cuello">
+                    </div>
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(Busto.errors?.required || Busto.errors?.min) && Busto?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="Busto.errors?.max && Busto?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': Busto?.errors && Busto?.touched}">
                         <h1>Contorno de busto</h1>
                         <input class="vertical-center" type="number" formControlName="busto">
-        
                     </div>
-                    <div class="input-container text-container">
+        
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(ConRodilla.errors?.required || ConRodilla.errors?.min) && ConRodilla?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="ConRodilla.errors?.max && ConRodilla?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': ConRodilla?.errors && ConRodilla?.touched}">
                         <h1>Contorno de rodilla</h1>
                         <input class="vertical-center" type="number" formControlName="conRodilla">
         
                     </div>
-                    <div class="input-container text-container">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(LargTalle.errors?.required || LargTalle.errors?.min) && LargTalle?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="LargTalle.errors?.max && LargTalle?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': LargTalle?.errors && LargTalle?.touched}">
                         <h1>Largo de talle</h1>
                         <input class="vertical-center" type="number" formControlName="largTalle">
         
                     </div>
-                    <div class="input-container text-container">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(ConCintura.errors?.required || ConCintura.errors?.min) && ConCintura?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="ConCintura.errors?.max && ConCintura?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': ConCintura?.errors && ConCintura?.touched}">
                         <h1>Contorno de cintura</h1>
                         <input class="vertical-center" type="number" formControlName="conCintura">
         
                     </div>
-                    <div class="input-container text-container">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(ConCadera.errors?.required || ConCadera.errors?.min) && ConCadera?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="ConCadera.errors?.max && ConCadera?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': ConCadera?.errors && ConCadera?.touched}">
                         <h1>Contorno de cadera</h1>
                         <input class="vertical-center" type="number" formControlName="conCadera">
         
                     </div>
-                    <div class="input-container text-container">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(LargManga.errors?.required || LargManga.errors?.min) && LargManga?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="LargManga.errors?.max && LargManga?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': LargManga?.errors && LargManga?.touched}">
                         <h1>Largo de manga</h1>
                         <input class="vertical-center" type="number" formControlName="largManga">
         
                     </div>
-                    <div class="input-container text-container">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(ConMuneca.errors?.required || ConMuneca.errors?.min) && ConMuneca?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="ConMuneca.errors?.max && ConMuneca?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': ConMuneca.errors && ConMuneca.touched}">
                         <h1>Contorno de muñeca</h1>
                         <input class="vertical-center" type="number" formControlName="conMuneca">
         
                     </div>
-                    <div class="input-container text-container">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(LargPierna.errors?.required || LargPierna.errors?.min) && LargPierna?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="LargPierna.errors?.max && LargPierna?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" [ngClass]="{'alert-border': LargPierna.errors && LargPierna.touched}">
                         <h1>Largo de pierna</h1>
                         <input class="vertical-center" type="number" formControlName="largPierna">
         
                     </div>
-                    <div class="input-container text-container" id="last-textbox">
+
+
+
+                    <div class="alert-text">
+                        <p *ngIf="(AlturaRodilla.errors?.required || AlturaRodilla.errors?.min) && AlturaRodilla?.touched">
+                            Campo obligatorio
+                        </p>
+                        <p *ngIf="AlturaRodilla.errors?.max && AlturaRodilla?.touched">
+                            Demasiados caracteres
+                        </p>
+                    </div>
+                    <div class="input-container text-container" id="last-textbox" [ngClass]="{'alert-border': AlturaRodilla.errors && AlturaRodilla.touched}">
                         <h1>Altura de rodilla</h1>
                         <input class="vertical-center" type="number" formControlName="alturaRodilla">
         
                     </div>
+
+
+
                         
                     <div class="input-container">
                         <button class="btn btn-dark" type="submit" (click)="agregar_al_carrito()">ENVIAR</button>

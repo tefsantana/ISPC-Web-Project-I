@@ -41,6 +41,8 @@ export class TallaEstandarComponent implements OnInit{
     this.productData.recibirDatos("cantidad").subscribe(dato => {
       this.stock = dato;
     });
+
+    this.seleccionado = "sin seleccionar"
   }
 
   esActivo(talle: string){
@@ -63,10 +65,21 @@ export class TallaEstandarComponent implements OnInit{
   agregar_al_carrito(){
     console.log(this.activos)
     console.log(this.seleccionado)
-    this.productData.enviarDatos('talla', this.seleccionado)
-    this.productData.enviarDatos('personalizado', false)
-    this.productCarrito.agregarCarrito()
-    this.navigation.navigateToCarrito()
-  }
-}
+    if (this.seleccionado !== "sin seleccionar" && this.seleccionado !=="error"){  
 
+      this.productData.enviarDatos('talla', this.seleccionado)
+      this.productData.enviarDatos('personalizado', false)
+      this.productCarrito.agregarCarrito()
+      this.navigation.navigateToCarrito()
+
+    }
+    else{
+      this.seleccionado = "error"
+    }
+  }
+
+  get Seleccionado(){
+    return this.seleccionado
+  } 
+
+}
