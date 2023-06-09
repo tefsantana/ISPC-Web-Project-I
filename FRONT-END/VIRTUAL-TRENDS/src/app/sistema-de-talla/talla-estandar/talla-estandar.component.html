@@ -35,4 +35,7 @@
 
       </div>
       <button type="button" class="agregaralcashito" (click)="agregar_al_carrito()">AGREGAR AL CARRITO</button>
+      <p *ngIf="Seleccionado == 'error'" class="alert-text">
+        Debes elegir un talle
+      </p>
     </div>
