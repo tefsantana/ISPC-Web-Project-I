@@ -1,10 +1,15 @@
 <div class="products-container">
   <div *ngFor="let product of products; odd as isOdd; even as isEven;" id="{{product.id}}" class="card-container" [ngClass]="{'odd': isOdd, 'even': isEven}">
-    <img class="picture" src="{{product.icon}}" alt="" (click)="navigate('id_producto', product.id)" title="Ver {{product.name}}">
+    <img *ngIf="!disabledRedirect" class="picture" src="{{product.icon}}" alt="" (click)="navigate('id_producto', product.id)"  title="Ver {{product.name}}">
+    <img *ngIf="disabledRedirect" class="picture" src="{{product.icon}}" alt="" title="Ver {{product.name}}" style="cursor: default">
     <div class="text-container">
-      <div (click)="navigate('id_producto', product.id)">
+      <div *ngIf="!disabledRedirect" (click)="navigate('id_producto', product.id)">
         <h1>{{product.name}}</h1>
         <p class="price">Precio: <b>${{product.price}}</b></p>
+      </div>
+      <div *ngIf="disabledRedirect" style="cursor: default">
+        <h1 style="cursor: default">{{product.name}}</h1>
+        <p class="price" style="cursor: default">Precio: <b>${{product.price}}</b></p>
       </div>
       <div class="amount-buttons" *ngIf="hasAmount">
         <button (click)="substract($event)" id="substract-button-{{product.id}}" [disabled]="(product.amount === 0)">-</button>
