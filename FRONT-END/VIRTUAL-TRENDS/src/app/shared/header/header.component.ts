@@ -21,8 +21,13 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToCuenta(){
-    this.navigationService.navigateToCuenta();  
+    this.navigationService.navigateToCuenta();
   }
+
+  navigateToFavoritos(){
+    this.navigationService.navigateToFavoritos();
+  }
+  
   navigateToCarrito(){
     this.navigationService.navigateToCarrito();
   }
