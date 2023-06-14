@@ -87,4 +87,10 @@
     justify-content: center;
     margin-bottom: 10%;
   }
+  .STtext1 {
+    width: 75%;
+    margin-left: 0%;
+    margin-bottom: 10%;
+    justify-content: center;
+  }
 }
