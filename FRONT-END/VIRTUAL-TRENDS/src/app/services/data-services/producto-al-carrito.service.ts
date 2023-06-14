@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import { Axios } from 'axios';
 
 @Injectable()
-export class CarritoService {
+export class ProductoAlCarritoService {
   getCarrito(dni: string): Promise<any> {
     return axios.get(`/ruta-de-consulta/?dni=${dni}`)
       .then(response => response.data)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from '../../services/data-services/producto-al-carrito.service';
+import { ProductoAlCarritoService } from '../../services/data-services/producto-al-carrito.service';
 
 @Component({
   selector: 'app-pantalla-del-carrito',
@@ -9,7 +9,7 @@ import { CarritoService } from '../../services/data-services/producto-al-carrito
 export class PantallaDelCarritoComponent implements OnInit {
   productos: any[] = [];
 
-  constructor(private carritoService: CarritoService) { }
+  constructor(private carritoService: ProductoAlCarritoService) { }
 
   ngOnInit(): void {
     const dni = '123456789'; 
