@@ -55,7 +55,7 @@ export class ProductCardComponent implements OnInit {
         this.productData.enviarDatos("cantidad", product.amount);
       }
     });
-    this.navigationService.navigateToProduct();
+    this.navigationService.navigateToProduct(String(id));
   }
 
 }

@@ -41,8 +41,8 @@ export class NavigationService {
     /**
      * Navigates to 'Product/:id' landing page for individual product.
      */
-    navigateToProduct(): void {
-        this.router.navigate(['/product']);
+    navigateToProduct(id: string): void {
+        this.router.navigate(['/product/' + id]);
     }
 
     /**
@@ -86,5 +86,9 @@ export class NavigationService {
 
     navigateToFavoritos() {
         this.router.navigate(['/favoritos'])
+    }
+
+    navigateToPasarelaDePagos() {
+        this.router.navigate(['/pago'])
     }
 }
