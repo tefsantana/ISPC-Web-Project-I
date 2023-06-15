@@ -15,6 +15,7 @@ import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.comp
 import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 import { FavoritesComponent } from './favorites/favorites-page/favorites.component';
+import { PasarelaPagosComponent } from './pasarela-pagos/pasarela-pagos.component';
 
 export const routes: Routes = [
   // Redirección por defecto a Home
@@ -37,6 +38,8 @@ export const routes: Routes = [
   { path: 'carrito', component: PantallaDelCarritoComponent },
   { path: 'contacto', component: DashboardContactoComponent },
   { path: 'favoritos', component: FavoritesComponent },
+  { path: 'pago', component: PasarelaPagosComponent},
+
 
   // Ruta para la página 404 cuando no encuentre la URL
   { path: '404', component: ErrorPageComponent },

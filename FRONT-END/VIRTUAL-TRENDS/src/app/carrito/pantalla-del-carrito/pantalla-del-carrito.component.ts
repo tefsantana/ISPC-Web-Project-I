@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-pantalla-del-carrito',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class PantallaDelCarritoComponent {
 
+  constructor(private navigation: NavigationService) {  }
+
+  navigate() {
+    this.navigation.navigateToPasarelaDePagos();
+  }
 }

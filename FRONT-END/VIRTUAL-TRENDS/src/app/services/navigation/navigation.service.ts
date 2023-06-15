@@ -87,4 +87,8 @@ export class NavigationService {
     navigateToFavoritos() {
         this.router.navigate(['/favoritos'])
     }
+
+    navigateToPasarelaDePagos() {
+        this.router.navigate(['/pago'])
+    }
 }

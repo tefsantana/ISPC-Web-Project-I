@@ -121,7 +121,7 @@ class ProductoAlCarritoView (View):
 
     def post (self, request):
         pass
-    def delelte (self, request):
+    def delete (self, request):
         pass
     
 class LoginListView(APIView):
