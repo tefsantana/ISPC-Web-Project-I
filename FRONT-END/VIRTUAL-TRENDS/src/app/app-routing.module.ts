@@ -15,6 +15,7 @@ import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.comp
 import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 import { FavoritesComponent } from './favorites/favorites-page/favorites.component';
+import { VerCuentaComponent } from './cuenta/ver-cuenta/ver-cuenta.component';
 
 export const routes: Routes = [
   // Redirección por defecto a Home
@@ -28,6 +29,8 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   // {path: 'editar-cuenta', component: EditarCuentaComponent},
   { path: 'editar-cuenta', component: EditarCuentaComponent },
+  // {path: 'ver-cuenta', component: VerCuentaComponent},
+  { path: 'ver-cuenta', component: VerCuentaComponent },
   // { path: 'product/:id', component: DashboardIndividualProductComponent },
   { path: 'product', component: DashboardIndividualProductComponent },
   { path: 'products', component: DashboardAllProductsComponent},
