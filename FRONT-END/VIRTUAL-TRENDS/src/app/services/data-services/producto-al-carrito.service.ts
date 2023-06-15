@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Axios } from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { DniDataService } from './dni-data.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class ProductoAlCarritoService {
-  getCarrito(dni: string): Promise<any> {
-    return axios.get(`/ruta-de-consulta/?dni=${dni}`)
-      .then(response => response.data)
-      .catch(error => {
-        throw new Error(error.response.data.error);
-      });
+
+  constructor(private http:HttpClient, private dniData:DniDataService){}
+
+  getCarrito(){
+
+    
+
+    this.dniData.recibirDNI().subscribe(dniRecibido => {
+
+      return this.http.get('https://localhost:8000/api/consultar-carrito/?dni=${dniRecibido}');
+
+    })
   }
 }

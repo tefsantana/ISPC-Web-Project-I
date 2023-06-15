@@ -123,6 +123,22 @@ class ProductoAlCarritoView (View):
         pass
     def delelte (self, request):
         pass
+
+class ConsultProductoCarrito(View):
+    def get(self, request):
+        dnitemp = request.GET.get('dni')
+        carrito = Carrito.objects.filter(dni=dnitemp, concretado=False).first()
+
+        if carrito:
+            productos_en_carrito = ProductosEnCarrito.objects.filter(id_car=carrito.id_car)
+            return JsonResponse(productos_en_carrito)
+        return JsonResponse({'error': 'Aun no tienes articulos en tu carrito'}, status=status.HTTP_404_NOT_FOUND)
+    def post (self, request):
+        pass
+    def put (self, request):
+        pass
+    def delete (self, request):
+        pass   
     
 class LoginListView(APIView):
     def get(self, request):

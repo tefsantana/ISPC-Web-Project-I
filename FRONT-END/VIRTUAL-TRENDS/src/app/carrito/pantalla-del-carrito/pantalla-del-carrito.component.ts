@@ -12,10 +12,6 @@ export class PantallaDelCarritoComponent implements OnInit {
   constructor(private carritoService: ProductoAlCarritoService) { }
 
   ngOnInit(): void {
-    const dni = '123456789'; 
 
-    this.carritoService.getCarrito(dni)
-      .then(productos => this.productos = productos)
-      .catch(error => console.error(error));
-  }
+}
 }
