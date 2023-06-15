@@ -1,9 +1,91 @@
 <div>
-  <div class="popup-editar-cuenta">
-<!-- <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="formulario"> -->
     <div class="formulario-edicion">
       <h1 class= "editar-cuenta" > EDITA TU PERFIL</h1>
         <div class="container-form col-8">
+          <!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit($event)">
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('nombre').invalid && formulario.get('nombre').touched
+              }">Nombre:</h2>
+              <input class="input" type="text" formControlName="nombre" [ngClass]="{
+                'invalid': formulario.get('nombre').invalid && formulario.get('nombre').touched
+              }">
+              <div *ngIf="formulario.get('nombre').invalid && formulario.get('nombre').touched">
+                <div class="validacion" *ngIf="formulario.get('nombre').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('apellido').invalid && formulario.get('apellido').touched
+              }">Apellido:</h2>
+              <input class="input" type="text" formControlName="apellido" [ngClass]="{
+                'invalid': formulario.get('apellido').invalid && formulario.get('apellido').touched
+              }">
+              <div *ngIf="formulario.get('apellido').invalid && formulario.get('apellido').touched">
+                <div class="validacion" *ngIf="formulario.get('apellido').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched
+              }">Documento de Identidad:</h2>
+              <input class="input" type="number" formControlName="documentodeidentidad" [ngClass]="{
+                'invalid': formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched
+              }">
+              <div *ngIf="formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched">
+                <div class="validacion" *ngIf="formulario.get('documentodeidentidad').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('email').invalid && formulario.get('email').touched
+              }">Dirección de Correo Electrónico:</h2>
+              <input class="input" type="text" formControlName="email" [ngClass]="{
+                'invalid': formulario.get('email').invalid && formulario.get('email').touched
+              }">
+              <div *ngIf="formulario.get('email').invalid && formulario.get('email').touched">
+                <div class="validacion" *ngIf="formulario.get('email').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('password').invalid && formulario.get('password').touched
+              }">Contraseña:</h2>
+              <input class="input" type="text" formControlName="password" [ngClass]="{
+                'invalid': formulario.get('password').invalid && formulario.get('password').touched
+              }">
+              <div *ngIf="formulario.get('password').invalid && formulario.get('password').touched">
+                <div class="validacion" *ngIf="formulario.get('password').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('telefono').invalid && formulario.get('telefono').touched
+              }">Teléfono:</h2>
+              <input class="input" type="text" formControlName="telefono" [ngClass]="{
+                'invalid': formulario.get('telefono').invalid && formulario.get('telefono').touched
+              }">
+              <div *ngIf="formulario.get('telefono').invalid && formulario.get('telefono').touched">
+                <div class="validacion" *ngIf="formulario.get('telefono').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <button type="submit" [disabled]="formulario.invalid" class="boton">Guardar Cambios</button>
+          </form> -->
+
+
+
+
+
+
+
+
+
           <form [formGroup]="formulario" (ngSubmit)="onSubmit($event)" >
 
             <label class="cuadro-texto">
@@ -151,9 +233,16 @@
             </label>
 
             <input class="btn btn-dark" value="ENVIAR">
+            <!-- {% if user %}
+            action="/editar-cuenta/{{ user.id }}" method="GET"
+            <button type="submit" class="center" id="edit-profile-button">Editar tu perfil</button>
 
-          </form>
+            {% endif %}  -->
+            <div >
+              <button class="close-button" (click)="cerrarEditarCuenta()"></button>
+            </div>
+
+           </form>
         </div>
       </div>
-    </div>
 </div>

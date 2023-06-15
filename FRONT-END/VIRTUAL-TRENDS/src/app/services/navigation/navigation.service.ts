@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 })
 
 export class NavigationService {
+    [x: string]: any;
     constructor(private router: Router) {}
 
     /**
@@ -25,7 +26,7 @@ export class NavigationService {
     /**
      * Navigates to 'Talle Estandar' landing page.
      */
-    
+
     navigateToTallaEstandar(): void {
         this.router.navigate(['/talla-estandar']);
     }
@@ -33,7 +34,7 @@ export class NavigationService {
     /**
      * Navigates to 'Talle Personalizada' landing page.
      */
-    
+
     navigateToTallaPersonalizada(): void {
         this.router.navigate(['/talla-personalizada']);
     }
