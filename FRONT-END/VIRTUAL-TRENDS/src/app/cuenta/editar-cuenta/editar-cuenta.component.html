@@ -2,8 +2,114 @@
   <div class="formulario-edicion">
     <h1 class= "editar-cuenta" > EDITA TU PERFIL</h1>
       <div class="container-form col-8">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+          <label class="cuadro-texto">
 
-        <div class="container-texto" >
+              <h2>Nombre:</h2>
+              <input class="input" type="text" formControlName="nombre">
+              <div *ngIf="formulario.get('nombre').invalid && formulario.get('nombre').touched">
+                <div *ngIf="formulario.get('nombre').errors.required">Campo requerido.</div>
+              </div>
+
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Apellido:</h2>
+            <input class="input" type="text" formControlName="apellido">
+            <div *ngIf="formulario.get('apellido').invalid && formulario.get('apellido').touched">
+              <div *ngIf="formulario.get('apellido').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Documento de Identidad:</h2>
+            <input class="input" type="number" formControlName="documentodeidentidad">
+            <div *ngIf="formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched">
+              <div *ngIf="formulario.get('documentodeidentidad').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Dirección de Correo Electrónico:</h2>
+            <input class="input" type="text" formControlName="email">
+            <div *ngIf="formulario.get('email').invalid && formulario.get('email').touched">
+              <div *ngIf="formulario.get('email').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Contraseña:</h2>
+            <input class="input" type="text" formControlName="password">
+            <div *ngIf="formulario.get('password').invalid && formulario.get('password').touched">
+              <div *ngIf="formulario.get('password').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Calle:</h2>
+            <input class="input" type="text" formControlName="calle">
+            <div *ngIf="formulario.get('calle').invalid && formulario.get('calle').touched">
+              <div *ngIf="formulario.get('calle').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Altura:</h2>
+            <input class="input" type="number" formControlName="altura">
+            <div *ngIf="formulario.get('altura').invalid && formulario.get('altura').touched">
+              <div *ngIf="formulario.get('altura').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Piso-Departamento-PH:</h2>
+            <input class="input" type="number" formControlName="ph">
+            <div *ngIf="formulario.get('ph').invalid && formulario.get('ph').touched">
+              <div *ngIf="formulario.get('ph').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Codigo Postal:</h2>
+            <input class="input" type="text" formControlName="cp">
+            <div *ngIf="formulario.get('cp').invalid && formulario.get('cp').touched">
+              <div *ngIf="formulario.get('cp').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Ciudad:</h2>
+            <input class="input" type="text" formControlName="ciudad">
+            <div *ngIf="formulario.get('ciudad').invalid && formulario.get('ciudad').touched">
+              <div *ngIf="formulario.get('ciudad').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Provinica:</h2>
+            <input class="input" type="text" formControlName="provincia">
+            <div *ngIf="formulario.get('provincia').invalid && formulario.get('provincia').touched">
+              <div *ngIf="formulario.get('provincia').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+
+          <label class="cuadro-texto">
+            <h2>Teléfono:</h2>
+            <input class="input" type="number" formControlName="telefono">
+            <div *ngIf="formulario.get('telefono').invalid && formulario.get('telefono').touched">
+              <div *ngIf="formulario.get('telefono').errors.required">Campo requerido.</div>
+            </div>
+          </label>
+          <!-- <button type="submit">Enviar</button> -->
+          <input class="btn btn-dark" value="ENVIAR">
+
+        </form>
+
+
+
+
+
+        <!-- <div class="container-texto" >
         <h2>Nombre</h2>
           <input class="input" type="text" id="nombre" >
         </div>
@@ -66,6 +172,6 @@
       <div class="boton">
         <input class="btn btn-dark" value="ENVIAR">
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginLogupComponent } from './login-logup/login-logup.component';
 import { RegistroComponent } from './registro/registro.component';
 import { EditarCuentaComponent } from './editar-cuenta/editar-cuenta.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { VerCuentaComponent } from './ver-cuenta/ver-cuenta.component';
 
 
 
@@ -10,10 +12,12 @@ import { EditarCuentaComponent } from './editar-cuenta/editar-cuenta.component';
   declarations: [
     LoginLogupComponent,
     RegistroComponent,
-    EditarCuentaComponent
+    EditarCuentaComponent,
+    VerCuentaComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class CuentaModule { }
