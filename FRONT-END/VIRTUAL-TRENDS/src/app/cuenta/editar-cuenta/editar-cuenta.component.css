@@ -65,7 +65,17 @@ h2{
   background-color: #FFFFFF;
   border: 1px solid #575757;
 }
+.validacio{
+  color:#BB7A80;
+  font-size: 12px;
+}
+h2.invalid {
+  color: #BB7A80;
+}
 
+.input.invalid {
+  border-color: #BB7A80;
+}
 .btn-dark {
   cursor: pointer;
   padding: 10px 0px 8px;
