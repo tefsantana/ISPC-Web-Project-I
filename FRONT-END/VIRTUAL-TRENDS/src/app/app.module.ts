@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarritoModule } from './carrito/carrito.module';
 import { FormsModule } from '@angular/forms';
 import { FavoritesModule } from './favorites/favorites.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FavoritesModule } from './favorites/favorites.module';
     HttpClientModule,
     CarritoModule,
     FormsModule,
-    FavoritesModule
+    FavoritesModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

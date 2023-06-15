@@ -91,4 +91,16 @@ export class NavigationService {
     navigateToPasarelaDePagos() {
         this.router.navigate(['/pago'])
     }
+
+    navigateToAdmin() {
+        this.router.navigate(['/admin'])
+    }
+
+    navigateToProductsAdmin() {
+        this.router.navigate(['/admin/products'])
+    }
+
+    navigateToUsersAdmin() {
+        this.router.navigate(['/admin/users'])
+    }
 }
