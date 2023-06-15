@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class VerCuentaComponent {
 
+
+  tofEditarCuenta:boolean = false;
+  abrirEditarCuenta(){
+    this.tofEditarCuenta = true;
+
+  }
+
 }
