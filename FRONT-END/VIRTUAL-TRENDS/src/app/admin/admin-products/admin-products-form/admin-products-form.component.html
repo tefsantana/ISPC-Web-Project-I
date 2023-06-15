@@ -1,0 +1,53 @@
+<div class="form-container" *ngIf="type === 'delete'">
+  <p>Ingrese <b>id del producto</b> que desea eliminar de la base de datos.</p>
+  <p><b>IMPORTANTE</b>: Se recuerda que una vez eliminado el mismo no se podrá recuperar. Es una acción irreversible.</p>
+  <form class="short-form">
+    <input type="number" min="1" placeholder="ID del producto">
+    <button type="submit" class="action-button">Eliminar</button>
+  </form>
+</div>
+<div class="form-container" *ngIf="type === 'add'">
+  <p>Complete los siguientes datos que pertenecerán al nuevo producto.</p>
+  <p><b>IMPORTANTE</b>: Se recuerda que el id de producto es automáticamente creado por la base de datos.</p>
+  <form class="large-form">
+    <input type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;">
+    <input type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;">
+    <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
+    <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;">
+    <label for="talla-checkbox"> Tilde el siguiente checkbox si el producto es apto para tener talle personalizado. De lo contrario puede saltearlo.</label>
+    <div class="checkbox" style="margin-bottom: 10px;">
+      <input type="checkbox" name="" id="talla-checkbox"><p>Checkbox para talla personalizada</p>
+    </div>
+    <label for="categories-select">Categorías:</label>
+    <select id="categories-select" name="Categoría">
+      <option value="1">Remera</option>
+      <option value="2">Pollera</option>
+      <option value="3">Pantalón</option>
+    </select>
+    <div class="block-form" style="margin-bottom: 10px;">
+      <label for="image-input">Inserte las rutas de tres imágenes. Recuerde que la primera también representará al ícono.</label>
+      <input id="image-input" type="text" placeholder="Primera imagen del producto">
+      <input type="text" placeholder="Segunda imagen del producto">
+      <input type="text" placeholder="Tercera imagen del producto">
+    </div>
+    <div class="block-form" style="margin-bottom: 10px;">
+      <p>Tilde los checkboxes que corresponden a los colores que estarán disponibles del producto.</p>
+      <div *ngFor="let color of colorsList">
+        <input id="color-input-{{color}}" class="color-checkbox" type="checkbox">
+        <div class="color-box {{color}}" id="{{color}}" title="{{color}}"></div>
+      </div>
+    </div>
+    <div class="block-form" style="margin-bottom: 10px;">
+      <p>Tilde los checkboxes que corresponden a los talles que estarán disponibles del producto.</p>
+      <div *ngFor="let talle of sizesList">
+        <input id="talle-input-{{talle}}" class="talle-checkbox" type="checkbox">
+        <p class="sizes-p">{{talle}}</p>
+      </div>
+    </div>
+    <button (submit)="addProduct()" class="action-button">Agregar</button>
+  </form>
+
+</div>
+<div class="form-container" *ngIf="type === 'modify'">
+  Formulario de modificar
+</div>

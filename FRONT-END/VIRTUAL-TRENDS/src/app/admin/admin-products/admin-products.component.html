@@ -1,3 +1,14 @@
-<p>
-  admin-products works!
-</p>
+<div class="main-container">
+    <h1 class="main-title">ADMINISTRAR PRODUCTOS</h1>
+    <div class="buttons-container">
+        <button class="admin-button" (click)="showForm('add')">AGREGAR PRODUCTO</button>
+        <button class="admin-button" (click)="showForm('modify')">MODIFICAR PRODUCTO</button>
+        <button class="admin-button" (click)="showForm('delete')">ELIMINAR PRODUCTO</button>
+    </div>
+    <app-admin-products-form [type]="formType" class="form-adjust"></app-admin-products-form>
+    <div class="products-container">
+        <h2>Listado de productos</h2>
+        <app-product-card [products]="products" [disabledRedirect]="true"></app-product-card>
+    </div>
+
+</div>

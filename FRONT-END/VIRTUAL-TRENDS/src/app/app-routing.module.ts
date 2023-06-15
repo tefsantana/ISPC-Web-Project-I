@@ -42,10 +42,10 @@ export const routes: Routes = [
   { path: 'contacto', component: DashboardContactoComponent },
   { path: 'favoritos', component: FavoritesComponent },
   { path: 'pago', component: PasarelaPagosComponent },
-  { path: 'admin', component: AdminComponent, children: [
-    {path: 'products', component: AdminProductsComponent},
-    {path: 'users', component: AdminUsersComponent}
-  ]},
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/products', component: AdminProductsComponent },
+  { path: 'admin/users', component: AdminUsersComponent },
+
 
   // Ruta para la página 404 cuando no encuentre la URL
   { path: '404', component: ErrorPageComponent },

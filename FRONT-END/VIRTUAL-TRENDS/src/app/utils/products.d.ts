@@ -33,7 +33,7 @@ export namespace Products {
         src: string;
     }
 
-    type Colors = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'orange' | 'coral' | 'cyan' | 'black' | 'white';
+    type Colors = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'orange' | 'coral' | 'cyan';
 
     type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 
