@@ -25,7 +25,15 @@ export class EditarCuentaComponent {
       telefono: ['', Validators.pattern('[0-9]{10}')],
     });
   }
-  onSubmit() {
+  onSubmit(event: Event) {
+      event.preventDefault();
+      if(this.formulario.valid){
+        alert("enviando")
+      }
+      else{
+        this.formulario.markAllAsTouched()
+      }
+    }
 
   }
-}
+
