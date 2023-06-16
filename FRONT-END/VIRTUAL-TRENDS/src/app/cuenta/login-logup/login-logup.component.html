@@ -7,16 +7,30 @@
         </div>
         <h1 class="title-in-" id="titulo-cuenta">LOGIN</h1>
         <h3 class="subtitle-in">INICIAR SESIÓN</h3>
-        <form class="form-in">
+        <form [formGroup]="loginForm" class="form-in">
             <label class="lab-in">Dirección de correo electrónico</label>
-            <input type="email" class="inp-in">
+            <input formControlName="email" type="email" class="inp-in" placeholder="tuEmail@mail.com">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                <div *ngIf="email.errors?.['required']">
+                    Este campo es requerido.
+                </div>
+                <div *ngIf="email.errors?.['email']">
+                    Tienes que ingresar un email valido.
+                </div>
+            </div>
             <label class="lab-in">Contraseña</label>
-            <input type="password" class="inp-in">
+            <input formControlName="psw" type="password" class="inp-in">
+            <div *ngIf="psw.invalid && (psw.dirty || psw.touched)" class="text-danger">
+                <div *ngIf="psw.errors?.['required']">
+                    Este campo es requerido.
+                </div>
+            </div>
             <button type="button" class="recu-in" (click)="showRecoverPass()">¿No puedes acceder a tu cuenta?</button>
             <p class="text-in" *ngIf="showRecoverPassText">Consulte con los administradores del sitio web para que le indiquen cómo proseguir.
                 Puede encontrar nuestras redes sociales en la parte inferior de la página.
             </p>
-            <input type="submit" class="btn-in" value="INICIAR SESIÓN">
+            <span class="text-danger text-center">{{loginError}}</span>
+            <button type="submit" (click)="login()" class="btn-in">INICIAR SESIÓN</button>
         </form>
         <div class="boton_crear_cuenta">
             <button type="button" (click)="navigateToRegistro()" class="btn-up">CREAR CUENTA</button>
