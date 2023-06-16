@@ -4,7 +4,7 @@ from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
-from rest_framework import status
+from rest_framework import status, generics
 from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
 
 # Create your views here.
@@ -141,7 +141,7 @@ class LoginUpdateView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class LoginQueryView(APIView):
+class LoginValidView(APIView):
     def post(self, request):
         email = request.data.get('email')
         psw = request.data.get('psw')
@@ -153,7 +153,7 @@ class LoginQueryView(APIView):
 
         usuario = Usuario.objects.get(dni=login.dni_id)
         response_data = {
-            'nombre': usuario.nombre,'apellido': usuario.apellido,'dni': usuario.dni
+            'nombre': usuario.nombre,'apellido': usuario.apellido,'dni': usuario.dni, 'menssaje':'OK'
             }
         return Response(response_data)
 

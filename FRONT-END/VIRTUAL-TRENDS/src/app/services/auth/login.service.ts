@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   login(credentials:LoginRequest): Observable<UserData>{
-    return  this.http.get<UserData>('././assets/data.json').pipe(
+    return  this.http.get<UserData>('http://127.0.0.1:8000/api/login/query/').pipe(
       tap((userData: UserData)  => {
         this.currentUserData.next(userData);
         this.currentUserLoginOn.next(true);
