@@ -11,7 +11,8 @@
         <p>Lista de productos</p>    
     </div>
     <div class="lista">
-      
+        <app-product-card [products]="products" [disabledRedirect]="true"></app-product-card>
+      </div>
     </div>
     <div class="subtotal">
       <p>Subtotal: </p>
@@ -23,5 +24,4 @@
       <button class="volver">SEGUIR COMPRANDO</button>
       <button (click)="navigate()" class="finalizar">PAGAR</button>
     </div>
-  </div>
 </body>
