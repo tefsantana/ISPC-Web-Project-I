@@ -9,6 +9,15 @@
     overflow: auto;
     background-color: rgba(255, 255, 255, 0.8);
 }
+
+.ng-valid:not(form).ng-touched{
+    border-left: 5px solid #42a948;
+}
+
+.ng-invalid:not(form).ng-touched{
+    border-left: 5px solid #a94442;
+}
+
 .contenedor-reg {
     font-family: 'Archivo', sans-serif;
     background-color: #F8F8F8;

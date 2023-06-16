@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarritoModule } from './carrito/carrito.module';
 import { FormsModule } from '@angular/forms';
 import { FavoritesModule } from './favorites/favorites.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AdminModule } from './admin/admin.module';
     CarritoModule,
     FormsModule,
     FavoritesModule,
-    AdminModule
+    ReactiveFormsModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
