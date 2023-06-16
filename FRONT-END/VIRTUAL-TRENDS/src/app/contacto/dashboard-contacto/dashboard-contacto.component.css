@@ -22,26 +22,26 @@
     align-items: center ;
 }
 
-.input-group {
+/*.input-group {
     display: flex;
     flex-direction: column;
     text-align: left;
-}
+}*/
 
-h2 {
+/*h2 {
     color: aqua;
     font-size: 35px;
-}
+}*/
 
-label {
+/*label {
     color: #F7F7F2;
     font-size: 15px;
     font-weight: 600px;
     margin-bottom: 15px;
-}
+}*/
 
 .contacto-title-container {
-    width: 30%;
+    width: 35%;
     text-align: center;
     margin: auto;
     margin-top: 1em;
