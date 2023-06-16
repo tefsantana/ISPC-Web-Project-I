@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoAlCarritoService } from '../../services/data-services/producto-al-carrito.service';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-pantalla-del-carrito',
@@ -9,9 +10,12 @@ import { ProductoAlCarritoService } from '../../services/data-services/producto-
 export class PantallaDelCarritoComponent implements OnInit {
   productos: any[] = [];
 
-  constructor(private carritoService: ProductoAlCarritoService) { }
+  constructor(private carritoService: ProductoAlCarritoService, private navigation: NavigationService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-}
+
+  navigate() {
+    this.navigation.navigateToPasarelaDePagos();
+  }
 }

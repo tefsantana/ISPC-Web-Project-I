@@ -8,32 +8,110 @@
         <h1 class="title-reg">REGISTRO</h1>
         <div class="body-reg">
             <div class="left-reg">
-                <form class="form-reg">
+                <form [formGroup]="logupForm " class="form-reg">
                     <label class="lab-reg">Dirección de correo electrónico</label>
-                    <input type="email" class="inp-reg">
+                    <input formControlName="email" type="email" class="inp-reg">
+                        <div *ngIf="formguid.email.invalid && (formguid.email.dirty || formguid.email.touched)" class="text-danger">
+                            <div *ngIf="formguid.email.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                            <div *ngIf="formguid.email.errors?.['email']">
+                                Tienes que ingresar un email valido.
+                            </div>
+                        </div>
+                    
                     <label class="lab-reg">Contraseña</label>
-                    <input type="password" class="inp-reg">
+                    <input formControlName="psw" type="password" class="inp-reg">
+                    <div *ngIf="formguid.psw.invalid && (formguid.psw.dirty || formguid.psw.touched)" class="text-danger">
+                        <div *ngIf="formguid.psw.errors?.['required']">
+                            Este campo es requerido.
+                        </div>
+                    </div>
+                    
                     <label class="lab-reg">Nombre</label>
-                    <input type="text" class="inp-reg">
+                    <input formControlName="nombre" type="text" class="inp-reg">
+                    <div *ngIf="formguid.nombre.invalid && (formguid.nombre.dirty || formguid.nombre.touched)" class="text-danger">
+                        <div *ngIf="formguid.nombre.errors?.['required']">
+                            Este campo es requerido.
+                        </div>
+                        <div *ngIf="formguid.nombre.errors?.['email']">
+                            Tienes que ingresar un email valido.
+                        </div>
+                    </div>
+                    
                     <label class="lab-reg">Apellido</label>
-                    <input type="text" class="inp-reg">
+                    <input formControlName="apellido" type="text" class="inp-reg">
+                    <div *ngIf="formguid.apellido.invalid && (formguid.apellido.dirty || formguid.apellido.touched)" class="text-danger">
+                        <div *ngIf="formguid.apellido.errors?.['required']">
+                            Este campo es requerido.
+                        </div>
+                    </div>
+
                     <label class="lab-reg">Documento de identidad</label>
-                    <input type="number" class="inp-reg">
+                    <input formControlName="dni" type="number" class="inp-reg">
+                    <div *ngIf="formguid.dni.invalid && (formguid.dni.dirty || formguid.dni.touched)" class="text-danger">
+                            <div *ngIf="formguid.dni.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Codigo Postal</label>
-                    <input type="number" class="inp-reg">
+                    <input formControlName="cp" type="number" class="inp-reg">
+                    <div *ngIf="formguid.cp.invalid && (formguid.cp.dirty || formguid.cp.touched)" class="text-danger">
+                            <div *ngIf="formguid.cp.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Calle</label>
-                    <input type="text" class="inp-reg">
+                    <input formControlName="dir_nombre" type="text" class="inp-reg">
+                    <div *ngIf="formguid.dir_nombre.invalid && (formguid.dir_nombre.dirty || formguid.dir_nombre.touched)" class="text-danger">
+                            <div *ngIf="formguid.dir_nombre.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Altura</label>
-                    <input type="number" class="inp-reg">
+                    <input formControlName="dir_num" type="number" class="inp-reg">
+                    <div *ngIf="formguid.dir_num.invalid && (formguid.dir_num.dirty || formguid.dir_num.touched)" class="text-danger">
+                            <div *ngIf="formguid.dir_num.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Piso-Departamento-PH</label>
-                    <input type="text" class="inp-reg">
+                    <input formControlName="ph" type="text" class="inp-reg">
+                    <div *ngIf="formguid.ph.invalid && (formguid.ph.dirty || formguid.ph.touched)" class="text-danger">
+                            <div *ngIf="formguid.ph.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Telefono/Celular</label>
-                    <input type="tel" class="inp-reg">
+                    <input formControlName="tel" type="tel" class="inp-reg">
+                    <div *ngIf="formguid.tel.invalid && (formguid.tel.dirty || formguid.tel.touched)" class="text-danger">
+                            <div *ngIf="formguid.tel.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Ciudad</label>
-                    <input type="text" class="inp-reg">
+                    <input formControlName="ciudad" type="text" class="inp-reg">
+                    <div *ngIf="formguid.ciudad.invalid && (formguid.ciudad.dirty || formguid.ciudad.touched)" class="text-danger">
+                            <div *ngIf="formguid.ciudad.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
                     <label class="lab-reg">Provincia</label>
-                    <input type="text" class="inp-reg">
-                    <input type="submit" class="btn-reg" value="ENVIAR">
+                    <input formControlName="provincia" type="text" class="inp-reg">
+                    <div *ngIf="formguid.provincia.invalid && (formguid.provincia.dirty || formguid.provincia.touched)" class="text-danger">
+                            <div *ngIf="formguid.provincia.errors?.['required']">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+
+                    <button type="submit" class="btn-reg">ENVIAR</button>
                 </form>
             </div>
             <div class="right-reg">

@@ -1,0 +1,20 @@
+<div class="container-principal">
+  <h1 class="administrar-usuario">ADMINISTRAR USUARIOS</h1>
+  <div class="admin-container">
+    <h2>Listado de Usuarios</h2>
+    <!-- <app-usuario-card [usuario]="usuario" [disabledRedirect]="true"></app-usuario-card> -->
+  </div>
+
+  <div class="eliminar">
+    <button class="boton-admin" (click)="showForm('delete')">ELIMINAR USUARIO</button>
+    <div class="container-eliminar" *ngIf="formType === 'delete'">
+      <p>Ingrese <b>id del usuario</b> que desea eliminar de la base de datos.</p>
+      <p><b>IMPORTANTE</b>: Se recuerda que una vez eliminado el mismo no se podrá recuperar. Es una acción irreversible.</p>
+      <form class="short-form">
+        <input type="number" min="1" placeholder="ID del producto">
+        <button type="submit" class="action-button">Eliminar</button>
+      </form>
+    </div>
+  </div>
+
+</div>

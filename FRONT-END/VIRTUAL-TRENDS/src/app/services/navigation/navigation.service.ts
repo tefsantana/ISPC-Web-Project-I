@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 })
 
 export class NavigationService {
+    [x: string]: any;
     constructor(private router: Router) {}
 
     /**
@@ -25,7 +26,7 @@ export class NavigationService {
     /**
      * Navigates to 'Talle Estandar' landing page.
      */
-    
+
     navigateToTallaEstandar(): void {
         this.router.navigate(['/talla-estandar']);
     }
@@ -33,7 +34,7 @@ export class NavigationService {
     /**
      * Navigates to 'Talle Personalizada' landing page.
      */
-    
+
     navigateToTallaPersonalizada(): void {
         this.router.navigate(['/talla-personalizada']);
     }
@@ -41,8 +42,8 @@ export class NavigationService {
     /**
      * Navigates to 'Product/:id' landing page for individual product.
      */
-    navigateToProduct(): void {
-        this.router.navigate(['/product']);
+    navigateToProduct(id: string): void {
+        this.router.navigate(['/product/' + id]);
     }
 
     /**
@@ -86,5 +87,21 @@ export class NavigationService {
 
     navigateToFavoritos() {
         this.router.navigate(['/favoritos'])
+    }
+
+    navigateToPasarelaDePagos() {
+        this.router.navigate(['/pago'])
+    }
+
+    navigateToAdmin() {
+        this.router.navigate(['/admin'])
+    }
+
+    navigateToProductsAdmin() {
+        this.router.navigate(['/admin/products'])
+    }
+
+    navigateToUsersAdmin() {
+        this.router.navigate(['/admin/users'])
     }
 }
