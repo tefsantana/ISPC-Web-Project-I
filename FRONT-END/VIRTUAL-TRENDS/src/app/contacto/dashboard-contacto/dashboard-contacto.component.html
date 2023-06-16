@@ -5,29 +5,24 @@
     </div>
     <form class="main-container">
         <div class="input-container" id="first-textbox">
-            <h1>Nombre</h1>
-            <input class="vertical-center" type="text">
-
+            <label for="nombre">Nombre</label>
+            <input class="vertical-center" type="text" id="nombre" name="nombre">
         </div>
         <div class="input-container">
-            <h1>Telefono</h1>
-            <input class="vertical-center" type="text">
-
+            <label for="telefono">Telefono</label>
+            <input class="vertical-center" type="text" id="telefono" name="telefono">
         </div>
         <div class="input-container">
-            <h1>Email</h1>
-            <input class="vertical-center" type="text">
+            <label for="email">Email</label>
+            <input class="vertical-center" type="text" id="email" name="email">
         </div>
-        <div class="input-container" id="mensaje-container" >
-            <h1>Mensaje</h1>
-            
-            <textarea name="message" id="message" cols="30" rows="5" placeholder="Mensaje"></textarea>
+        <div class="input-container" id="mensaje-container">
+            <label for="mensaje">Mensaje</label>
+            <textarea name="mensaje" id="mensaje" cols="30" rows="5" placeholder="Mensaje"></textarea>
         </div>      
-        <div class="input-container">
-            
-            <button class="center" id="submit-button" > Enviar</button>  
+        <div class="button-container">
+            <button class="center" id="submit-button" >Enviar</button>  
         </div>
-    
     </form>
 </div>
 
