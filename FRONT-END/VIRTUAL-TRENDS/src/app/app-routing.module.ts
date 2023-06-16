@@ -15,6 +15,11 @@ import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.comp
 import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 import { FavoritesComponent } from './favorites/favorites-page/favorites.component';
+import { PasarelaPagosComponent } from './pasarela-pagos/pasarela-pagos.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { VerCuentaComponent } from './cuenta/ver-cuenta/ver-cuenta.component';
 
 export const routes: Routes = [
   // Redirección por defecto a Home
@@ -26,10 +31,9 @@ export const routes: Routes = [
   { path: 'cuenta', component: LoginLogupComponent },
   // { path: 'register', component: RegisterComponent },
   { path: 'registro', component: RegistroComponent },
-  // {path: 'editar-cuenta', component: EditarCuentaComponent},
   { path: 'editar-cuenta', component: EditarCuentaComponent },
-  // { path: 'product/:id', component: DashboardIndividualProductComponent },
-  { path: 'product', component: DashboardIndividualProductComponent },
+  { path: 'ver-cuenta', component: VerCuentaComponent },
+  { path: 'product/:id', component: DashboardIndividualProductComponent },
   { path: 'products', component: DashboardAllProductsComponent},
   { path: 'sistema-de-talla', component: PanelDeControlComponent },
   { path: 'talla-personalizada', component: TallaPersonalizadaComponent },
@@ -37,6 +41,11 @@ export const routes: Routes = [
   { path: 'carrito', component: PantallaDelCarritoComponent },
   { path: 'contacto', component: DashboardContactoComponent },
   { path: 'favoritos', component: FavoritesComponent },
+  { path: 'pago', component: PasarelaPagosComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/products', component: AdminProductsComponent },
+  { path: 'admin/users', component: AdminUsersComponent },
+
 
   // Ruta para la página 404 cuando no encuentre la URL
   { path: '404', component: ErrorPageComponent },

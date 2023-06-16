@@ -14,6 +14,7 @@ import { CarritoModule } from './carrito/carrito.module';
 import { FormsModule } from '@angular/forms';
 import { FavoritesModule } from './favorites/favorites.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     FavoritesModule,
     ReactiveFormsModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

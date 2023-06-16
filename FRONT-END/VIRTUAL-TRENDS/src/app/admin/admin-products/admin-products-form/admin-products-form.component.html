@@ -1,0 +1,85 @@
+<div class="form-container" *ngIf="type === 'delete'">
+  <p>Ingrese <b>id del producto</b> que desea eliminar de la base de datos.</p>
+  <p><b>IMPORTANTE</b>: Se recuerda que una vez eliminado el mismo no se podrá recuperar. Es una acción irreversible.</p>
+  <form class="short-form" action="#">
+    <input type="number" min="1" placeholder="ID del producto">
+    <button type="submit" class="action-button">Eliminar</button>
+  </form>
+</div>
+<div class="form-container" *ngIf="type === 'add'">
+  <p>Complete los siguientes datos que pertenecerán al nuevo producto.</p>
+  <p><b>IMPORTANTE</b>: Se recuerda que el id de producto es automáticamente creado por la base de datos.</p>
+  <form id="add-form" class="large-form" action="#">
+    <input id="name-input" type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;">
+    <input id="description-input" type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;">
+    <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
+    <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;">
+    <label for="categories-select">Categorías:</label>
+    <select id="categories-select" name="Categoría">
+      <option *ngFor="let categoria of categorias" [value]="categorias.indexOf(categoria)">{{categoria}}</option>
+    </select>
+    <div class="block-form" style="margin-bottom: 10px;">
+      <label for="first-image-input">Inserte las rutas de tres imágenes. Recuerde que la primera también representará al ícono.</label>
+      <input id="first-image-input" type="text" placeholder="Primera imagen del producto">
+      <input id="second-image-input" type="text" placeholder="Segunda imagen del producto">
+      <input id="third-image-input" type="text" placeholder="Tercera imagen del producto">
+    </div>
+    <div class="block-form" style="margin-bottom: 10px;">
+      <p>Tilde los checkboxes que corresponden a los colores que estarán disponibles del producto.</p>
+      <div *ngFor="let color of colorsList">
+        <input id="{{color}}" class="color-checkbox" type="checkbox">
+        <div class="color-box {{color}}" title="{{color}}"></div>
+      </div>
+    </div>
+    <div class="block-form" style="margin-bottom: 10px;">
+      <p>Tilde los checkboxes que corresponden a los talles que estarán disponibles del producto.</p>
+      <div *ngFor="let talle of sizesList">
+        <input id="{{talle}}" class="talle-checkbox" type="checkbox">
+        <p class="sizes-p">{{talle}}</p>
+      </div>
+    </div>
+    <button (click)="addProduct($event)" type="button" class="action-button">Agregar</button>
+  </form>
+</div>
+
+<div class="form-container" *ngIf="type === 'modify'">
+  <p>Ingrese <b>id del producto</b> que desea modificar.</p>
+  <form class="short-form" action="#">
+    <input type="number" min="1" placeholder="ID del producto" id="id-producto">
+    <button type="button" (click)="modifyProduct()" id="search-modify-button" class="action-button">Buscar</button>
+  </form>
+  <div *ngIf="showModifyForm">
+    <p style="margin-top: 10px;">Puede modificar cualquiera de los siguientes datos.</p>
+    <form id="modify-form" class="large-form" action="#">
+      <input id="name-input" type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;" value="{{modifiedProduct.nombre}}">
+      <input id="description-input" type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.descripcion">
+      <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
+      <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.precio">
+      <label for="categories-select">Categorías:</label>
+      <select id="categories-select" name="Categoría" [value]="modifiedProduct.categoria">
+        <option *ngFor="let categoria of categorias" [value]="categorias.indexOf(categoria)">{{categoria}}</option>
+      </select>
+      <div class="block-form" style="margin-bottom: 10px;">
+        <label for="first-image-input">Inserte las rutas de tres imágenes. Recuerde que la primera también representará al ícono.</label>
+        <input id="first-image-input" type="text" placeholder="Primera imagen del producto" [value]="modifiedProduct.imagenes[0]">
+        <input id="second-image-input" type="text" placeholder="Segunda imagen del producto" [value]="modifiedProduct.imagenes[1]">
+        <input id="third-image-input" type="text" placeholder="Tercera imagen del producto" [value]="modifiedProduct.imagenes[2]">
+      </div>
+      <div class="block-form" style="margin-bottom: 10px;">
+        <p>Tilde los checkboxes que corresponden a los colores que estarán disponibles del producto.</p>
+        <div *ngFor="let color of colorsList">
+          <input id="{{color}}" class="color-checkbox" type="checkbox" [checked]="modifiedProduct.colores.includes(color)">
+          <div class="color-box {{color}}" title="{{color}}"></div>
+        </div>
+      </div>
+      <div class="block-form" style="margin-bottom: 10px;">
+        <p>Tilde los checkboxes que corresponden a los talles que estarán disponibles del producto.</p>
+        <div *ngFor="let talle of sizesList">
+          <input id="{{talle}}" class="talle-checkbox" type="checkbox" [checked]="modifiedProduct.tallas.includes(talle)">
+          <p class="sizes-p">{{talle}}</p>
+        </div>
+      </div>
+      <button (click)="addProduct($event)" type="button" class="action-button">Modificar</button>
+    </form>
+  </div>
+</div>

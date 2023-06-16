@@ -1,71 +1,160 @@
 <div>
-  <div class="formulario-edicion">
-    <h1 class= "editar-cuenta" > EDITA TU PERFIL</h1>
-      <div class="container-form col-8">
+    <div class="formulario-edicion">
+      <h1 class= "editar-cuenta" > EDITA TU PERFIL</h1>
+        <div class="container-form col-8">
+          <form [formGroup]="formulario" (ngSubmit)="onSubmit($event)" >
 
-        <div class="container-texto" >
-        <h2>Nombre</h2>
-          <input class="input" type="text" id="nombre" >
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('nombre').invalid && formulario.get('nombre').touched
+              }">Nombre:</h2>
+              <input class="input" type="text" formControlName="nombre" [ngClass]="{
+                'invalid': formulario.get('nombre').invalid && formulario.get('nombre').touched
+              }">
+              <div *ngIf="formulario.get('nombre').invalid && formulario.get('nombre').touched">
+                <div class="validacion" *ngIf="formulario.get('nombre').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('apellido').invalid && formulario.get('apellido').touched
+              }">Apellido:</h2>
+              <input class="input" type="text" formControlName="apellido" [ngClass]="{
+                'invalid': formulario.get('apellido').invalid && formulario.get('apellido').touched
+              }">
+              <div *ngIf="formulario.get('apellido').invalid && formulario.get('apellido').touched">
+                <div class="validacion" *ngIf="formulario.get('apellido').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched
+              }">Documento de Identidad:</h2>
+              <input class="input" type="number" formControlName="documentodeidentidad" [ngClass]="{
+                'invalid': formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched
+              }">
+              <div *ngIf="formulario.get('documentodeidentidad').invalid && formulario.get('documentodeidentidad').touched">
+                <div class="validacion" *ngIf="formulario.get('documentodeidentidad').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('email').invalid && formulario.get('email').touched
+              }">Dirección de Correo Electrónico:</h2>
+              <input class="input" type="text" formControlName="email" [ngClass]="{
+                'invalid': formulario.get('email').invalid && formulario.get('email').touched
+              }">
+              <div *ngIf="formulario.get('email').invalid && formulario.get('email').touched">
+                <div class="validacion" *ngIf="formulario.get('email').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('password').invalid && formulario.get('password').touched
+              }">Contraseña:</h2>
+              <input class="input" type="text" formControlName="password" [ngClass]="{
+                'invalid': formulario.get('password').invalid && formulario.get('password').touched
+              }">
+              <div *ngIf="formulario.get('password').invalid && formulario.get('password').touched">
+                <div class="validacion" *ngIf="formulario.get('password').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('calle').invalid && formulario.get('calle').touched
+              }">Calle:</h2>
+              <input class="input" type="text" formControlName="calle" [ngClass]="{
+                'invalid': formulario.get('calle').invalid && formulario.get('calle').touched
+              }">
+              <div *ngIf="formulario.get('calle').invalid && formulario.get('calle').touched">
+                <div class="validacion" *ngIf="formulario.get('calle').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('altura').invalid && formulario.get('altura').touched
+              }">Altura:</h2>
+              <input class="input" type="number" formControlName="altura" [ngClass]="{
+                'invalid': formulario.get('altura').invalid && formulario.get('altura').touched
+              }">
+              <div *ngIf="formulario.get('altura').invalid && formulario.get('altura').touched">
+                <div class="validacion" *ngIf="formulario.get('altura').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('ph').invalid && formulario.get('ph').touched
+              }">Piso-Departamento-PH:</h2>
+              <input class="input" type="number" formControlName="ph" [ngClass]="{
+                'invalid': formulario.get('ph').invalid && formulario.get('ph').touched
+              }">
+              <div *ngIf="formulario.get('ph').invalid && formulario.get('ph').touched">
+                <div class="validacion" *ngIf="formulario.get('ph').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('cp').invalid && formulario.get('cp').touched
+              }">Codigo Postal:</h2>
+              <input class="input" type="text" formControlName="cp" [ngClass]="{
+                'invalid': formulario.get('cp').invalid && formulario.get('cp').touched
+              }">
+              <div *ngIf="formulario.get('cp').invalid && formulario.get('cp').touched">
+                <div class="validacion" *ngIf="formulario.get('cp').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('ciudad').invalid && formulario.get('ciudad').touched
+              }">Ciudad:</h2>
+              <input class="input" type="text" formControlName="ciudad" [ngClass]="{
+                'invalid': formulario.get('ciudad').invalid && formulario.get('ciudad').touched
+              }">
+              <div *ngIf="formulario.get('ciudad').invalid && formulario.get('ciudad').touched">
+                <div class="validacion" *ngIf="formulario.get('ciudad').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('provincia').invalid && formulario.get('provincia').touched
+              }">Provinica:</h2>
+              <input class="input" type="text" formControlName="provincia" [ngClass]="{
+                'invalid': formulario.get('provincia').invalid && formulario.get('provincia').touched
+              }">
+              <div *ngIf="formulario.get('provincia').invalid && formulario.get('provincia').touched">
+                <div class="validacion" *ngIf="formulario.get('provincia').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <label class="cuadro-texto-ultimo">
+              <h2 [ngClass]="{
+                'invalid': formulario.get('telefono').invalid && formulario.get('telefono').touched
+              }">Teléfono:</h2>
+              <input class="input" type="number" formControlName="telefono" [ngClass]="{
+                'invalid': formulario.get('telefono').invalid && formulario.get('telefono').touched
+              }">
+              <div *ngIf="formulario.get('telefono').invalid && formulario.get('telefono').touched">
+                <div class="validacion" *ngIf="formulario.get('telefono').errors.required">Campo Obligatorio.</div>
+              </div>
+            </label>
+
+            <input class="btn btn-dark" value="ENVIAR">
+
+            <div >
+              <button class="close-button" (click)="cerrarEditarCuenta()"></button>
+            </div>
+
+           </form>
         </div>
-
-      <div class="container-texto">
-        <h2>Apellido</h2>
-        <input class="input" type="text" id="apellido ">
       </div>
-
-      <div class="container-texto" id="texto-largo">
-        <h2>Documento de Identidad</h2>
-        <input class="input" type="number" id="dni">
-      </div>
-
-      <div class="container-texto" id="texto-largo">
-        <h2>Dirección de correo electrónico</h2>
-        <input class="input" type="email" id="email">
-      </div>
-
-      <div class="container-texto" >
-          <h2>Contraseña</h2>
-          <input class="input" type="password" id="password">
-      </div>
-
-      <div class="container-texto">
-        <h2>Calle</h2>
-        <input class="input" type="text" id="dir-calle">
-      </div>
-
-      <div class="container-texto">
-        <h2>Altura</h2>
-        <input class="input" type="number" id="dir_numero" >
-      </div>
-
-      <div class="container-texto" id="texto-largo">
-        <h2>Piso-Departamento-PH</h2>
-        <input class="input" type="text" id="ph">
-      </div>
-
-      <div class="container-texto">
-      <h2>Código Postal</h2>
-        <input class="input" type="number" id="cp">
-      </div>
-
-      <div class="container-texto">
-        <h2>Ciudad</h2>
-        <input class="input" type="text" id="ciudad" >
-      </div>
-
-      <div class="container-texto">
-        <h2>Provincia</h2>
-        <input class="input" type="text" id="provinica">
-      </div>
-
-      <div class="container-texto">
-        <h2>Teléfono</h2>
-        <input class="input" type="tel" id= "tel_cel">
-      </div>
-
-      <div class="boton">
-        <input class="btn btn-dark" value="ENVIAR">
-      </div>
-    </div>
-  </div>
 </div>

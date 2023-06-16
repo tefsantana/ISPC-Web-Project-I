@@ -3,9 +3,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
-from rest_framework import status, generics
-from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
+from rest_framework import status
+from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+from django.forms.models import model_to_dict
+import mercadopago
+import json
 
 # Create your views here.
 
@@ -119,7 +122,7 @@ class ProductoAlCarritoView (View):
 
     def post (self, request):
         pass
-    def delelte (self, request):
+    def delete (self, request):
         pass
     
 class LoginListView(APIView):
@@ -192,6 +195,48 @@ class ProductListView(APIView):
         response_data={'products': lib}
         return JsonResponse(response_data, json_dumps_params={'ensure_ascii': False})
 
+class ProductView(APIView):
+    def get(self, request, id_prod):
+        try:
+            product = Productos.objects.get(id_prod=id_prod)
+            colors = ColoresProductos.objects.filter(id_prod=id_prod)
+            pictures = ImagenesProducto.objects.filter(id_prod=id_prod)
+            tallas_del_producto = TallaDelProducto.objects.filter(id_prod=id_prod)
+            tallas = Talla.objects.filter(id_talle__in = tallas_del_producto.values('id_talle'))
+            talles_disponibles = list(tallas.values_list('inicial_talle', flat=True))
+            a = []
+            b = []
+            for obj in colors:
+                col = obj.id_color.__str__()
+                a.append(col)
+            for obj2 in pictures:
+                img = obj2.img
+                b.append(img)
+            
+            lib = {
+                'nombre': product.nombre,
+                'descripcion':product.desc,
+                'precio': product.precio, 
+                'imagenes': b, 
+                'colores': a, 
+                'tallas': talles_disponibles,
+                'categoria': product.id_cat.__str__()
+            }
+
+        except Productos.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        return Response(lib)
+
+class CategoListView(APIView):
+    def get(self, request):
+        categorias = Categoria.objects.all()
+        serializer = CategoriaSerializer(categorias, many=True)
+        categoriasList = []
+        for categoria in serializer.data:
+            categoriasList.append(categoria['nombre'])
+        return Response(categoriasList)
+    
 class ImgProducView(APIView):
     def get(self, request, id_prod):
         img = ImagenesProducto.objects.filter(id_prod = id_prod)
@@ -258,5 +303,53 @@ class NewsletterView (View):
         newsletter.email = request.POST ["email"]
         newsletter.save()
 
+class ProcessPaymentAPIView(APIView):
+    def post(self, request):
+        try:
+            request_values = json.loads(request.body)
+            payment_data = {
+                "transaction_amount": float(request_values["transaction_amount"]),
+                "token": request_values["token"],
+                "installments": int(request_values["installments"]),
+                "payment_method_id": request_values["issuer_id"],
+                "payer": {
+                    "email": request_values["payer"]["email"],
+                    "identification": {
+                        "type": request_values["payer"]["identification"]["type"],
+                        "number": request_values["payer"]["identification"]["number"],
+                    },
+                },
+            }
 
-        
+            sdk = mercadopago.SDK("ACCESS_TOKEN")
+
+            payment_response = sdk.payment().create(payment_data)
+
+            payment = payment_response["response"]
+            status = {
+                "id": payment["id"],
+                "status": payment["status"],
+                "status_detail": payment["status_detail"],
+            }
+
+            return Response(data={"body": status, "statusCode": payment_response["status"]}, status=201)
+        except Exception as e:
+            return Response(data={"body": payment_response}, status=400)
+
+class retornarPagado(APIView): # Retornar custom json
+    def get(self, request):
+        return Response({"respuesta": "aprobado"})
+    
+class VerUsuarioView(View):
+    def get(self, request):
+        dniRecibido = request.GET.get('dni')
+        usuario = get_object_or_404(Usuario, dni = dniRecibido)  
+        usuario_dict = model_to_dict(usuario)
+        return JsonResponse(usuario_dict)
+
+    def post(self, request):
+        pass
+    def put(self, request):
+        pass
+    def delete(self, request):
+        pass
