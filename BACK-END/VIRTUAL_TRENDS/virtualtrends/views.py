@@ -3,9 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
+from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
 from rest_framework import status
-from .models import Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
 import mercadopago
 import json
 
@@ -194,6 +194,48 @@ class ProductListView(APIView):
         response_data={'products': lib}
         return JsonResponse(response_data, json_dumps_params={'ensure_ascii': False})
 
+class ProductView(APIView):
+    def get(self, request, id_prod):
+        try:
+            product = Productos.objects.get(id_prod=id_prod)
+            colors = ColoresProductos.objects.filter(id_prod=id_prod)
+            pictures = ImagenesProducto.objects.filter(id_prod=id_prod)
+            tallas_del_producto = TallaDelProducto.objects.filter(id_prod=id_prod)
+            tallas = Talla.objects.filter(id_talle__in = tallas_del_producto.values('id_talle'))
+            talles_disponibles = list(tallas.values_list('inicial_talle', flat=True))
+            a = []
+            b = []
+            for obj in colors:
+                col = obj.id_color.__str__()
+                a.append(col)
+            for obj2 in pictures:
+                img = obj2.img
+                b.append(img)
+            
+            lib = {
+                'nombre': product.nombre,
+                'descripcion':product.desc,
+                'precio': product.precio, 
+                'imagenes': b, 
+                'colores': a, 
+                'tallas': talles_disponibles,
+                'categoria': product.id_cat.__str__()
+            }
+
+        except Productos.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        return Response(lib)
+
+class CategoListView(APIView):
+    def get(self, request):
+        categorias = Categoria.objects.all()
+        serializer = CategoriaSerializer(categorias, many=True)
+        categoriasList = []
+        for categoria in serializer.data:
+            categoriasList.append(categoria['nombre'])
+        return Response(categoriasList)
+    
 class ImgProducView(APIView):
     def get(self, request, id_prod):
         img = ImagenesProducto.objects.filter(id_prod = id_prod)
