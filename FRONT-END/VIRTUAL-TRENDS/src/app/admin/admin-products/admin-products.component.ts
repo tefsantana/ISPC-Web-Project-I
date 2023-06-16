@@ -24,7 +24,6 @@ export class AdminProductsComponent implements OnInit {
   public loadProducts() {
     this.GetProductsService.get().subscribe((data: any) => {
       this.products = data.products;
-      console.log(this.products);
     });
   }
 
