@@ -33,7 +33,7 @@ export namespace Products {
         src: string;
     }
 
-    type Colors = null | 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'orange' | 'coral' | 'cyan';
+    type Colors = 'dark-red' | 'dark-green' | 'dark-blue' | 'purple-grey' | 'orange' | 'coral' | 'cyan';
 
     type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 
@@ -42,5 +42,15 @@ export namespace Products {
         description: string;
         colors: Colors[];
         pictures: Pictures[];
+    }
+
+    export interface AdminProduct {
+        nombre: string;
+        descripcion: string;
+        precio: number;
+        colores: Colors[];
+        tallas: Sizes[];
+        imagenes: string[];
+        categoria: string;
     }
 }
