@@ -8,8 +8,11 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
 })
 export class HeaderComponent implements OnInit {
   /*isVisible = false;*/
+  nameLogin: string = 'unUsuario';
+  userLoginOn: boolean = false;
   constructor(private navigationService: NavigationService){}
   ngOnInit(): void {
+    console.log(this.nameLogin, this.userLoginOn)
   }
 
   navigate() {

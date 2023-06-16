@@ -149,7 +149,7 @@ class LoginQueryView(APIView):
         try:
             login = Login.objects.get(email=email, psw=psw)
         except Login.DoesNotExist:
-            return Response("El email y la contraseña son incorrectos", status=status.HTTP_404_NOT_FOUND)
+            return Response({'msj':"El email y la contraseña son incorrectos"}, status=status.HTTP_404_NOT_FOUND)
 
         usuario = Usuario.objects.get(dni=login.dni_id)
         response_data = {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CuentaModule } from 'src/app/cuenta/cuenta.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CuentaModule } from 'src/app/cuenta/cuenta.module';
   ],
   imports: [
     CuentaModule,
+    CommonModule,
   ]
 })
 export class SharedModule { }
