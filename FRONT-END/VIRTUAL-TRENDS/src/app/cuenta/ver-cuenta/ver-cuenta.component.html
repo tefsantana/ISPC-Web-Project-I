@@ -1,8 +1,84 @@
-<p>ver-cuenta works!</p>
-<div *ngIf="showEditarCuenta == false">
-
-
-
-<button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()">EDITA TU PERFIL</button>
+<div class="saludo">
+    <h1>HOLA URIEL!</h1>
+    <p>Te damos la bienvenida a tu perfil.</p>
 </div>
-<app-editar-cuenta *ngIf="showEditarCuenta == true" ></app-editar-cuenta>
+
+<div>  
+
+    <div class="datos-container" *ngIf="showEditarCuenta == false">
+        <h2>INFORMACION DEL USUARIO</h2>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>DNI</h3>
+                <p>44272508</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Nombre</h3>
+                <p>Jorge</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Apellido</h3>
+                <p>Rogelio</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Numero de teléfono</h3>
+                <p>3517329195</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Calle</h3>
+                <p>Avenida Alem</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Dirección</h3>
+                <p>4565</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Codigo Postal</h3>
+                <p>5000</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Ciudad</h3>
+                <p>Córdoba Capital</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>Provincia</h3>
+                <p>Córdoba</p>
+            </div>
+        </div>
+        <div class="dato-element">
+            <div class="dato-content">    
+                <h3>PH</h3>
+                <p>...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <app-editar-cuenta *ngIf="showEditarCuenta == true" ></app-editar-cuenta>
+
+</div>
+
+
+
+
+    
+<button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == false">EDITA TU PERFIL</button>
+<button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == true">DEJAR DE EDITAR</button>
+
+<button type="button" class="btn btn-dark" (click)="navigateToAdmin()" *ngIf="true">ADMIN</button>

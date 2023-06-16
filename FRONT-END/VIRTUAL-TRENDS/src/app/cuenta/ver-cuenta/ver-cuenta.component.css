@@ -1,18 +1,103 @@
 .btn-dark {
+  display: block;
   cursor: pointer;
-  padding: 10px 0px 8px;
-  width: 100%;
+  width: auto;
   background: #3B3D40;
   color: #F7F7F2;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 11px;
   border-radius: 3px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   transition: background-color .5s;
-  margin-left: 25%;
   font-size: 16px;
-  margin-bottom: 10%;
+  margin-top: 1em;
+  margin-left: 25%;
 }
+
 .btn-dark:hover {
   background: #FFFFFF;
   color: #3B3D40;
+}
+
+.btn-dark:active {
+  background: #3B3D40;
+  color: #FFFFFF;
+}
+
+.saludo{
+  width: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.saludo>h1{
+  font-size: 24px;
+  padding: 1px;
+  border-top: 2px solid #575757;
+  border-bottom: 2px solid #575757;
+  width: 15em;
+}
+
+.saludo>p{
+  font-size: 16px;
+  font-family: archivo;
+}
+
+.datos-container{
+  border: 2px solid #575757;
+  border-radius: 6px;
+  padding: 2%;
+  margin-left: 24%;
+  margin-right: 24%;
+  background-color: #F8F8F8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.datos-container>h2{
+  font-size: 20px;
+  border-top: 2px solid #575757;
+  border-bottom: 2px solid #575757;
+  padding: 1px;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+.dato-element{
+  position: relative;
+  width: 25em;
+  height: 2.5em;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  border: 1px solid #575757;
+  background-color: #FFFFFF;
+}
+
+.dato-element> .dato-content{
+  position: relative;
+  font-family: archivo;
+  font-size: 12px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.dato-content>h3{
+  position: absolute;
+  top: -12%;
+  width: 90%;
+  font-size: 12px;
+  background-color: #F7F7F2;
+}
+
+.dato-content>p{
+  font-size: 12px;
 }

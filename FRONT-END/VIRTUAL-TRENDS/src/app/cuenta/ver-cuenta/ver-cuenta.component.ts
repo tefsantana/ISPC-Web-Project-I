@@ -18,8 +18,13 @@ export class VerCuentaComponent {
   closePopUp() {
     this.navigationService.navigateToHome();
   }
+
   showEditarCuentaForm() {
     this.showEditarCuenta = !this.showEditarCuenta;
+  }
+
+  navigateToAdmin(){
+    this.navigationService.navigateToAdmin();
   }
 
 
