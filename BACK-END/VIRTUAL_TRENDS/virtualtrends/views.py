@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+from django.forms.models import model_to_dict
 import mercadopago
 import json
 
@@ -338,3 +339,17 @@ class ProcessPaymentAPIView(APIView):
 class retornarPagado(APIView): # Retornar custom json
     def get(self, request):
         return Response({"respuesta": "aprobado"})
+    
+class VerUsuarioView(View):
+    def get(self, request):
+        dniRecibido = request.GET.get('dni')
+        usuario = get_object_or_404(Usuario, dni = dniRecibido)  
+        usuario_dict = model_to_dict(usuario)
+        return JsonResponse(usuario_dict)
+
+    def post(self, request):
+        pass
+    def put(self, request):
+        pass
+    def delete(self, request):
+        pass
