@@ -29,6 +29,7 @@
             <p class="text-in" *ngIf="showRecoverPassText">Consulte con los administradores del sitio web para que le indiquen cómo proseguir.
                 Puede encontrar nuestras redes sociales en la parte inferior de la página.
             </p>
+            <span class="text-danger text-center">{{loginError}}</span>
             <button type="submit" (click)="login()" class="btn-in">INICIAR SESIÓN</button>
         </form>
         <div class="boton_crear_cuenta">
