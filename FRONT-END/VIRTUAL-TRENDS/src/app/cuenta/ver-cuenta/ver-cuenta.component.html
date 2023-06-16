@@ -1,3 +1,8 @@
 <p>ver-cuenta works!</p>
+<div *ngIf="showEditarCuenta == false">
 
-<button type="button" class="btn btn-dark" (click)="abrirEditarCuenta()">EDITA TU PERFIL</button>
+
+
+<button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()">EDITA TU PERFIL</button>
+</div>
+<app-editar-cuenta *ngIf="showEditarCuenta == true" ></app-editar-cuenta>

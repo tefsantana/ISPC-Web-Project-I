@@ -1,6 +1,4 @@
 <div>
-  <div class="popup-editar-cuenta">
-<!-- <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="formulario"> -->
     <div class="formulario-edicion">
       <h1 class= "editar-cuenta" > EDITA TU PERFIL</h1>
         <div class="container-form col-8">
@@ -152,8 +150,11 @@
 
             <input class="btn btn-dark" value="ENVIAR">
 
-          </form>
+            <div >
+              <button class="close-button" (click)="cerrarEditarCuenta()"></button>
+            </div>
+
+           </form>
         </div>
       </div>
-    </div>
 </div>
