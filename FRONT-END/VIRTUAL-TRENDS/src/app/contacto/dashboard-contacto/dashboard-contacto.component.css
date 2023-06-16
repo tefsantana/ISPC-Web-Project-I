@@ -60,6 +60,7 @@
 }
 
 
+/*
 .popup-box {
     position: absolute;
     width: 50%;
@@ -70,14 +71,15 @@
     margin-bottom: 200px;
     border-radius: 6px;
     padding:20px;
-}
+}*/
 
 .input-container{
     position: relative;
-    height: 40px;
+    height: 2.5rem;
     border: 2px solid #575757;
     border-radius: 3px;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
+    margin-bottom: 1.875rem;
     width: 20%;
 }
 
