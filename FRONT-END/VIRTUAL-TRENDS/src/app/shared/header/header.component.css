@@ -5,7 +5,7 @@ header{
 
 .ca-header {
   background-color: #F7F7F2;
-  padding: 20px 0;
+  padding: 5px 0;
 }
 
 .navbar {
@@ -15,7 +15,7 @@ header{
 }
 
 .navbar-logo {
-  width: 7rem;
+  width: 5rem;
   height: auto;
   margin-right: 1rem;
   margin-left: 1rem;
@@ -46,7 +46,7 @@ header{
   text-decoration: none;
   color: #575757;
   transition: color 0.5s;
-  font-size: 1.1rem; 
+  font-size: 1rem; 
   text-transform: uppercase;
   margin: 0 0.65em;
 }

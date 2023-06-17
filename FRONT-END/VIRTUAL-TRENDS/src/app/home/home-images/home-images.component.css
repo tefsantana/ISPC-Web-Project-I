@@ -16,9 +16,22 @@
 
   .first {
     border-radius: 2%;
-    width: 75%;
+    width: 52%;
     margin-top: 0.2%;
-    margin-bottom: 2%;    
+    margin-bottom: 2%;
+    transition: width 0.3s ease;    
     
   }  
 
+  
+  /*@media (min-width: 1299px) {
+    .first {
+      width: 48%;
+    }
+  }*/
+
+  /*@media (min-width: 2500px) {
+    .first {
+      width: 60%;
+    }
+  }*/
