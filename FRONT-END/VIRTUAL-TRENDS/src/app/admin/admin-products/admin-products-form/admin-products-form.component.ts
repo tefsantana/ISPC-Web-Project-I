@@ -3,6 +3,8 @@ import { GetCategoriesService } from 'src/app/services/admin/getCategories.servi
 import { GetProductService } from 'src/app/services/admin/getProduct.service';
 import { Products } from 'src/app/utils/products';
 import { AdminProductsComponent } from '../admin-products.component';
+import { BehaviorSubject } from 'rxjs';
+import { UserData } from 'src/app/services/auth/userdata';
 
 @Component({
   selector: 'app-admin-products-form',
@@ -13,10 +15,12 @@ export class AdminProductsFormComponent implements OnInit {
 
   @Input() type: string = '';
   @Input() showModifyForm: boolean = false;
+  currentUserData: BehaviorSubject<UserData> = new BehaviorSubject<UserData>({dni:11111111});
   colorsList: Products.Colors[] = ["dark-red", "dark-green", "purple-grey", "orange", "coral", "cyan"];
   sizesList: Products.Sizes[] = ["XS", "S", "M", "L", "XL"];
   id_prod: string = '';
   newProduct: Products.AdminProduct = {
+    dni: this.currentUserData.value.dni,
     nombre: "",
     descripcion: "",
     precio: 0,
@@ -26,6 +30,8 @@ export class AdminProductsFormComponent implements OnInit {
     categoria: ""
   };
   modifiedProduct: Products.AdminProduct = {
+    dni: this.currentUserData.value.dni,
+    id_prod: 0,
     nombre: "",
     descripcion: "",
     precio: 0,
@@ -35,6 +41,7 @@ export class AdminProductsFormComponent implements OnInit {
     categoria: ""
   };
   categorias: string[] = [];
+
 
   constructor(private AdminProduct: GetProductService, private AdminCategories: GetCategoriesService, private AdminParentComponent: AdminProductsComponent) { }
 
@@ -51,6 +58,7 @@ export class AdminProductsFormComponent implements OnInit {
   resetState() {
     // Esta función es para resetear el estado inicial de los inputs para no enviar datos erróneos ya que los datos que se reciben del servicio son solo para mostrar.
     this.modifiedProduct = {
+      dni: this.currentUserData.value.dni,
       nombre: "",
       descripcion: "",
       precio: 0,
@@ -128,7 +136,7 @@ export class AdminProductsFormComponent implements OnInit {
           }
         });
       });
-
+      this.modifiedProduct.id_prod = Number((document.getElementById('id-producto') as HTMLInputElement).value);
       this.modifiedProduct.nombre = (document.getElementById('name-input') as HTMLInputElement).value;
       this.modifiedProduct.descripcion = (document.getElementById('description-input') as HTMLInputElement).value;
       this.modifiedProduct.precio = Number((document.getElementById('price-input') as HTMLInputElement).value);
