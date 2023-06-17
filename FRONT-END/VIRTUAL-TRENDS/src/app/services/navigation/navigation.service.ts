@@ -102,6 +102,10 @@ export class NavigationService {
         this.router.navigate(['/pago'])
     }
 
+    navigateToTYP() {
+        this.router.navigate(['/pago/final'])
+    }
+
     navigateToAdmin() {
         this.router.navigate(['/admin'])
     }

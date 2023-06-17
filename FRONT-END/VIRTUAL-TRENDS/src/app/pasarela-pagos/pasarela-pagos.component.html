@@ -1,10 +1,58 @@
-<div>Pasarela de pagos</div>
-
-
-
-
-
-
-
-
-
+<a (click)="navigateToCarrito()">↩ Volver a Carrito</a>
+<div class="main-container">
+    <h1 class="main-title">PAGO FINAL</h1>
+    <p>¡Estás a un paso de finalizar tu compra!</p>
+    <p>Te pedimos que elijas un método de pago.</p>
+    <h2 style="text-decoration: underline;">MÉTODO DE PAGO</h2>
+    <div class="buttons-container">
+        <div style="display: flex;"><input id="radio-button-tarjeta" type="radio" role="button" class="admin-button" (input)="checkRadioButton($event)"><span>Tarjeta</span></div>
+        <div style="display: flex;"><input id="radio-button-efectivo" type="radio" role="button" class="admin-button" (input)="checkRadioButton($event)"><span>Efectivo</span></div>
+    </div>
+    <div *ngIf="showTarjetaForm">
+        <p><b>IMPORTANTE</b>: Ninguno de los datos que ingreses de tus tarjetas será empleado para otros fines.</p>
+        <div>
+            <img style="width: 90px; height: 50px;" alt="mastercard" src="assets/mastercard.png">
+            <img style="width: 90px; height: 70px; margin-left: 10px;" alt="visa" src="assets/visa.png">
+            <img style="width: 80px; height: 80px; margin-left: 10px;" alt="american express" src="assets/american_express.png">
+            <img style="width: 90px; height: 70px; margin-left: 10px;" alt="naranja" src="assets/naranja.png">
+            <img style="width: 120px; height: 40px; margin-left: 10px;" alt="cabal" src="assets/cabal.png">
+        </div>
+        <form class="short-form">
+            <div>
+                <input type="text" id="card-owner" (input)="validateOwner()" placeholder="Nombre del titular" [ngClass]="[
+                !ownerValidation ? 'form-control is-invalid' : 'form-control is-valid']">
+                <label style="font-size: 12px;">*El titular debe ser el mismo que aparece en la tarjeta.</label>
+                <div *ngIf="!ownerValidation" class="invalid-feedback">El nombre del titular ingresado es incorrecto. Inténtelo nuevamente.</div>
+            </div>
+            <div>
+                <input type="number" min="0" id="card-number" (input)="validateCardNumber()" placeholder="Número de tarjeta" [ngClass]="[
+                    !visaValidation && !masterCardValidation && !americanExpressValidation ? 'form-control is-invalid' : 'form-control is-valid']
+                ">
+                <label style="font-size: 12px;">*Ejemplo: 4000123456789010</label>
+                <div *ngIf="!visaValidation && !masterCardValidation && !americanExpressValidation" class="invalid-feedback">Los números de la tarjeta de crédito ingresados son incorrectos. Inténtelo nuevamente.</div>
+            </div>
+            <div>
+                <input type="number" min="0" onKeyPress="if(this.value.length==3) return false;" id="security-code" (input)="validateSecurityCode()" placeholder="Código de seguridad" [ngClass]="[
+                !securityCodeValidation ? 'form-control is-invalid' : 'form-control is-valid']">
+                <label style="font-size: 12px;">*El código de seguridad (CVV) se encuentra en el dorso de la tarjeta y consta de 3 números.</label>
+                <div *ngIf="!securityCodeValidation" class="invalid-feedback">El código de seguridad (CVV) es incorrecto. Inténtelo nuevamente.</div>
+            </div>
+            <div>
+                <div style="display: flex; gap: 15px;">
+                    <input type="number" id="due-date-m" min="0" onKeyPress="if(this.value.length==2) return false;" (input)="validateDueDateM()" placeholder="MM" [ngClass]="[
+                    !dueDateValidationM ? 'form-control is-invalid' : 'form-control is-valid']">
+                    <span>/</span>
+                    <input type="number" id="due-date-y" min="0" onKeyPress="if(this.value.length==2) return false;" (input)="validateDueDateY()" placeholder="AA" [ngClass]="[
+                    !dueDateValidationY ? 'form-control is-invalid' : 'form-control is-valid']">
+                </div>
+                <label style="font-size: 12px;">*Inserte fecha de vencimiento de la tarjeta.</label>
+            </div>
+            <button type="button" class="pay-button" (click)="navigateToTYP()"  [disabled]="!ownerValidation || (!visaValidation && !masterCardValidation && !americanExpressValidation) || !securityCodeValidation || !dueDateValidationM || !dueDateValidationY">Pagar</button>
+        </form>
+    </div>
+    <div *ngIf="showEfectivoText">
+        <p>Si decide pagar con efectivo lo esperamos en nuestra sucursal única.</p>
+        <p>La sucursal se encuentra abierta desde las 9hs hasta las 18hs de lunes a viernes (no incluye feriados).</p>
+        <p>Proceda a visitarnos en <b>Av. Calle Falsa 123</b>, Ciudad Autónoma de Buenos Aires.</p>
+    </div>
+</div>
