@@ -12,7 +12,6 @@ import { CuentaModule } from './cuenta/cuenta.module';
 import { RegistroComponent } from './cuenta/registro/registro.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { EditarCuentaComponent } from './cuenta/editar-cuenta/editar-cuenta.component';
-import { CarritoModule } from './carrito/carrito.module';
 import { PantallaDelCarritoComponent } from './carrito/pantalla-del-carrito/pantalla-del-carrito.component';
 import { FavoritesComponent } from './favorites/favorites-page/favorites.component';
 import { PasarelaPagosComponent } from './pasarela-pagos/pasarela-pagos.component';
@@ -20,6 +19,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { VerCuentaComponent } from './cuenta/ver-cuenta/ver-cuenta.component';
+import { PagoTypComponent } from './pasarela-pagos/pago-typ/pago-typ.component';
 
 export const routes: Routes = [
   // Redirección por defecto a Home
@@ -42,6 +42,7 @@ export const routes: Routes = [
   { path: 'contacto', component: DashboardContactoComponent },
   { path: 'favoritos', component: FavoritesComponent },
   { path: 'pago', component: PasarelaPagosComponent },
+  { path: 'pago/final', component: PagoTypComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'admin/products', component: AdminProductsComponent },
   { path: 'admin/users', component: AdminUsersComponent },
