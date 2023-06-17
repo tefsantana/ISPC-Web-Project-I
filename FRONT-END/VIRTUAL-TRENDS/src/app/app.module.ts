@@ -17,11 +17,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { CuentaModule } from './cuenta/cuenta.module';
 import { UserCardModule } from './cuenta/user-card/user-card.module';
+import { NosotrosModule } from './nosotros/nosotros.module';
 import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
       /*HeaderComponent,
       FooterComponent*/
    ],
@@ -39,6 +40,7 @@ import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
     AdminModule,
     CuentaModule,
     UserCardModule,
+    NosotrosModule,
     PasarelaPagosModule
   ],
   providers: [],

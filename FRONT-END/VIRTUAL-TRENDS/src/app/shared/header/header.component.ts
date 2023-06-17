@@ -48,4 +48,10 @@ export class HeaderComponent implements OnInit {
   navigateToCarrito(){
     this.navigationService.navigateToCarrito();
   }
+
+  navigateToNosotros(){
+    this.navigationService.navigateToNosotros();
+  }
+
+  
 }

@@ -62,6 +62,15 @@ export class NavigationService {
     }
 
     /**
+     * Navigates to 'Nosotros' landing page.
+     */
+
+    navigateToNosotros(): void {
+        this.router.navigate(['/nosotros']);
+    }
+
+
+    /**
      * Navigates to 'Contacto' landing page.
      */
 
