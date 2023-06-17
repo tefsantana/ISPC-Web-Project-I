@@ -15,17 +15,10 @@ export class DniDataService {
 
 
   recibirDNI(){
-<<<<<<< HEAD
-    //this.loginData.userData.subscribe(currentUser => { 
-      //this.dni.next(currentUser.dni)
-    //})
-    this.dni.next(12345678)
-=======
     this.loginData.userData.subscribe(currentUser => {
       this.dni.next(currentUser.dni)
       //this.dni.next(this.test)
     })
->>>>>>> RochettiUriel-sp4
     return this.dni.asObservable()
   }
 
