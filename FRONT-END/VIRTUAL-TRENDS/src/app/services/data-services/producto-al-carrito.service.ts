@@ -74,7 +74,7 @@ export class ProductoAlCarritoService {
 
     //this.dniData.recibirDNI().subscribe(dniRecibido => {
 
-      //this.http.get<productosCarrito[]>('https://localhost:8000/api/consultar-carrito/?dni=${dniRecibido}').subscribe(carrito=>{
+      //this.http.get<productosCarrito[]>(`https://localhost:8000/api/consultar-carrito/?dni=${dniRecibido}`).subscribe(carrito=>{
        // this.contenidoCarrito=carrito
     //  })
     //})
