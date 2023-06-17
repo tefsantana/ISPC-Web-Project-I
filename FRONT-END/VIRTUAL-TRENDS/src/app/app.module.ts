@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { CuentaModule } from './cuenta/cuenta.module';
 import { UserCardModule } from './cuenta/user-card/user-card.module';
+import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UserCardModule } from './cuenta/user-card/user-card.module';
     ReactiveFormsModule,
     AdminModule,
     CuentaModule,
-    UserCardModule
+    UserCardModule,
+    PasarelaPagosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
