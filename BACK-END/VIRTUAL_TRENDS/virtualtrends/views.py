@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -9,8 +10,8 @@ from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
 from django.forms.models import model_to_dict
-import mercadopago
 import json
+from rest_framework.exceptions import ValidationError
 
 # Create your views here.
 
@@ -276,13 +277,14 @@ class RegistroView(APIView):
         provincia = request.data.get('provincia')
         ph = request.data.get('ph')
 
-        usuario = Usuario(
-            dni=dni, nombre=nombre, apellido=apellido, tel_cel=tel_cel, dir_calle=dir_calle,
-            dir_numero=dir_numero, cp=cp, ciudad=ciudad, provincia=provincia, ph=ph
+        try:
+            usuario = Usuario.objects.create(
+                dni=dni, nombre=nombre, apellido=apellido, tel_cel=tel_cel, dir_calle=dir_calle,
+                dir_numero=dir_numero, cp=cp, ciudad=ciudad, provincia=provincia, ph=ph
             )
-        usuario.save()
-        login = Login(email=email, psw=psw, dni=usuario)
-        login.save()
+            login = Login.objects.create(email=email, psw=psw, dni=usuario)
+        except IntegrityError:
+            raise ValidationError('El email o DNI ya se encuentran en uso.')
 
         return Response({'mensaje': 'Usuario registrado exitosamente'})
 
