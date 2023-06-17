@@ -23,11 +23,7 @@ export class TallaEstandarComponent implements OnInit{
   }
 
   seleccionado: string = ""
-  activos: any[] = [
-    "XL",
-    "L",
-    "M"
-  ]
+  activos: any[] = []
   product_ID: any
   colorSeleccionado: string = ''
   stock: number = 0
@@ -36,9 +32,9 @@ export class TallaEstandarComponent implements OnInit{
     this.productData.recibirDatos("id_producto").subscribe(dato => {
       this.product_ID = dato;
     });
-    //this.recibirTallas.enviarTallasDisponibles().subscribe(tallas => {
-    //  this.activos = tallas
-    //});
+    this.recibirTallas.enviarTallasDisponibles().subscribe(tallas => {
+      this.activos = tallas
+    });
     this.productData.recibirDatos("color").subscribe(dato => {
       this.colorSeleccionado = dato;
     });
