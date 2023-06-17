@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetFavoritesService } from 'src/app/services/products-services/getFavorites.service';
+import { FavoritesService } from 'src/app/services/products-services/favorites.service';
 import { Products } from 'src/app/utils/products';
 
 @Component({
@@ -12,7 +12,7 @@ export class FavoritesComponent implements OnInit {
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
-  constructor(private FavoritesService: GetFavoritesService) {}
+  constructor(private FavoritesService: FavoritesService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
