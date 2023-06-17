@@ -10,19 +10,32 @@
     margin: 0 auto 3.75rem; /* 60px / 16px = 3.75rem */
   }
 
+  .modavirtual-intro p {
+    font-size: 0.90rem;
+  }
+
+  .carrousel-wrapper {
+    margin-bottom: 3em; 
+  }
+
+  .modavirtual-intro {
+    margin-left: 20px; /* Ajusta el valor del margen izquierdo según tus preferencias */
+    margin-right: 20px; /* Ajusta el valor del margen derecho según tus preferencias */
+  }
+
   .modavirtual-intro h2 {
-    font-size: 1.45rem;
+    font-size: 1.30rem;
     text-transform: uppercase; 
   }
   
   .tecnologia-software h2 {
-    font-size: 1.45rem;
+    font-size: 1.20rem;
     text-transform: uppercase;
     /*color: #999;*/
   }
 
   .tecnologia-software h3 {
-    font-size: 1.30rem;
+    font-size: 1.20rem;
     text-transform: uppercase; 
     /*color: #ccc; */
     font-weight: 400;
