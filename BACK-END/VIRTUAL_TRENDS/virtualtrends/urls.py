@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CategoListView, FavoritesView, RetornarPagado, TallaDeProductoView, LoginListView, LoginUpdateView, LoginValidView, ProductListView, ProductView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada, VerUsuarioView, ConsultProductoCarrito, UsuariosView
+from .views import CategoListView, FavoriteChangeView, FavoritesView, RetornarPagado, TallaDeProductoView, LoginListView, LoginUpdateView, LoginValidView, ProductListView, ProductView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada, VerUsuarioView, ConsultProductoCarrito, UsuariosView
 
 urlpatterns = [
     path('talla-de-producto/', TallaDeProductoView.as_view(), name='talle-de-producto'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('products/<int:id_prod>/', ProductView.as_view(), name='product'),
     path('product/imgprod/<int:id_prod>/', ImgProducView.as_view(), name='img-prod'),
     path('favorites/<int:dni>/', FavoritesView.as_view(), name='favorites'),
+    path('favorites/change/', FavoriteChangeView.as_view(), name='favorites-change'),
     path('logup/', RegistroView.as_view(), name='usuarios'), 
     path('producto-al-carrito/', ProductoAlCarritoView.as_view (), name='producto-al-carrito'), 
     path('newsletter/', NewsletterView.as_view(), name='newsletter'),

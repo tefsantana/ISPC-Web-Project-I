@@ -315,6 +315,18 @@ class FavoritesView(APIView):
             
         return Response(serialized_data)
 
+class FavoriteChangeView(APIView):
+    def post(self, request):
+        try:
+            Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
+            return Response({'mensaje': 'Producto eliminado de favoritos'})
+        except:
+            producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+            usuario = Usuario.objects.get(dni=request.data.get('dni'))
+            favorito = Favoritos(id_prod=producto, dni=usuario)
+            favorito.save()
+            return Response({'mensaje': 'Producto agregado a favoritos'})
+
 class NewsletterView (View):
     def post (self, request):
         newsletter = Newsletter()
