@@ -40,3 +40,12 @@
     /*color: #ccc; */
     font-weight: 400;
   }
+
+  #ca-parrafo-video {
+    text-transform: uppercase; 
+    font-weight: 600;
+  }
+
+  .card-video {
+    margin-bottom: 3em;
+  }
