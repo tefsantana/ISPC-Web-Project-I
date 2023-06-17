@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   login(credentials:LoginRequest): Observable<UserData>{
-    return  this.http.get<UserData>('http://127.0.0.1:8000/api/login/query/').pipe(
+    return  this.http.post<UserData>('http://127.0.0.1:8000/api/valid/', credentials).pipe(
       tap((userData: UserData)  => {
         this.currentUserData.next(userData);
         this.currentUserLoginOn.next(true);
@@ -31,7 +31,7 @@ export class LoginService {
     else{
       console.error("Error en backend: "+ error.status + error.error);
     }
-    return throwError(()=> new Error("Algo falló. Por favor intente nuevamente"))
+    return throwError(()=> new Error("Usuario y/o contraseña incorrectos."))
   }
 
   get userData(): Observable<UserData>{
