@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { CuentaModule } from './cuenta/cuenta.module';
 import { UserCardModule } from './cuenta/user-card/user-card.module';
-
+import { NosotrosModule } from './nosotros/nosotros.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { UserCardModule } from './cuenta/user-card/user-card.module';
     ReactiveFormsModule,
     AdminModule,
     CuentaModule,
-    UserCardModule
+    UserCardModule,
+    NosotrosModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
