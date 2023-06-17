@@ -1,0 +1,9 @@
+.carousel-inner {
+    max-height: 100vh;
+  }
+  
+  .carousel-inner img {
+    max-height: 100%;
+    width: auto;
+    margin: 0 auto;
+  }
