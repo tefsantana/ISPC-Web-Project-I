@@ -17,4 +17,5 @@ urlpatterns = [
     path('consultar-carrito', ConsultProductoCarrito.as_view(), name='consultar-carrito'),
     path('product/categorias/', CategoListView.as_view(), name='categorias'),
     path('ver-usuario/', VerUsuarioView.as_view(), name='ver-usuario'),
+    path('users/', UsuariosView.as_view(), name='users')
 ]

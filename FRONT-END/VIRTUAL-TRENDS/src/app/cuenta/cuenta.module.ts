@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginLogupComponent } from './login-logup/login-logup.component';
 import { RegistroComponent } from './registro/registro.component';
@@ -18,6 +18,9 @@ import { VerCuentaComponent } from './ver-cuenta/ver-cuenta.component';
   imports: [
     CommonModule,
     ReactiveFormsModule
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
   ]
 })
 export class CuentaModule { }

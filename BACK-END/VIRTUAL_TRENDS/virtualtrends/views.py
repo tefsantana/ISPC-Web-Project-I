@@ -94,6 +94,15 @@ class UsuarioView (View):
         user.ph = request.POST ["ph"]
         user.save () 
         return redirect ("/")
+
+class UsuariosView(View):
+    def get(self, request):
+        #Get all the users filtering by their id lvl (2 = user)
+        users = Usuario.objects.filter(id_lvl_id = 2)
+        #Transform the users to json
+        users = list(users.values())
+        #Return the json
+        return JsonResponse(users, safe=False, json_dumps_params={'ensure_ascii': False})
     
 class ProductoAlCarritoView (View):
     print("0")
