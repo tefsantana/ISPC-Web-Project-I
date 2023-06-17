@@ -63,4 +63,17 @@
         justify-content: center;
         margin: 1em 1em;
       }
-  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1299px) {
+
+    
+
+}
+
+@media screen and (min-width: 1299px) and (max-width: 2500px) {
+    .main-container{
+        width: 60%;
+    }
+  
+}
