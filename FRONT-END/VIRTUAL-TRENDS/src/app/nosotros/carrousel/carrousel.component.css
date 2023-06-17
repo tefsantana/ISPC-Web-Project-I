@@ -1,0 +1,50 @@
+.ca-tamanio-img{
+    height: 600px;
+}
+
+.carousel-item img {
+    border-radius: 5px;
+}
+
+.carousel-item:nth-child(2) img,
+.carousel-item:nth-child(3) img {
+  width: 80%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(270deg) brightness(100%) contrast(100%);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  color: #575757;
+  background-color: transparent;
+  opacity: 0.8;
+}
+
+.carousel-control-prev:focus,
+.carousel-control-next:focus {
+  outline: none;
+}
+
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+  content: '';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23575757' viewBox='0 0 8 8'%3e%3cpath d='M5.3 0.3c-0.2-0.2-0.5-0.2-0.7 0L1 3.6c-0.2 0.2-0.2 0.5 0 0.7l3.7 3.3c0.2 0.2 0.5 0.2 0.7 0s0.2-0.5 0-0.7L2.4 4l2.9-2.6C5.5 0.8 5.5 0.5 5.3 0.3z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+}
+
+.carousel-control-next-icon:before {
+  content: '';
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23575757' viewBox='0 0 8 8'%3e%3cpath d='M5.7 4.3c0.2-0.2 0.2-0.5 0-0.7L2.1 0.3C1.9 0.1 1.6 0.1 1.4 0.3L0.3 1.4C0.1 1.6 0.1 1.9 0.3 2.1L3.6 5.4L0.3 8.7C0.1 8.9 0.1 9.2 0.3 9.4L1.4 10.5c0.2 0.2 0.5 0.2 0.7 0l3.3-3.3c0.2-0.2 0.2-0.5 0-0.7L5.7 4.3z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: #575757;
+  opacity: 1;
+}
