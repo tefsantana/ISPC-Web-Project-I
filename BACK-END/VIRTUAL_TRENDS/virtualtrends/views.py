@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
@@ -353,9 +354,9 @@ class ProcessPaymentAPIView(APIView):
         except Exception as e:
             return Response(data={"body": payment_response}, status=400)
 
-class retornarPagado(APIView): # Retornar custom json
+class RetornarPagado(APIView): # Retornar custom json
     def get(self, request):
-        return Response({"respuesta": "aprobado"})
+        return Response({"transaccion": "aprobada"}, status=status.HTTP_200_OK)
     
 class VerUsuarioView(View):
     def get(self, request):
