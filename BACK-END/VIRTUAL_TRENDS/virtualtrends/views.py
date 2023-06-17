@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
 from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
@@ -22,57 +23,44 @@ class TallaDeProductoView(View):
 
 
     def post(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
 class CrearTallaPersonalizada(View):
     def get(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def post(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        
+        permission_classes = [AllowAny]
         talla = request.data
         dni_entrante = talla['dni']
 
-        talla_personalizada = get_object_or_404(TallesPersonalizados, dni = dni_entrante)
+        talla_personalizada, created = TallesPersonalizados.objects.get_or_create(dni = dni_entrante)
+        talla_personalizada.cuello = talla['cuello']
+        talla_personalizada.busto = talla['busto']
+        talla_personalizada.con_rodilla = talla['conRodilla']
+        talla_personalizada.larg_talle = talla['largTalle']
+        talla_personalizada.con_cintura = talla['conCintura']
+        talla_personalizada.con_cadera = talla['conCadera']
+        talla_personalizada.larg_manga = talla['largManga']
+        talla_personalizada.con_muneca = talla['conMuneca']
+        talla_personalizada.larg_pierna = talla['largPierna']
+        talla_personalizada.altura_rodilla = talla['alturaRodilla']
 
-        if talla_personalizada:
-            talla_personalizada.cuello = ['cuello']
-            talla_personalizada.busto = ['busto']
-            talla_personalizada.con_rodilla = ['conRodilla']
-            talla_personalizada.larg_talle = ['largTalle']
-            talla_personalizada.con_cintura = ['conCintura']
-            talla_personalizada.con_cadera = ['conCadera']
-            talla_personalizada.larg_manga = ['largManga']
-            talla_personalizada.con_muneca = ['conMuneca']
-            talla_personalizada.larg_pierna = ['largPierna']
-            talla_personalizada.altura_rodilla = ['alturaRodilla']
-        else:
-            talla_personalizada = TallesPersonalizados(
-                cuello = talla['cuello'],
-                busto = talla['busto'],
-                con_rodilla = talla['conRodilla'],
-                larg_talle = talla['largTalle'],
-                con_cintura = talla['conCintura'],
-                con_cadera = talla['conCadera'],
-                larg_manga = talla['largManga'],
-                con_muneca = talla['conMuneca'],
-                larg_pierna = talla['largPierna'],
-                altura_rodilla = talla['alturaRodilla'],
-                dni = talla['dni']
-            )
-        
         talla_personalizada.save()
 
-        return Response({'message': 'Talle personalizado creado/actualizado con éxito'}, status=status.HTTP_201_CREATED)
+        if created:
+            return Response({'message': 'Talle personalizado creado con éxito'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'message':'Talle personalizado actualizado cone éxito'}, status=status.HTTP_200_OK)
 
 
     def delete(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 class UsuarioView (View):
@@ -106,8 +94,7 @@ class UsuariosView(View):
     
 class ProductoAlCarritoView (View):
     def get (self, request):
-
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
     def put (self, request):
 
@@ -131,10 +118,10 @@ class ProductoAlCarritoView (View):
         producto_en_carrito.save()
 
     def post (self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete (self, request):
-        pass
-
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
 class LoginListView(APIView):
     def get(self, request):
         logins = Login.objects.all()
@@ -354,12 +341,12 @@ class VerUsuarioView(View):
     def get(self, request):
         dniRecibido = request.GET.get('dni')
         usuario = get_object_or_404(Usuario, dni = dniRecibido)  
-        usuario_dict = model_to_dict(usuario)
-        return JsonResponse(usuario_dict)
+        return JsonResponse(usuario, status=status.HTTP_200_OK)
+    
 
     def post(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
