@@ -1,6 +1,7 @@
 #ENTORNO-VIRTUAL
 env/
 CAenv/
+BACK-END/VIRTUAL_TRENDS/CApipenv/
 
 #PYTHON ARCHIVOS 
 __pycache__/
