@@ -1,59 +1,107 @@
-*{
-    font-family: 'Josefin Sans', sans-serif;
+* {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 
 .carrito {
-    text-align: center;
-    border: 2px solid #3b3d40;
-    border-radius: 3%;
-    padding: 20px;
-    width: 450px;
-    transform: translate(-50%, -0%);
-    margin-top: 1%;
-    margin-left: 50%;
-  }
-  
-  .titulo{
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    font-weight: 400;
-    font-size: 54 bold;
-    border-top-color: #3b3d40;
-    border-bottom-color: #3b3d40;
-    size: 500px;
-  }
-  .lista {
-    background-color: #F7F7F2;
-    border: 1px solid #575757;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 3%;
-  }
-  
-  .subtotal {
-    background-color: #F7F7F2;
-    color: #3b3d40;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 3%;
-  }
-  
-  .volver {
-    margin-top: 20px;
-    border-radius: 3%;
-  }
-  
-  button {
-    background-color: #F7F7F2;
-    border: 2px solid #3b3d40;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 3%;
-  }
-  
-  button:hover {
-    background-color: #575757;
-    color: #F7F7F2;
-  }
-  
+  text-align: center;
+  border: 2px solid #3b3d40;
+  border-radius: 15px;
+  padding: 20px;
+  width: 60%;
+  transform: translate(-50%, -0%);
+  margin-top: 2%;
+  margin-left: 50%;
+  margin-bottom: 10%;
+}
+
+.titulo {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-top-color: #3b3d40;
+  border-bottom-color: #3b3d40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0rem;
+}
+
+.titulo>h1 {
+  font-weight: 700;
+  font-size: 54;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lista {
+  background-color: #F7F7F2;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.subtotal {
+  background-color: #F7F7F2;
+  color: #3b3d40;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 3%;
+  font-size: 24px;
+}
+
+.volver {
+  margin-top: 20px;
+  border-radius: 3%;
+}
+
+button {
+  background-color: #F7F7F2;
+  border: 2px solid #3b3d40;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 3%;
+}
+
+button:hover {
+  background-color: #575757;
+  color: #F7F7F2;
+}
+
+
+.ngFOR {
+  border: 1px solid #3b3d40;
+  border-radius: 15px;
+  height: 20rem;
+  display: flex;
+  padding: 1rem;
+}
+
+.subtitulo {
+  margin-top: 0.5rem;
+}
+
+
+.imagen{
+  width:auto;
+  height: 100%;
+}
+
+.p{
+  font-size: 25px;
+  text-align: center;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+

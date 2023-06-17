@@ -14,9 +14,10 @@ export class DniDataService {
 
 
   recibirDNI(){
-    this.loginData.userData.subscribe(currentUser => {
-      this.dni.next(currentUser.dni)
-    })
+    //this.loginData.userData.subscribe(currentUser => { 
+      //this.dni.next(currentUser.dni)
+    //})
+    this.dni.next(12345678)
     return this.dni.asObservable()
   }
 

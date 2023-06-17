@@ -96,18 +96,22 @@ class UsuarioView (View):
         return redirect ("/")
     
 class ProductoAlCarritoView (View):
+    print("0")
     def get (self, request):
+        print("1")
         pass
     
-    def put (self, request):
+    def post (self, request):
 
         dni = request.data.get('id_usuario')
         try:
             carrito = Carrito.objects.get(dni=dni)
             id_car = carrito.id_car
+            print("2")
         except Carrito.DoesNotExist:
             carrito = Carrito.objects.create(dni=dni)
             id_car = carrito.id_car
+            print("3")
 
         producto_en_carrito = ProductosEnCarrito(
             id_prod=request.data.get('id_producto'),
@@ -119,10 +123,13 @@ class ProductoAlCarritoView (View):
         )
 
         producto_en_carrito.save()
+        print("4")
 
-    def post (self, request):
+    def put (self, request):
+        print("dsnkjaldhajbs")
         pass
     def delete (self, request):
+        print("6")
         pass
 
 class ConsultProductoCarrito(View):

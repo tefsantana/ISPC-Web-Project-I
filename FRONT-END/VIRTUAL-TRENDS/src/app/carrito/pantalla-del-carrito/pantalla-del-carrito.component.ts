@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoAlCarritoService } from '../../services/data-services/producto-al-carrito.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { PicturesComponent } from 'src/app/products/dashboard-individual-product/pictures/pictures.component';
 type productosCarrito={ 
   id_prod: number,
   id_car: number,
@@ -18,9 +19,19 @@ type productosCarrito={
 export class PantallaDelCarritoComponent implements OnInit {
   productos: productosCarrito[]=[];
 
-  constructor(private productosCarrito: ProductoAlCarritoService, private navigation: NavigationService) { }
+  constructor(public productosCarrito: ProductoAlCarritoService, private navigation: NavigationService) { }
 
-  ngOnInit(): void {}
+
+
+  ngOnInit(): void {
+
+
+
+  }
+
+
+
+  
 
 
   navigate() {
