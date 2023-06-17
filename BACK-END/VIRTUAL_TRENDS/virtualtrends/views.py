@@ -355,3 +355,33 @@ class VerUsuarioView(View):
         pass
     def delete(self, request):
         pass
+
+class AddProductView(APIView):
+    def post(self, request):
+        #Datos para models Productos
+        nombre = request.data.get('nombre')
+        desc = request.data.get('descripcion')
+        stock = 100
+        precio = request.data.get('precio')
+        id_cat = Categoria.objects.get(nombre = request.data.get('categoria'))
+        #Datos para model ImagenesProducto
+        imgs = request.data.get('imagenes')
+        #Datos para el model ColoresProductos
+        colors = request.data.get('colores')
+        #Datos para el model TallaDelProducto
+        size = request.data.get('tallas')
+
+        try: 
+            addprod = Productos.objects.create(nombre=nombre, precio=precio, id_cat=id_cat, stock=stock, desc=desc)
+            for list in imgs:
+                ImagenesProducto.objects.create(img=list, id_prod=addprod.id_prod)
+            for list in colors:
+                colores = Colores.objects.get(nombre = list)
+                addcolor = ColoresProductos.objects.create(id_color = colores.id_color, id_prod=addprod.id_prod)
+            for list in size:
+                tallas = Talla.objects.get(inicial_talle = list)
+                addtalle = TallaDelProducto.objects.create(id_talle=tallas.id_talle, id_prod=addprod.id_prod)
+        except:
+            return Response({'error' : 'Uno o varios de los datos no son validos'})
+        
+        return Response({'message' : 'Se agrego el producto correctamente.'})
