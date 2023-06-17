@@ -58,3 +58,17 @@ header{
   font-weight: 600;
   cursor: pointer;
 }
+
+@media screen and (min-width: 1599px) and (max-width: 2500px) {
+
+  .navbar-logo {
+    width: 7rem;
+    height: auto;
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
+  }
+  .ca-header .navbar-nav .nav-link {
+    font-size: 20px; /* Tamaño de fuente personalizado */
+  }
+
+}
