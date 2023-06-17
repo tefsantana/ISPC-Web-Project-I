@@ -25,7 +25,7 @@
 
   @media (max-width: 768px) {
     .first {
-      width: 80%;
+      width: 70%;
     }
   
   }
@@ -33,12 +33,20 @@
   @media screen and (min-width: 768px) and (max-width: 1299px) {
 
     .first {
-      width: 65%;
+      width: 63%;
     }
 
   }
 
-  @media screen and (min-width: 1299px) and (max-width: 2500px) {
+  @media screen and (min-width: 1299px) and (max-width: 1599px) {
+
+    .first {
+      width: 52%;
+    }
+
+  }
+
+  @media screen and (min-width: 1599px) and (max-width: 2500px) {
 
     .first {
       width: 50%;
