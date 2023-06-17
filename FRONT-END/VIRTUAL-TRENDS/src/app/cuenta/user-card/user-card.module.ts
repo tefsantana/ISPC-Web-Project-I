@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserCardComponent } from './user-card.component';
 
@@ -6,6 +6,10 @@ import { UserCardComponent } from './user-card.component';
   imports: [
     CommonModule
   ],
-  declarations: [UserCardComponent]
+  declarations: [UserCardComponent],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ],
+  exports: [UserCardComponent]
 })
 export class UserCardModule { }
