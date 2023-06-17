@@ -15,10 +15,12 @@ import { FormsModule } from '@angular/forms';
 import { FavoritesModule } from './favorites/favorites.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NosotrosComponent
       /*HeaderComponent,
       FooterComponent*/
    ],
