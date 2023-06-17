@@ -7,13 +7,17 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { ProductsModule } from '../products/products.module';
 import { AdminProductsFormComponent } from './admin-products/admin-products-form/admin-products-form.component';
+import { CuentaModule } from '../cuenta/cuenta.module';
+import { UserCardModule } from '../cuenta/user-card/user-card.module';
 @NgModule({
   imports: [
     CommonModule,
     RouterLink,
     RouterModule,
     AppRoutingModule,
-    ProductsModule
+    ProductsModule,
+    CuentaModule,
+    UserCardModule
   ],
   declarations: [AdminComponent, AdminProductsComponent, AdminUsersComponent, AdminProductsFormComponent],
   schemas: [

@@ -1,0 +1,8 @@
+<div class="users-container">
+  <div *ngFor="let user of users; odd as isOdd; even as isEven;" class="card-container" [ngClass]="{'odd': isOdd, 'even': isEven}" class="card-container">
+    <div class="text-container">
+      <span class="title">{{user['nombre'] + ' ' + user['apellido']}}</span>
+      <p class="dni">DNI: <b>{{user['dni']}}</b></p>
+    </div>
+  </div>
+</div>

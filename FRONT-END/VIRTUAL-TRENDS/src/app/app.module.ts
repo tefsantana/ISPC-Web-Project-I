@@ -15,10 +15,14 @@ import { FormsModule } from '@angular/forms';
 import { FavoritesModule } from './favorites/favorites.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
+import { CuentaModule } from './cuenta/cuenta.module';
+import { UserCardModule } from './cuenta/user-card/user-card.module';
+import { NosotrosModule } from './nosotros/nosotros.module';
+import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
       /*HeaderComponent,
       FooterComponent*/
    ],
@@ -34,6 +38,10 @@ import { AdminModule } from './admin/admin.module';
     FavoritesModule,
     ReactiveFormsModule,
     AdminModule,
+    CuentaModule,
+    UserCardModule,
+    NosotrosModule,
+    PasarelaPagosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
