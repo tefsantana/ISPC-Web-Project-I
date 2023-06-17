@@ -1,16 +1,5 @@
 <div class="container-principal">
   <h1 class="administrar-usuario">ADMINISTRAR USUARIOS</h1>
-  <div class="admin-container">
-    <h2>Listado de Usuarios</h2>
-    <div class="container-card">
-
-    </div>
-
-
-
-
-  </div>
-
   <div class="eliminar">
     <button class="boton-admin" (click)="showForm('delete')">ELIMINAR USUARIO</button>
     <div class="container-eliminar" *ngIf="formType === 'delete'">
@@ -22,5 +11,11 @@
       </form>
     </div>
   </div>
-
+  <div class="admin-container">
+    <h2>Listado de Usuarios</h2>
+    <div class="container-card">
+      <p style="margin-top: 30px;"><b>IMPORTANTE</b>: Los usuarios presentados no incluyen admins.</p>
+      <app-user-card [users]="users"></app-user-card>
+    </div>
+  </div>
 </div>
