@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { VerCuentaComponent } from './cuenta/ver-cuenta/ver-cuenta.component';
+import { NosotrosModule } from './nosotros/nosotros.module';
 import { NosotrosDashboardComponent } from './nosotros/nosotros-dashboard/nosotros-dashboard.component';
 
 export const routes: Routes = [
