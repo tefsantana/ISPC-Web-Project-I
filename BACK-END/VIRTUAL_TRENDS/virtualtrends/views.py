@@ -296,7 +296,7 @@ class RegistroView(APIView):
             )
             login = Login.objects.create(email=email, psw=psw, dni=usuario)
         except IntegrityError:
-            raise ValidationError('El email o DNI ya se encuentran en uso.')
+            raise ValidationError({'error': 'El email o DNI ya se encuentran en uso.'})
 
         return Response({'mensaje': 'Usuario registrado exitosamente'})
 
@@ -416,14 +416,14 @@ class AddProductView(APIView):
         try: 
             addprod = Productos.objects.create(nombre=nombre, precio=precio, id_cat=id_cat, stock=stock, desc=desc)
             for list in imgs:
-                ImagenesProducto.objects.create(img=list, id_prod=addprod.id_prod)
+                ImagenesProducto.objects.create(img=list, id_prod=addprod)
             for list in colors:
                 colores = Colores.objects.get(nombre = list)
-                addcolor = ColoresProductos.objects.create(id_color = colores.id_color, id_prod=addprod.id_prod)
+                addcolor = ColoresProductos.objects.create(id_color = colores, id_prod=addprod)
             for list in size:
                 tallas = Talla.objects.get(inicial_talle = list)
-                addtalle = TallaDelProducto.objects.create(id_talle=tallas.id_talle, id_prod=addprod.id_prod)
-        except:
-            return Response({'error' : 'Uno o varios de los datos no son validos'})
+                addtalle = TallaDelProducto.objects.create(id_talle=tallas, id_prod=addprod)
+        except Exception as e:
+            return Response({'error' : str(e)})
         
         return Response({'message' : 'Se agrego el producto correctamente.'})

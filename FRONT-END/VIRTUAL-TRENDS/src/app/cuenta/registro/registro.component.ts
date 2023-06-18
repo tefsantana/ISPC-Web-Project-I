@@ -40,7 +40,7 @@ export class RegistroComponent {
           },
           error:(logupmsj)=>{
             console.error(logupmsj);
-            this.regerror = logupmsj.error;
+            this.regerror = logupmsj.error.error;
           },
           complete:()=>{
             console.info("Registro satisfactorio");
