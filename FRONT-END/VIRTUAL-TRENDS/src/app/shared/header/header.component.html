@@ -29,7 +29,7 @@
             <li *ngIf="!userLoginOn" class="nav-item" (click)="navigateToCuenta()">
               <a class="nav-link">Cuenta</a>
             </li>
-            <li *ngIf="userLoginOn" class="nav-item">
+            <li *ngIf="userLoginOn" class="nav-item" (click)="navigateToUsuario()">
               <a class="nav-link">{{nameLogin}}</a>
             </li>
           </ul>

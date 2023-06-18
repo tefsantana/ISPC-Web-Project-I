@@ -1,14 +1,17 @@
+from django.db import IntegrityError
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
 from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
 from django.forms.models import model_to_dict
-import mercadopago
 import json
+from rest_framework.exceptions import ValidationError
 
 # Create your views here.
 
@@ -22,57 +25,44 @@ class TallaDeProductoView(View):
 
 
     def post(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
 class CrearTallaPersonalizada(View):
     def get(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def post(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        
+        permission_classes = [AllowAny]
         talla = request.data
         dni_entrante = talla['dni']
 
-        talla_personalizada = get_object_or_404(TallesPersonalizados, dni = dni_entrante)
+        talla_personalizada, created = TallesPersonalizados.objects.get_or_create(dni = dni_entrante)
+        talla_personalizada.cuello = talla['cuello']
+        talla_personalizada.busto = talla['busto']
+        talla_personalizada.con_rodilla = talla['conRodilla']
+        talla_personalizada.larg_talle = talla['largTalle']
+        talla_personalizada.con_cintura = talla['conCintura']
+        talla_personalizada.con_cadera = talla['conCadera']
+        talla_personalizada.larg_manga = talla['largManga']
+        talla_personalizada.con_muneca = talla['conMuneca']
+        talla_personalizada.larg_pierna = talla['largPierna']
+        talla_personalizada.altura_rodilla = talla['alturaRodilla']
 
-        if talla_personalizada:
-            talla_personalizada.cuello = ['cuello']
-            talla_personalizada.busto = ['busto']
-            talla_personalizada.con_rodilla = ['conRodilla']
-            talla_personalizada.larg_talle = ['largTalle']
-            talla_personalizada.con_cintura = ['conCintura']
-            talla_personalizada.con_cadera = ['conCadera']
-            talla_personalizada.larg_manga = ['largManga']
-            talla_personalizada.con_muneca = ['conMuneca']
-            talla_personalizada.larg_pierna = ['largPierna']
-            talla_personalizada.altura_rodilla = ['alturaRodilla']
-        else:
-            talla_personalizada = TallesPersonalizados(
-                cuello = talla['cuello'],
-                busto = talla['busto'],
-                con_rodilla = talla['conRodilla'],
-                larg_talle = talla['largTalle'],
-                con_cintura = talla['conCintura'],
-                con_cadera = talla['conCadera'],
-                larg_manga = talla['largManga'],
-                con_muneca = talla['conMuneca'],
-                larg_pierna = talla['largPierna'],
-                altura_rodilla = talla['alturaRodilla'],
-                dni = talla['dni']
-            )
-        
         talla_personalizada.save()
 
-        return Response({'message': 'Talle personalizado creado/actualizado con éxito'}, status=status.HTTP_201_CREATED)
+        if created:
+            return Response({'message': 'Talle personalizado creado con éxito'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'message':'Talle personalizado actualizado cone éxito'}, status=status.HTTP_200_OK)
 
 
     def delete(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 class UsuarioView (View):
@@ -105,19 +95,21 @@ class UsuariosView(View):
         return JsonResponse(users, safe=False, json_dumps_params={'ensure_ascii': False})
     
 class ProductoAlCarritoView (View):
+    print("0")
     def get (self, request):
-
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
-    def put (self, request):
+    def post (self, request):
 
         dni = request.data.get('id_usuario')
         try:
             carrito = Carrito.objects.get(dni=dni)
             id_car = carrito.id_car
+            print("2")
         except Carrito.DoesNotExist:
             carrito = Carrito.objects.create(dni=dni)
             id_car = carrito.id_car
+            print("3")
 
         producto_en_carrito = ProductosEnCarrito(
             id_prod=request.data.get('id_producto'),
@@ -129,12 +121,41 @@ class ProductoAlCarritoView (View):
         )
 
         producto_en_carrito.save()
+        print("4")
 
-    def post (self, request):
-        pass
+    def put (self, request):
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete (self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+class ConsultProductoCarrito(APIView):
+    def get(self, request, dni):
+        carrito = Carrito.objects.filter(dni=dni, concretado=False).first()
+
+        if carrito:
+            products = []
+            productos_en_carrito = ProductosEnCarrito.objects.filter(id_car=carrito.id_car)
+            for list in productos_en_carrito:  
+                products.append({
+                    'id_prod': list.id_prod.id_prod,
+                    'id_car': list.id_car.id_car,
+                    'nombre': list.id_prod.nombre,
+                    'precio': list.id_prod.precio,
+                    'cantidad': list.cantidad,
+                    'talla': list.talla,
+                    'color': list.color,
+                    'espersonalizado': list.espersonalizado
+                })
+
+            return Response(products)
+        return Response({'error': 'Aun no tienes articulos en tu carrito'}, status=status.HTTP_404_NOT_FOUND)
+    def put (self, request):
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    def post (self, request):
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    def delete (self, request):
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
 class LoginListView(APIView):
     def get(self, request):
         logins = Login.objects.all()
@@ -268,13 +289,14 @@ class RegistroView(APIView):
         provincia = request.data.get('provincia')
         ph = request.data.get('ph')
 
-        usuario = Usuario(
-            dni=dni, nombre=nombre, apellido=apellido, tel_cel=tel_cel, dir_calle=dir_calle,
-            dir_numero=dir_numero, cp=cp, ciudad=ciudad, provincia=provincia, ph=ph
+        try:
+            usuario = Usuario.objects.create(
+                dni=dni, nombre=nombre, apellido=apellido, tel_cel=tel_cel, dir_calle=dir_calle,
+                dir_numero=dir_numero, cp=cp, ciudad=ciudad, provincia=provincia, ph=ph
             )
-        usuario.save()
-        login = Login(email=email, psw=psw, dni=usuario)
-        login.save()
+            login = Login.objects.create(email=email, psw=psw, dni=usuario)
+        except IntegrityError:
+            raise ValidationError({'error': 'El email o DNI ya se encuentran en uso.'})
 
         return Response({'mensaje': 'Usuario registrado exitosamente'})
 
@@ -306,6 +328,18 @@ class FavoritesView(APIView):
             })
             
         return Response(serialized_data)
+
+class FavoriteChangeView(APIView):
+    def post(self, request):
+        try:
+            Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
+            return Response({'mensaje': 'Producto eliminado de favoritos'})
+        except:
+            producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+            usuario = Usuario.objects.get(dni=request.data.get('dni'))
+            favorito = Favoritos(id_prod=producto, dni=usuario)
+            favorito.save()
+            return Response({'mensaje': 'Producto agregado a favoritos'})
 
 class NewsletterView (View):
     def post (self, request):
@@ -346,20 +380,63 @@ class ProcessPaymentAPIView(APIView):
         except Exception as e:
             return Response(data={"body": payment_response}, status=400)
 
-class retornarPagado(APIView): # Retornar custom json
+class RetornarPagado(APIView): # Retornar custom json
     def get(self, request):
-        return Response({"respuesta": "aprobado"})
+        return Response({"transaccion": "aprobada"}, status=status.HTTP_200_OK)
     
 class VerUsuarioView(View):
     def get(self, request):
         dniRecibido = request.GET.get('dni')
         usuario = get_object_or_404(Usuario, dni = dniRecibido)  
-        usuario_dict = model_to_dict(usuario)
-        return JsonResponse(usuario_dict)
+        usuario_data = {
+            'dni': usuario.dni,
+            'nombre': usuario.nombre,
+            'apellido': usuario.apellido,
+            'tel_cel': usuario.tel_cel,
+            'dir_calle': usuario.dir_calle,
+            'dir_numero': usuario.dir_numero,
+            'cp': usuario.cp,
+            'ciudad': usuario.ciudad,
+            'provincia': usuario.provincia,
+            'ph': usuario.ph,
+            'id_lvl': usuario.id_lvl.id_lvl
+        }
+        return JsonResponse(usuario_data, status=status.HTTP_200_OK, safe=False)
+    
 
     def post(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete(self, request):
-        pass
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+class AddProductView(APIView):
+    def post(self, request):
+        #Datos para models Productos
+        nombre = request.data.get('nombre')
+        desc = request.data.get('descripcion')
+        stock = 100
+        precio = request.data.get('precio')
+        id_cat = Categoria.objects.get(nombre = request.data.get('categoria'))
+        #Datos para model ImagenesProducto
+        imgs = request.data.get('imagenes')
+        #Datos para el model ColoresProductos
+        colors = request.data.get('colores')
+        #Datos para el model TallaDelProducto
+        size = request.data.get('tallas')
+
+        try: 
+            addprod = Productos.objects.create(nombre=nombre, precio=precio, id_cat=id_cat, stock=stock, desc=desc)
+            for list in imgs:
+                ImagenesProducto.objects.create(img=list, id_prod=addprod)
+            for list in colors:
+                colores = Colores.objects.get(nombre = list)
+                addcolor = ColoresProductos.objects.create(id_color = colores, id_prod=addprod)
+            for list in size:
+                tallas = Talla.objects.get(inicial_talle = list)
+                addtalle = TallaDelProducto.objects.create(id_talle=tallas, id_prod=addprod)
+        except Exception as e:
+            return Response({'error' : str(e)})
+        
+        return Response({'message' : 'Se agrego el producto correctamente.'})

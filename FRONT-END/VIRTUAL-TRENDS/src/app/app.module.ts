@@ -19,6 +19,7 @@ import { CuentaModule } from './cuenta/cuenta.module';
 import { UserCardModule } from './cuenta/user-card/user-card.module';
 import { NosotrosModule } from './nosotros/nosotros.module';
 import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
+import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
     CuentaModule,
     UserCardModule,
     NosotrosModule,
-    PasarelaPagosModule
+    PasarelaPagosModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

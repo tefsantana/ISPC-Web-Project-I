@@ -27,7 +27,7 @@
     padding: 10px 30px 0px;
 }
 
-h2 {
+h2, h3 {
   text-align: center;
   text-decoration: underline;
 }
@@ -57,5 +57,17 @@ h2 {
 
 .boton-admin:hover {
   background: black;
+}
+
+.input-error {
+  border-color: #BB7A80;
+}
+
+.validacion{
+    color:#BB7A80;
+    font-size: 12px;
+}
+h3.invalid {
+    color: #BB7A80;
 }
 

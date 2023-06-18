@@ -7,7 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EditarCuentaComponent {
   formulario: any;
-  constructor(private formBuilder: FormBuilder) {
+  public mensajeEnviado: boolean = false;
+  constructor(private formBuilder: FormBuilder, ) {
   }
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -29,6 +30,7 @@ export class EditarCuentaComponent {
       event.preventDefault();
       if(this.formulario.valid){
         alert("enviando")
+        this.mensajeEnviado = true;
       }
       else{
         this.formulario.markAllAsTouched()

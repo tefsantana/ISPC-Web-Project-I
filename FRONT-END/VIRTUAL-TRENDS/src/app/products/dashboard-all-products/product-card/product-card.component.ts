@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { Products } from 'src/app/utils/products';
 import { ProductDataService } from 'src/app/services/data-services/product-data.service';
+import { FavoritesService } from 'src/app/services/products-services/favorites.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,7 +15,7 @@ export class ProductCardComponent implements OnInit {
   @Input() hasAmount: boolean = false;
   @Input() disabledRedirect: boolean = false;
 
-  constructor(private navigationService: NavigationService, private productData: ProductDataService) {
+  constructor(private navigationService: NavigationService, private productData: ProductDataService, private favoritesService: FavoritesService) {
   }
 
   ngOnInit() {
@@ -44,6 +45,10 @@ export class ProductCardComponent implements OnInit {
     this.products.forEach((product: Products.Product) => {
       if (product.id === Number(e.target.id.replace(/[^0-9]/g, ''))) {
         product.favorite = !product.favorite;
+        this.favoritesService.post({"dni": 11111111, "id_prod": product.id}).subscribe((data: any) => {
+          console.log(data);
+        }
+        );
       }
     });
   }
