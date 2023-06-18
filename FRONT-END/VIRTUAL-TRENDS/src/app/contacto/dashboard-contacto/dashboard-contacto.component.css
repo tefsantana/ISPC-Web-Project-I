@@ -1,26 +1,40 @@
- * { margin: 0;
-    padding: 0;
-    font-family: 'Archivo', sans-serif;
-}
-  
-
 .contacto-container {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
     flex-direction: column;
     align-items: center;
     background-color: #F8F8F8;
     margin: 0% auto 2% auto;
     box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
-    /*max-height:100%;
-    max-width:60%;*/
+    max-height:100%;
+    max-width:60%;
     border-radius: 5px;
     border: 2px solid #575757;
     /*gap: 1.5em;*/         
+}
+
+.main-contacto-container {
+    margin-top: 8%;
+    margin-bottom: 6%;
+}
+
+.main-contacto-container h2{
+    font-family: 'Archivo';
+    font-style: normal; 
+    font-size: 1.25em;
+    color: #575757;
+    margin-bottom: 2em;
+    margin-left: 25%;
+    margin-right: 25%;
+
 }
 
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center ;
+    font-family: 'Archivo';
 }
 
 .contacto-title-container {
@@ -29,6 +43,7 @@
     margin: auto;
     margin-top: 1em;
     margin-bottom: 2em;
+    font-family: 'Josefin Sans';
 }
 
 .contacto-title{
@@ -37,7 +52,6 @@
     border-bottom: 2px solid #575757;
     font-weight: 500;
     color: #575757;
-    font-family: 'Josefin Sans';
     font-style: normal; 
     font-size: 1.50em;
     /*line-height: 40px;*/
@@ -214,8 +228,8 @@
 @media screen and (min-width: 2500px) and (max-width: 3500px) {
 
     .contacto-container {
-        max-height:100%;
-        max-width:70%;
+        max-height:150%;
+        max-width:60%;
         border-radius: 5px;
         border: 2px solid #575757;
     }
