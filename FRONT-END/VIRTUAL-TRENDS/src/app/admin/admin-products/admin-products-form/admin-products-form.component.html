@@ -2,27 +2,49 @@
   <p>Ingrese <b>id del producto</b> que desea eliminar de la base de datos.</p>
   <p><b>IMPORTANTE</b>: Se recuerda que una vez eliminado el mismo no se podrá recuperar. Es una acción irreversible.</p>
   <form class="short-form" action="#">
-    <input type="number" min="1" placeholder="ID del producto">
-    <button type="submit" class="action-button">Eliminar</button>
+    <input type="number" min="1" placeholder="ID del producto" style="width: 300px;" id="id-producto-delete" (input)="validateIdProductoDelete()" [ngClass]="[
+    !idProductoValidationDelete? 'form-control is-invalid' : 'form-control is-valid']">
+    <button type="button" class="action-button" (click)="deleteProduct()" style="margin-top: 20px;" [disabled]="!idProductoValidationDelete">Eliminar</button>
+    <div *ngIf="showSuccessTextDelete" style="color: green; margin-top: 10px;">Producto eliminado correctamente.</div>
   </form>
 </div>
 <div class="form-container" *ngIf="type === 'add'">
   <p>Complete los siguientes datos que pertenecerán al nuevo producto.</p>
   <p><b>IMPORTANTE</b>: Se recuerda que el id de producto es automáticamente creado por la base de datos.</p>
   <form id="add-form" class="large-form" action="#">
-    <input id="name-input" type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;">
-    <input id="description-input" type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;">
-    <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
-    <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;">
-    <label for="categories-select">Categorías:</label>
-    <select id="categories-select" name="Categoría">
-      <option *ngFor="let categoria of categorias" [value]="categorias.indexOf(categoria)">{{categoria}}</option>
-    </select>
+    <div>
+      <input id="name-input" type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;" [ngClass]="[
+      !nameValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateName()">
+      <div style="margin-bottom: 10px;" *ngIf="!nameValidation" class="invalid-feedback">El nombre del producto ingresado es incorrecto. No debe contener números.</div>
+    </div>
+    <div>
+      <input id="description-input" type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;" [ngClass]="[
+      !descriptionValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateDescription()">
+      <div style="margin-bottom: 10px;" *ngIf="!descriptionValidation" class="invalid-feedback">Ingrese una descripción.</div>
+    </div>
+    <div>
+      <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
+      <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;" [ngClass]="[
+      !priceValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validatePrice()">
+      <div style="margin-bottom: 10px;"*ngIf="!priceValidation" class="invalid-feedback">El precio del producto ingresado es incorrecto. No debe contener letras. Sólo números.</div>
+    </div>
+    <div>
+      <label for="categories-select">Categorías:</label>
+      <select id="categories-select" name="Categoría" [ngClass]="[
+      !categoryValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateCategory()">
+        <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+      </select>
+      <div style="margin-bottom: 10px;" *ngIf="!categoryValidation" class="invalid-feedback">Seleccione una opción de categoría.</div>
+    </div>
     <div class="block-form" style="margin-bottom: 10px;">
       <label for="first-image-input">Inserte las rutas de tres imágenes. Recuerde que la primera también representará al ícono.</label>
-      <input id="first-image-input" type="text" placeholder="Primera imagen del producto">
-      <input id="second-image-input" type="text" placeholder="Segunda imagen del producto">
-      <input id="third-image-input" type="text" placeholder="Tercera imagen del producto">
+      <input id="first-image-input" type="text" placeholder="Primera imagen del producto" [ngClass]="[
+      !(imagesValidation.first) ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateImages()">
+      <input id="second-image-input" type="text" placeholder="Segunda imagen del producto" [ngClass]="[
+      !(imagesValidation.second) ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateImages()">
+      <input id="third-image-input" type="text" placeholder="Tercera imagen del producto" [ngClass]="[
+      !(imagesValidation.third) ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateImages()">
+      <div style="margin-bottom: 10px;" *ngIf="(!(imagesValidation.first) || !(imagesValidation.second) || !(imagesValidation.third))" class="invalid-feedback">Uno de los campos de imágenes no está completo.</div>
     </div>
     <div class="block-form" style="margin-bottom: 10px;">
       <p>Tilde los checkboxes que corresponden a los colores que estarán disponibles del producto.</p>
@@ -38,32 +60,56 @@
         <p class="sizes-p">{{talle}}</p>
       </div>
     </div>
-    <button (click)="addProduct($event)" type="button" class="action-button">Agregar</button>
+    <button (click)="addProduct($event)" type="button" class="action-button" [disabled]="(!nameValidation || !descriptionValidation || !priceValidation || !categoryValidation || !(imagesValidation.first) || !(imagesValidation.second) || !(imagesValidation.third))">Agregar</button>
+    <div *ngIf="showErrorText" style="color: red;">Por favor, asegúrese de haber tildado al menos un checkbox en la sección Colores o Talles.</div>
+    <div *ngIf="showSuccessTextModify" style="color: green;">Producto agregado correctamente.</div>
   </form>
 </div>
 
 <div class="form-container" *ngIf="type === 'modify'">
   <p>Ingrese <b>id del producto</b> que desea modificar.</p>
   <form class="short-form" action="#">
-    <input type="number" min="1" placeholder="ID del producto" id="id-producto">
-    <button type="button" (click)="modifyProduct()" id="search-modify-button" class="action-button">Buscar</button>
+    <input type="number" min="1" placeholder="ID del producto" id="id-producto-modify" style="width: 300px;" (input)="validateIdProductoModify()" [ngClass]="[
+    !idProductoValidationModify? 'form-control is-invalid' : 'form-control is-valid']">
+    <div *ngIf="!idProductoValidationModify" class="invalid-feedback">Ingrese el id de producto.</div>
+    <button type="button" style="margin-top: 20px;" (click)="modifyProduct()" id="search-modify-button" class="action-button" [disabled]="!idProductoValidationModify">Buscar</button>
   </form>
   <div *ngIf="showModifyForm">
-    <p style="margin-top: 10px;">Puede modificar cualquiera de los siguientes datos.</p>
+    <p style="margin-top: 40px;">Puede modificar cualquiera de los siguientes datos.</p>
     <form id="modify-form" class="large-form" action="#">
-      <input id="name-input" type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;" value="{{modifiedProduct.nombre}}">
-      <input id="description-input" type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.descripcion">
-      <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
-      <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.precio">
-      <label for="categories-select">Categorías:</label>
-      <select id="categories-select" name="Categoría" [value]="modifiedProduct.categoria">
-        <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
-      </select>
+      <div>
+        <input id="name-input" type="text" placeholder="Nombre del producto" style="margin-bottom: 10px;" value="{{modifiedProduct.nombre}}" [ngClass]="[
+      !nameValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateName()">
+        <div style="margin-bottom: 10px;" *ngIf="!nameValidation" class="invalid-feedback">El nombre del producto ingresado es incorrecto. No debe contener números.</div>
+      </div>
+      <div>
+        <input id="description-input" type="text" placeholder="Descripción del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.descripcion" [ngClass]="[
+        !descriptionValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateDescription()">
+        <div style="margin-bottom: 10px;" *ngIf="!descriptionValidation" class="invalid-feedback">Ingrese una descripción.</div>
+      </div>
+      <div>
+        <label for="price-input">Recuerde que el precio del producto puede contener máximo 2 decimales.</label>
+        <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.precio" [ngClass]="[
+        !priceValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validatePrice()">
+        <div style="margin-bottom: 10px;"*ngIf="!priceValidation" class="invalid-feedback">El precio del producto ingresado es incorrecto. No debe contener letras. Sólo números.</div>
+      </div>
+      <div>
+        <label for="categories-select">Categorías:</label>
+        <select id="categories-select" name="Categoría" [value]="modifiedProduct.categoria" [ngClass]="[
+        !categoryValidation ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateCategory()">
+          <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+        </select>
+        <div style="margin-bottom: 10px;" *ngIf="!categoryValidation" class="invalid-feedback">Seleccione una opción de categoría.</div>
+      </div>
       <div class="block-form" style="margin-bottom: 10px;">
         <label for="first-image-input">Inserte las rutas de tres imágenes. Recuerde que la primera también representará al ícono.</label>
-        <input id="first-image-input" type="text" placeholder="Primera imagen del producto" [value]="modifiedProduct.imagenes[0]">
-        <input id="second-image-input" type="text" placeholder="Segunda imagen del producto" [value]="modifiedProduct.imagenes[1]">
-        <input id="third-image-input" type="text" placeholder="Tercera imagen del producto" [value]="modifiedProduct.imagenes[2]">
+        <input id="first-image-input" type="text" placeholder="Primera imagen del producto" [value]="modifiedProduct.imagenes[0]" [ngClass]="[
+        !(imagesValidation.first) ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateImages()">
+        <input id="second-image-input" type="text" placeholder="Segunda imagen del producto" [value]="modifiedProduct.imagenes[1]" [ngClass]="[
+        !(imagesValidation.second) ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateImages()">
+        <input id="third-image-input" type="text" placeholder="Tercera imagen del producto" [value]="modifiedProduct.imagenes[2]" [ngClass]="[
+        !(imagesValidation.third) ? 'form-control is-invalid' : 'form-control is-valid']" (input)="validateImages()">
+        <div style="margin-bottom: 10px;" *ngIf="(!(imagesValidation.first) || !(imagesValidation.second) || !(imagesValidation.third))" class="invalid-feedback">Uno de los campos de imágenes no está completo.</div>
       </div>
       <div class="block-form" style="margin-bottom: 10px;">
         <p>Tilde los checkboxes que corresponden a los colores que estarán disponibles del producto.</p>
@@ -79,7 +125,9 @@
           <p class="sizes-p">{{talle}}</p>
         </div>
       </div>
-      <button (click)="addProduct($event)" type="button" class="action-button">Modificar</button>
+      <button (click)="addProduct($event)" type="button" class="action-button" [disabled]="(!nameValidation || !descriptionValidation || !priceValidation || !categoryValidation || !(imagesValidation.first) || !(imagesValidation.second) || !(imagesValidation.third))">Modificar</button>
+      <div *ngIf="showErrorText" class="invalid-feedback">Por favor, asegúrese de haber tildado al menos un checkbox en la sección Colores o Talles.</div>
+      <div *ngIf="showSuccessTextModify" style="color: green;">Producto modificado correctamente.</div>
     </form>
   </div>
 </div>
