@@ -45,28 +45,13 @@ export class ProductoAlCarritoService {
 
     this.pedirDNI();
 
-    this.http.get<productosCarrito[]>('https://localhost:8000/api/consultar-carrito/?dni=${this.dniRecibido}').subscribe(carrito => {
+    this.http.get<productosCarrito[]>(`https://localhost:8000/api/consultar-carrito/?dni=${this.dniRecibido}`).subscribe(carrito => {
       this.contenidoCarrito = carrito
     })
 
     this.contenidoCarrito.forEach(Precio => {
       this.precioSubtotal += Precio.Precio;
     });
-
-  }
-
-  getCarrito(){
-
-    
-
-    //this.dniData.recibirDNI().subscribe(dniRecibido => {
-
-      //this.http.get<productosCarrito[]>('https://localhost:8000/api/consultar-carrito/?dni=${dniRecibido}').subscribe(carrito=>{
-       // this.contenidoCarrito=carrito
-    //  })
-    //})
-
-    return this.contenidoCarrito
-
+    return this.contenidoCarrito;
   }
 }
