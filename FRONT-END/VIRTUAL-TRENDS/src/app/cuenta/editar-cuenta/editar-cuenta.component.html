@@ -148,11 +148,11 @@
               </div>
             </label>
 
-            <input class="btn btn-dark" value="ENVIAR">
+            <button class="btn btn-dark" (click)="onSubmit" value="ENVIAR"> ENVIAR</button>
 
-            <div >
-              <button class="close-button" (click)="cerrarEditarCuenta()"></button>
-            </div>
+            <div *ngIf="mensajeEnviado">¡Informacion actualizada!</div>
+
+
 
            </form>
         </div>
