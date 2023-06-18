@@ -8,10 +8,10 @@
     flex-direction: column;
     align-items: center;
     background-color: #F8F8F8;
-    margin: 5% auto 5% auto;
+    margin: 0% auto 2% auto;
     box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
-    max-height:100%;
-    max-width:60%;
+    /*max-height:100%;
+    max-width:60%;*/
     border-radius: 5px;
     border: 2px solid #575757;
     /*gap: 1.5em;*/         
@@ -113,7 +113,7 @@
     font-weight: 600;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     /*transition: background-color .5s;*/
-    margin-bottom: 7%;
+    margin-bottom: 4%;
     width: 100%;
     height: 100%;
     text-transform: uppercase;
@@ -160,20 +160,11 @@
 /** Media queries */
 
 @media screen and (min-width: 199px) and (max-width: 599px) {
-    /*
-    .input-container{
-        margin-left: none;
-        width: 20%;
-    }*/
-    /*
-    .formulario{
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-    }*/
     .contacto-container {
-        max-height:90%;
-        max-width:55%;
+        flex-direction: column;
+        align-items: center;
+        max-height:100%;
+        max-width:65%;
         border-radius: 5px;
         border: 2px solid #575757;
         /*gap: 1.5em;*/         
@@ -188,4 +179,44 @@
         width: 30%;    
     }
     
+}
+
+@media screen and (min-width: 599px) and (max-width: 1299px) {
+
+    .contacto-container {
+        max-height:100%;
+        max-width:70%;
+        border-radius: 5px;
+        border: 2px solid #575757;
+    }
+}
+
+@media screen and (min-width: 1299px) and (max-width: 1599px) {
+
+    .contacto-container {
+        max-height:100%;
+        max-width:50%;
+        border-radius: 5px;
+        border: 2px solid #575757;
+    }
+}
+
+@media screen and (min-width: 1599px) and (max-width: 2500px) {
+
+    .contacto-container {
+        max-height:100%;
+        max-width:60%;
+        border-radius: 5px;
+        border: 2px solid #575757;
+    }
+}
+
+@media screen and (min-width: 2500px) and (max-width: 3500px) {
+
+    .contacto-container {
+        max-height:100%;
+        max-width:70%;
+        border-radius: 5px;
+        border: 2px solid #575757;
+    }
 }
