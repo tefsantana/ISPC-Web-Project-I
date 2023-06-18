@@ -1,6 +1,8 @@
+from django.db import IntegrityError
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
@@ -8,8 +10,8 @@ from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
 from django.forms.models import model_to_dict
-import mercadopago
 import json
+from rest_framework.exceptions import ValidationError
 
 # Create your views here.
 
@@ -275,13 +277,14 @@ class RegistroView(APIView):
         provincia = request.data.get('provincia')
         ph = request.data.get('ph')
 
-        usuario = Usuario(
-            dni=dni, nombre=nombre, apellido=apellido, tel_cel=tel_cel, dir_calle=dir_calle,
-            dir_numero=dir_numero, cp=cp, ciudad=ciudad, provincia=provincia, ph=ph
+        try:
+            usuario = Usuario.objects.create(
+                dni=dni, nombre=nombre, apellido=apellido, tel_cel=tel_cel, dir_calle=dir_calle,
+                dir_numero=dir_numero, cp=cp, ciudad=ciudad, provincia=provincia, ph=ph
             )
-        usuario.save()
-        login = Login(email=email, psw=psw, dni=usuario)
-        login.save()
+            login = Login.objects.create(email=email, psw=psw, dni=usuario)
+        except IntegrityError:
+            raise ValidationError('El email o DNI ya se encuentran en uso.')
 
         return Response({'mensaje': 'Usuario registrado exitosamente'})
 
@@ -313,6 +316,18 @@ class FavoritesView(APIView):
             })
             
         return Response(serialized_data)
+
+class FavoriteChangeView(APIView):
+    def post(self, request):
+        try:
+            Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
+            return Response({'mensaje': 'Producto eliminado de favoritos'})
+        except:
+            producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+            usuario = Usuario.objects.get(dni=request.data.get('dni'))
+            favorito = Favoritos(id_prod=producto, dni=usuario)
+            favorito.save()
+            return Response({'mensaje': 'Producto agregado a favoritos'})
 
 class NewsletterView (View):
     def post (self, request):
@@ -353,9 +368,9 @@ class ProcessPaymentAPIView(APIView):
         except Exception as e:
             return Response(data={"body": payment_response}, status=400)
 
-class retornarPagado(APIView): # Retornar custom json
+class RetornarPagado(APIView): # Retornar custom json
     def get(self, request):
-        return Response({"respuesta": "aprobado"})
+        return Response({"transaccion": "aprobada"}, status=status.HTTP_200_OK)
     
 class VerUsuarioView(View):
     def get(self, request):
@@ -370,3 +385,33 @@ class VerUsuarioView(View):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def delete(self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+class AddProductView(APIView):
+    def post(self, request):
+        #Datos para models Productos
+        nombre = request.data.get('nombre')
+        desc = request.data.get('descripcion')
+        stock = 100
+        precio = request.data.get('precio')
+        id_cat = Categoria.objects.get(nombre = request.data.get('categoria'))
+        #Datos para model ImagenesProducto
+        imgs = request.data.get('imagenes')
+        #Datos para el model ColoresProductos
+        colors = request.data.get('colores')
+        #Datos para el model TallaDelProducto
+        size = request.data.get('tallas')
+
+        try: 
+            addprod = Productos.objects.create(nombre=nombre, precio=precio, id_cat=id_cat, stock=stock, desc=desc)
+            for list in imgs:
+                ImagenesProducto.objects.create(img=list, id_prod=addprod.id_prod)
+            for list in colors:
+                colores = Colores.objects.get(nombre = list)
+                addcolor = ColoresProductos.objects.create(id_color = colores.id_color, id_prod=addprod.id_prod)
+            for list in size:
+                tallas = Talla.objects.get(inicial_talle = list)
+                addtalle = TallaDelProducto.objects.create(id_talle=tallas.id_talle, id_prod=addprod.id_prod)
+        except:
+            return Response({'error' : 'Uno o varios de los datos no son validos'})
+        
+        return Response({'message' : 'Se agrego el producto correctamente.'})

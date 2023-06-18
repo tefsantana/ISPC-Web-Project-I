@@ -57,7 +57,7 @@
       <input id="price-input" type="number" min="1" step="0.01" placeholder="Precio del producto" style="margin-bottom: 10px;" [value]="modifiedProduct.precio">
       <label for="categories-select">Categorías:</label>
       <select id="categories-select" name="Categoría" [value]="modifiedProduct.categoria">
-        <option *ngFor="let categoria of categorias" [value]="categorias.indexOf(categoria)">{{categoria}}</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
       </select>
       <div class="block-form" style="margin-bottom: 10px;">
         <label for="first-image-input">Inserte las rutas de tres imágenes. Recuerde que la primera también representará al ícono.</label>

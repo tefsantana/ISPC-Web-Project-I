@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LogupService } from 'src/app/services/register/logup.service';
 
 @Component({
   selector: 'app-registro',
@@ -15,15 +16,16 @@ export class RegistroComponent {
     apellido:['',[Validators.required]],
     dni:['',[Validators.required, Validators.pattern('^[0-9]+$')]],
     cp:['',[Validators.required]],
-    dir_nombre:['',[Validators.required]],
-    dir_num:['',[Validators.required, Validators.pattern('^[0-9]+$')]],
+    dir_calle:['',[Validators.required]],
+    dir_numero:['',[Validators.required, Validators.pattern('^[0-9]+$')]],
     ph:['',[Validators.required]],
-    tel:['',[Validators.required, Validators.pattern('^[0-9]+$')]],
+    tel_cel:['',[Validators.required, Validators.pattern('^[0-9]+$')]],
     ciudad:['',[Validators.required]],
     provincia:['',[Validators.required]],
   })
-
-  constructor(private navigationService: NavigationService, private formBuilder: FormBuilder) {}
+  registroOK:boolean = false;
+  regerror: string = "";
+  constructor(private navigationService: NavigationService, private formBuilder: FormBuilder, private logupService: LogupService) {}
 
   closePopUp() {
     this.navigationService.navigateToCuenta();
@@ -31,6 +33,21 @@ export class RegistroComponent {
 
   logup(){
     if(this.logupForm.valid){
+      this.logupService.logup(this.logupForm.value).subscribe(
+        {
+          next:(logupmsj) => {
+            console.log(logupmsj);
+          },
+          error:(logupmsj)=>{
+            console.error(logupmsj);
+            this.regerror = logupmsj.error;
+          },
+          complete:()=>{
+            console.info("Registro satisfactorio");
+            this.registroOK = true;
+          }
+        }
+      );
       this.logupForm.reset();
       //Llamar a la api
     }

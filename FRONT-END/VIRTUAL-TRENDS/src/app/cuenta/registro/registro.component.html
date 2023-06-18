@@ -1,4 +1,4 @@
-<div class="modal-reg">
+<div *ngIf="!registroOK == true" class="modal-reg">
     <div class="contenedor-reg">
         <div class="head-reg">
             <div class="d-flex justify-content-center">
@@ -6,6 +6,7 @@
             </div>
         </div>
         <h1 class="title-reg">REGISTRO</h1>
+        <span class="text-danger text-center m-0">{{regerror}}</span>
         <div class="body-reg">
             <div class="left-reg">
                 <form [formGroup]="logupForm " class="form-reg">
@@ -64,17 +65,17 @@
                         </div>
 
                     <label class="lab-reg">Calle</label>
-                    <input formControlName="dir_nombre" type="text" class="inp-reg">
-                    <div *ngIf="formguid.dir_nombre.invalid && (formguid.dir_nombre.dirty || formguid.dir_nombre.touched)" class="text-danger">
-                            <div *ngIf="formguid.dir_nombre.errors?.['required']">
+                    <input formControlName="dir_calle" type="text" class="inp-reg">
+                    <div *ngIf="formguid.dir_calle.invalid && (formguid.dir_calle.dirty || formguid.dir_calle.touched)" class="text-danger">
+                            <div *ngIf="formguid.dir_calle.errors?.['required']">
                                 Este campo es requerido.
                             </div>
                         </div>
 
                     <label class="lab-reg">Altura</label>
-                    <input formControlName="dir_num" type="number" class="inp-reg">
-                    <div *ngIf="formguid.dir_num.invalid && (formguid.dir_num.dirty || formguid.dir_num.touched)" class="text-danger">
-                            <div *ngIf="formguid.dir_num.errors?.['required']">
+                    <input formControlName="dir_numero" type="number" class="inp-reg">
+                    <div *ngIf="formguid.dir_numero.invalid && (formguid.dir_numero.dirty || formguid.dir_numero.touched)" class="text-danger">
+                            <div *ngIf="formguid.dir_numero.errors?.['required']">
                                 Este campo es requerido.
                             </div>
                         </div>
@@ -88,9 +89,9 @@
                         </div>
 
                     <label class="lab-reg">Telefono/Celular</label>
-                    <input formControlName="tel" type="tel" class="inp-reg">
-                    <div *ngIf="formguid.tel.invalid && (formguid.tel.dirty || formguid.tel.touched)" class="text-danger">
-                            <div *ngIf="formguid.tel.errors?.['required']">
+                    <input formControlName="tel_cel" type="tel" class="inp-reg">
+                    <div *ngIf="formguid.tel_cel.invalid && (formguid.tel_cel.dirty || formguid.tel_cel.touched)" class="text-danger">
+                            <div *ngIf="formguid.tel_cel.errors?.['required']">
                                 Este campo es requerido.
                             </div>
                         </div>
@@ -111,7 +112,7 @@
                             </div>
                         </div>
 
-                    <button type="submit" class="btn-reg">ENVIAR</button>
+                    <button type="submit" (click)="logup()" class="btn-reg">ENVIAR</button>
                 </form>
             </div>
             <div class="right-reg">
@@ -123,5 +124,11 @@
                 <p>4. La dirección proporcionada será la que se utilice para enviar tus pedidos. </p>
             </div>
         </div>
+    </div>
+</div>
+<div *ngIf="registroOK == true" class="modal-reg">
+    <div class="body-ok">
+        <p class="text-success">Cuenta Registrada</p>
+        <button (click)="closePopUp()" class="btn btn-success">Cerrar</button>
     </div>
 </div>
