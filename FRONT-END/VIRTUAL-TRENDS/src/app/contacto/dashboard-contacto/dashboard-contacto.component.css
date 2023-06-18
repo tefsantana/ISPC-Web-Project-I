@@ -1,7 +1,8 @@
-* { margin: 0;
+ * { margin: 0;
     padding: 0;
     font-family: 'Archivo', sans-serif;
 }
+  
 
 .contacto-container {
     flex-direction: column;
@@ -9,8 +10,8 @@
     background-color: #F8F8F8;
     margin: 5% auto 5% auto;
     box-shadow: 0px 6px 10px 3px rgba(0, 0, 0, 0.08);
-    max-height:80%;
-    max-width:70%;
+    max-height:100%;
+    max-width:60%;
     border-radius: 5px;
     border: 2px solid #575757;
     /*gap: 1.5em;*/         
@@ -35,6 +36,7 @@
     border-top: 2px solid #575757;
     border-bottom: 2px solid #575757;
     font-weight: 500;
+    color: #575757;
     font-family: 'Josefin Sans';
     font-style: normal; 
     font-size: 1.50em;
@@ -104,26 +106,6 @@
     width: 80%;
 }
 
-/*
-.submit-button {
-    padding: 15px;
-    background: #3B3D40;
-    color: #F7F7F2;
-    font-weight: 500;
-    border-radius: 3px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-    transition: background-color .5s;
-    margin-top: 2.25em;
-    font-size: 16px;
-    font-family: 'Archivo', sans-serif;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background: #191B1D;
-}*/
-
-
 #submit-button{
     cursor: pointer;
     padding: 10px 0px 8px;
@@ -178,33 +160,32 @@
 /** Media queries */
 
 @media screen and (min-width: 199px) and (max-width: 599px) {
-    
+    /*
     .input-container{
         margin-left: none;
         width: 20%;
-    }
+    }*/
+    /*
     .formulario{
         display: flex;
         flex-direction: column;
         margin: 0 auto;
+    }*/
+    .contacto-container {
+        max-height:90%;
+        max-width:55%;
+        border-radius: 5px;
+        border: 2px solid #575757;
+        /*gap: 1.5em;*/         
     }
     .contacto-title{
-        font-size: 1.10em;
+        font-size: 1.05em;
         /*font-size: 1em;*/
 
     }
 
     .Contacto-title-container {
-        width: 25%;    
+        width: 30%;    
     }
     
 }
-
-
-/*
-@media screen and (min-width:2500px) {
-    .main-product-title {
-        margin-top: 20px;
-    }
-}*/
-
