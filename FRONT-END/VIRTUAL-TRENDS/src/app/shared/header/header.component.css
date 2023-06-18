@@ -5,7 +5,7 @@ header{
 
 .ca-header {
   background-color: #F7F7F2;
-  padding: 20px 0;
+  /*padding: 5px 0;*/
 }
 
 .navbar {
@@ -15,7 +15,7 @@ header{
 }
 
 .navbar-logo {
-  width: 7rem;
+  width: 5rem;
   height: auto;
   margin-right: 1rem;
   margin-left: 1rem;
@@ -46,7 +46,7 @@ header{
   text-decoration: none;
   color: #575757;
   transition: color 0.5s;
-  font-size: 1.1rem; 
+  font-size: 1rem; 
   text-transform: uppercase;
   margin: 0 0.65em;
 }
@@ -57,4 +57,81 @@ header{
   text-underline-offset: 6px;
   font-weight: 600;
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 599px) {
+
+  .navbar-logo {
+    width: 4.5rem;
+    height: auto;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .ca-header .navbar-nav .nav-link {
+    font-size: 13px; /* Tamaño de fuente personalizado */
+  }
+
+}
+
+
+@media screen and (min-width: 599px) and (max-width: 768px) {
+
+  .navbar-logo {
+    width: 5.5rem;
+    height: auto;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .ca-header .navbar-nav .nav-link {
+    font-size: 15px; /* Tamaño de fuente personalizado */
+  }
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1599px) {
+
+  .navbar-logo {
+    width: 6.5rem;
+    height: auto;
+    margin-right: 1.15rem;
+    margin-left: 1.15rem;
+  }
+  .ca-header .navbar-nav .nav-link {
+    font-size: 18px; /* Tamaño de fuente personalizado */
+  }
+
+
+}
+
+
+@media screen and (min-width: 1599px) and (max-width: 2500px) {
+
+  .navbar-logo {
+    width: 7.5rem;
+    height: auto;
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
+  }
+  .ca-header .navbar-nav .nav-link {
+    font-size: 20px; /* Tamaño de fuente personalizado */
+  }
+
+}
+
+@media screen and (min-width: 2500px) and (max-width: 3500px) {
+
+  .navbar-logo {
+    width: 7.5rem;
+    height: auto;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  .ca-header .navbar-nav .nav-link {
+    font-size: 28px; /* Tamaño de fuente personalizado */
+  }
+
 }
