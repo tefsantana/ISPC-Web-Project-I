@@ -331,15 +331,21 @@ class FavoritesView(APIView):
 
 class FavoriteChangeView(APIView):
     def post(self, request):
-        try:
-            Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
-            return Response({'mensaje': 'Producto eliminado de favoritos'})
-        except:
-            producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
-            usuario = Usuario.objects.get(dni=request.data.get('dni'))
-            favorito = Favoritos(id_prod=producto, dni=usuario)
-            favorito.save()
-            return Response({'mensaje': 'Producto agregado a favoritos'})
+        if (request.data.get('favorite')):
+            try:
+                Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
+                return Response({'mensaje': 'Producto eliminado de favoritos'})
+            except: 
+                return Response({'mensaje': 'Producto no se encuentra en favoritos'})
+        elif (not request.data.get('favorite')):
+            try:
+                producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+                usuario = Usuario.objects.get(dni=request.data.get('dni'))
+                favorito = Favoritos(id_prod=producto, dni=usuario)
+                favorito.save()
+                return Response({'mensaje': 'Producto agregado a favoritos'})
+            except:
+                return Response({'mensaje': 'Producto ya se encuentra en favoritos'})
 
 class NewsletterView (View):
     def post (self, request):
