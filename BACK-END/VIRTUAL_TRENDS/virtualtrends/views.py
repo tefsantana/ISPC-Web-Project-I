@@ -388,7 +388,20 @@ class VerUsuarioView(View):
     def get(self, request):
         dniRecibido = request.GET.get('dni')
         usuario = get_object_or_404(Usuario, dni = dniRecibido)  
-        return JsonResponse(usuario, status=status.HTTP_200_OK)
+        usuario_data = {
+            'dni': usuario.dni,
+            'nombre': usuario.nombre,
+            'apellido': usuario.apellido,
+            'tel_cel': usuario.tel_cel,
+            'dir_calle': usuario.dir_calle,
+            'dir_numero': usuario.dir_numero,
+            'cp': usuario.cp,
+            'ciudad': usuario.ciudad,
+            'provincia': usuario.provincia,
+            'ph': usuario.ph,
+            'id_lvl': usuario.id_lvl.id_lvl
+        }
+        return JsonResponse(usuario_data, status=status.HTTP_200_OK, safe=False)
     
 
     def post(self, request):

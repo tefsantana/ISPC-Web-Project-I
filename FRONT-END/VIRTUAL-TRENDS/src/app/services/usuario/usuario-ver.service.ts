@@ -29,18 +29,14 @@ export class UsuarioVerService {
   dniRecibido: number = 0
   datosUsuario: any
 
-    recibirDNI(){
-      this.dniData.recibirDNI().subscribe(dniTemp => {
-        this.dniRecibido = dniTemp
-      })
-    }
-
     recibirDatosDeUsuario(){
-      this.recibirDNI()
-
-      this.http.get(`http://localhost:8000/api/ver-usuario/?dni=${this.dniRecibido}`).subscribe(user => {
-        this.datosUsuario = user
+      this.dniData.recibirDNI().subscribe(dniTemp => {
+        this.http.get(`http://localhost:8000/api/ver-usuario/?dni=${dniTemp}`).subscribe(user => {
+          this.datosUsuario = user
+        })
       })
+      
+      console.log(this.datosUsuario.nombre)
 
       return this.datosUsuario
     }
