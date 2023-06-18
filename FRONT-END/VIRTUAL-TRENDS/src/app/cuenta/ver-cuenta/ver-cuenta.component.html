@@ -10,61 +10,61 @@
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>DNI</h3>
-                <p>44272508</p>
+                <p>{{cuentaData.dni}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Nombre</h3>
-                <p>Jorge</p>
+                <p>{{cuentaData.nombre}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Apellido</h3>
-                <p>Rogelio</p>
+                <p>{{cuentaData.apellido}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Numero de teléfono</h3>
-                <p>3517329195</p>
+                <p>{{cuentaData.tel_cel}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Calle</h3>
-                <p>Avenida Alem</p>
+                <p>{{cuentaData.dir_calle}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Dirección</h3>
-                <p>4565</p>
+                <p>{{cuentaData.dir_numero}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Codigo Postal</h3>
-                <p>5000</p>
+                <p>{{cuentaData.cp}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Ciudad</h3>
-                <p>Córdoba Capital</p>
+                <p>{{cuentaData.ciudad}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>Provincia</h3>
-                <p>Córdoba</p>
+                <p>{{cuentaData.provincia}}</p>
             </div>
         </div>
         <div class="dato-element">
             <div class="dato-content">    
                 <h3>PH</h3>
-                <p>...</p>
+                <p>{{cuentaData.ph}}</p>
             </div>
         </div>
 
@@ -81,4 +81,4 @@
 <button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == false">EDITA TU PERFIL</button>
 <button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == true">DEJAR DE EDITAR</button>
 
-<button type="button" class="btn btn-dark" (click)="navigateToAdmin()" *ngIf="true">ADMIN</button>
+<button type="button" class="btn btn-dark" (click)="navigateToAdmin()" *ngIf="cuentaData.id_lvl == 1">ADMIN</button>
