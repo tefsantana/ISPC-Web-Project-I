@@ -78,6 +78,10 @@ export class NavigationService {
         this.router.navigate(['/contacto']);
     }
 
+    navigateToUsuario(): void {
+        this.router.navigate(['/ver-cuenta'])
+    }
+
     navigateToCuenta(): void {
         this.router.navigate(['/cuenta']);
     }

@@ -37,6 +37,10 @@ export class HeaderComponent implements OnInit {
     this.navigationService.navigateToContacto();  
   }
 
+  navigateToUsuario(){
+    this.navigationService.navigateToUsuario();
+  }
+
   navigateToCuenta(){
     this.navigationService.navigateToCuenta();
   }
