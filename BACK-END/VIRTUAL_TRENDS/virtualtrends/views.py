@@ -128,15 +128,27 @@ class ProductoAlCarritoView (View):
     def delete (self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-class ConsultProductoCarrito(View):
-    def get(self, request):
-        dnitemp = request.GET.get('dni')
-        carrito = Carrito.objects.filter(dni=dnitemp, concretado=False).first()
+class ConsultProductoCarrito(APIView):
+    def get(self, request, dni):
+        carrito = Carrito.objects.filter(dni=dni, concretado=False).first()
 
         if carrito:
+            products = []
             productos_en_carrito = ProductosEnCarrito.objects.filter(id_car=carrito.id_car)
-            return JsonResponse(productos_en_carrito)
-        return JsonResponse({'error': 'Aun no tienes articulos en tu carrito'}, status=status.HTTP_404_NOT_FOUND)
+            for list in productos_en_carrito:  
+                products.append({
+                    'id_prod': list.id_prod.id_prod,
+                    'id_car': list.id_car.id_car,
+                    'nombre': list.id_prod.nombre,
+                    'precio': list.id_prod.precio,
+                    'cantidad': list.cantidad,
+                    'talla': list.talla,
+                    'color': list.color,
+                    'espersonalizado': list.espersonalizado
+                })
+
+            return Response(products)
+        return Response({'error': 'Aun no tienes articulos en tu carrito'}, status=status.HTTP_404_NOT_FOUND)
     def put (self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def post (self, request):
@@ -316,6 +328,18 @@ class FavoritesView(APIView):
             })
             
         return Response(serialized_data)
+
+class FavoriteChangeView(APIView):
+    def post(self, request):
+        try:
+            Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
+            return Response({'mensaje': 'Producto eliminado de favoritos'})
+        except:
+            producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+            usuario = Usuario.objects.get(dni=request.data.get('dni'))
+            favorito = Favoritos(id_prod=producto, dni=usuario)
+            favorito.save()
+            return Response({'mensaje': 'Producto agregado a favoritos'})
 
 class NewsletterView (View):
     def post (self, request):
