@@ -29,7 +29,7 @@
     line-height: 1.1;
     color: #575757;
   }
-  
+
   .ca-menu.ca-footer-menu_left {
     margin-top: 5em;
     text-align: center;
@@ -267,7 +267,7 @@
 
 
   .ca-footer_copy {
-    margin-top: 5em;
+    margin-top: 1em;
     text-align: center;
     order: 2;
   }
