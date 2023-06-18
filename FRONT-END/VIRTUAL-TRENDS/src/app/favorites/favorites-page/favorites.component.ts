@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GetFavoritesService } from 'src/app/services/products-services/getFavorites.service';
+import { DniDataService } from 'src/app/services/data-services/dni-data.service';
+import { FavoritesService } from 'src/app/services/products-services/favorites.service';
 import { Products } from 'src/app/utils/products';
 
 @Component({
@@ -12,18 +13,22 @@ export class FavoritesComponent implements OnInit {
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
-  constructor(private FavoritesService: GetFavoritesService) {}
+  constructor(private FavoritesService: FavoritesService, private DNIService: DniDataService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.loadProducts();
+    this.DNIService.recibirDNI().subscribe(dni => {
+      dni = 11111111;
+      this.loadProducts(dni);
+      console.log(dni);
+    });
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
   }
 
-  public loadProducts() {
-    this.FavoritesService.get(11111111).subscribe((data: any) => {
+  public loadProducts(dni: number) {
+    this.FavoritesService.get(dni).subscribe((data: any) => {
       this.products = data;
     });
   }

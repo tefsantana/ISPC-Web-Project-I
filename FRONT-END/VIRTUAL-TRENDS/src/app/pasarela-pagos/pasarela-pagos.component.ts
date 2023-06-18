@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../services/navigation/navigation.service';
+import { PasarelaDePagosService } from '../services/pasarela-de-pagos/pasarela-de-pagos.service';
 
 @Component({
   selector: 'app-pasarela-pagos',
@@ -17,7 +18,7 @@ export class PasarelaPagosComponent implements OnInit {
   dueDateValidationM: boolean = false;
   dueDateValidationY: boolean = false;
 
-  constructor(private navigate: NavigationService) { }
+  constructor(private navigate: NavigationService, private PasarelaDePagosService: PasarelaDePagosService) { }
 
   ngOnInit() {
   }
@@ -27,6 +28,12 @@ export class PasarelaPagosComponent implements OnInit {
   }
 
   navigateToTYP() {
+    this.PasarelaDePagosService.get().subscribe(
+      {
+        next: (data) => {
+        }
+      }
+    );
     this.navigate.navigateToTYP();
   }
 
