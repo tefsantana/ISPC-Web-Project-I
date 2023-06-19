@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
 from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
 from rest_framework import status
-from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter 
 from django.forms.models import model_to_dict
 import json
 from rest_framework.exceptions import ValidationError
@@ -446,3 +446,15 @@ class AddProductView(APIView):
             return Response({'error' : str(e)})
         
         return Response({'message' : 'Se agrego el producto correctamente.'})
+    
+class EliminarUsuarioView(APIView):
+    def post (self,request):
+        id_usuario = request.data.get('dni')
+        try:
+            usuario = Usuario.objects.get(dni=id_usuario)
+           
+        except Usuario.DoesNotExist:
+            return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+        
+        usuario.delete()
+        return Response({'message': 'Usuario eliminado correctamente'})
