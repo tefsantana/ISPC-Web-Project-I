@@ -35,15 +35,15 @@
   font-size: 1em;
 }
 .main-contacto-container {
-    margin-top: 8%;
-    margin-bottom: 6%;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 .main-contacto-container h2{
     font-family: 'Archivo';
     font-style: normal; 
-    font-size: 1.25em;
+    font-size: 1.10em;
     color: #575757;
-    margin-bottom: 2em;
+    margin-bottom: 1.75em;
     margin-left: 25%;
     margin-right: 25%;
 }
