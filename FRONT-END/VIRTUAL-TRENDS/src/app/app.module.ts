@@ -20,6 +20,7 @@ import { UserCardModule } from './cuenta/user-card/user-card.module';
 import { NosotrosModule } from './nosotros/nosotros.module';
 import { PasarelaPagosModule } from './pasarela-pagos/pasarela-pagos.module';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { ContactoModule } from './contacto/contacto.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
     UserCardModule,
     NosotrosModule,
     PasarelaPagosModule,
+    ContactoModule
 
   ],
   providers: [],
