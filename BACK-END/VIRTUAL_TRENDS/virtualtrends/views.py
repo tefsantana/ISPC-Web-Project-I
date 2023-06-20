@@ -464,3 +464,63 @@ class EliminarUsuarioView(APIView):
         
         usuario.delete()
         return Response({'message': 'Usuario eliminado correctamente'})
+
+
+class DeleteProductView(APIView):
+    """
+    Los productos no se pueden eliminar de la tabla directamente,
+    ya que se perdería la persistencia de datos cuando se quiera hacer
+    un historial de compra, por lo que se optó por dejar los productos como 
+    'ocultos' por medio de un atributo. 
+    """
+    def put(self, request):
+        id_prod = request.data.get('id_prod')
+        try:
+            product = Productos.objects.get(id_prod = id_prod, eliminar = False)
+        
+        except Productos.DoesNotExist:
+            return Response({'error': 'El producto no existe o ya fue eliminado'}, status=status.HTTP_404_NOT_FOUND)
+        
+        product.eliminar = True
+        product.save()
+        return Response({'message': 'Producto eliminado correctamente'})
+
+class UpdateProductView(APIView):
+    def put(self, request):
+        id_prod = request.data.get('id_prod')
+        try:
+            producto = Productos.objects.get(id_prod=id_prod)
+        except Productos.DoesNotExist:
+            return Response({'error': 'El producto no existe'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Datos para actualizar en el modelo Productos
+        producto.nombre = request.data.get('nombre')
+        producto.descripcion = request.data.get('descripcion')
+        producto.precio = request.data.get('precio')
+        producto.id_cat = Categoria.objects.get(nombre=request.data.get('categoria'))
+        
+        # Eliminar las imágenes existentes y crear nuevas imágenes
+        nuevas_imagenes = request.data.get('imagenes')
+        ImagenesProducto.objects.filter(id_prod = producto).delete()  # Eliminar todas las imágenes existentes
+        
+        for img in nuevas_imagenes:
+            ImagenesProducto.objects.create(img=img, id_prod=producto)
+        
+        # Eliminar los colores existentes y crear nuevos colores
+        nuevos_colores = request.data.get('colores')
+        ColoresProductos.objects.filter(id_prod=producto).delete()  # Eliminar todos los colores existentes
+        
+        for color in nuevos_colores:
+            color_obj = Colores.objects.get(nombre=color)
+            ColoresProductos.objects.create(id_color=color_obj, id_prod=producto)
+        
+        # Eliminar las tallas existentes y crear nuevas tallas
+        nuevas_tallas = request.data.get('tallas')
+        TallaDelProducto.objects.filter(id_prod=producto).delete()  # Eliminar todas las tallas existentes
+        
+        for talla in nuevas_tallas:
+            talla_obj = Talla.objects.get(inicial_talle=talla)
+            TallaDelProducto.objects.create(id_talle=talla_obj, id_prod=producto)
+        
+        producto.save()
+        return Response({'message': 'Producto actualizado correctamente'})
