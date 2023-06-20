@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
-from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
+from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer, UsuarioSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter 
 from django.forms.models import model_to_dict
@@ -65,25 +65,31 @@ class CrearTallaPersonalizada(View):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-class UsuarioView (View):
-    def get (self, request, pk):
-        user = get_object_or_404 (Usuario, dni= pk)
-        context = {"user": user}
-        return render (request, "editar-cuenta.component.html", context)
-    
-    def post (self, request, pk=None):
-        user = get_object_or_404 (Usuario, dni=pk)
-        user.nombre = request.POST["nombre"]
-        user.apellido = request.POST ["apellido"]
-        user.tel_cel = request.POST ["tel"]
-        user.dir_calle = request.POST ["dir_calle"]
-        user.dir_numero = request.POST ["dir_numero"]
-        user.cp = request.POST ["cp"]
-        user.ciudad = request.POST ["ciudad"]
-        user.provincia = request.POST ["provinica"]
-        user.ph = request.POST ["ph"]
-        user.save () 
-        return redirect ("/")
+class DataUserView (APIView):
+    def get(self, request, dni):
+        logins = Usuario.objects.get(dni = dni)
+        serializer = UsuarioSerializer(logins, many=False)
+        return Response(serializer.data)
+
+class UpdateUserView(APIView):
+    def put(self, request):
+        dni = request.data.get('dni')
+        try:
+            usuario = Usuario.objects.get(dni=dni)
+            usuario.nombre = request.data.get('nombre')
+            usuario.apellido = request.data.get('apellido')
+            usuario.tel_cel = request.data.get('tel')
+            usuario.dir_calle = request.data.get('dir_calle')
+            usuario.dir_numero = request.data.get('dir_numero')
+            usuario.cp = request.data.get('cp')
+            usuario.ciudad = request.data.get('ciudad')
+            usuario.provincia = request.data.get('provincia')
+            usuario.ph = request.data.get('ph')
+            usuario.save()
+        except Usuario.DoesNotExist:
+            return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({'message': 'Usuario se actualizó correctamente'})
 
 class UsuariosView(View):
     def get(self, request):

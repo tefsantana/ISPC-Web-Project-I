@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Categoria, Productos, ColoresProductos, ImagenesProducto, Colores, Login, Favoritos
+from .models import Categoria, Productos, ColoresProductos, ImagenesProducto, Colores, Login, Favoritos, Usuario
 #from django.contrib.auth import get_user_model
 
 class LoginSerializer(serializers.ModelSerializer):
@@ -36,6 +36,11 @@ class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
         fields = ['nombre']
+
+class UsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = '__all__'
 
 """ User = get_user_model()
 
