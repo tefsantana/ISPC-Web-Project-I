@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CategoListView, EliminarUsuarioView, FavoriteChangeView, FavoritesView, RetornarPagado, TallaDeProductoView, LoginListView, LoginUpdateView, LoginValidView, ProductListView, ProductView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada, VerUsuarioView, ConsultProductoCarrito, UsuariosView, AddProductView, DataUserView, UpdateUserView
+from .views import CategoListView, UpdateProductView, DeleteProductView, EliminarUsuarioView, FavoriteChangeView, FavoritesView, RetornarPagado, TallaDeProductoView, LoginListView, LoginUpdateView, LoginValidView, ProductListView, ProductView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada, VerUsuarioView, ConsultProductoCarrito, UsuariosView, AddProductView, DataUserView, UpdateUserView
 
 urlpatterns = [
     path('talla-de-producto/', TallaDeProductoView.as_view(), name='talle-de-producto'),
@@ -19,6 +19,8 @@ urlpatterns = [
     path('product/categorias/', CategoListView.as_view(), name='categorias'),
     path('ver-usuario/', VerUsuarioView.as_view(), name='ver-usuario'),
     path('products/add/', AddProductView.as_view(), name="add-product"),
+    path('products/delete/', DeleteProductView.as_view(), name='delete-product'), 
+    path('products/update/', UpdateProductView.as_view(), name="update-product" ),
     path('users/', UsuariosView.as_view(), name='users'),
     path('pago/status/', RetornarPagado.as_view(), name='pago-status'),
     path('usuarios/eliminar/', EliminarUsuarioView.as_view(), name='eliminar_usuario'),
