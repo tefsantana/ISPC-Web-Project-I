@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DniDataService } from './dni-data.service';
-type productosCarrito = {
+type productoCarrito = { 
   id_prod: number,
   id_car: number,
+  nombre: string,
+  precio: number,
   cantidad: number,
-  talla: number,
+  talla: string,
   color: string,
-  espersonalizado: boolean
-}
-
+  espersonalizad: boolean
+  }
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProductoAlCarritoService {
 
-  dniRecibido: number=0;
+  dniRecibido: number = 0;
 
 
-  contenidoCarrito: any[] = [];
+  contenidoCarrito: productoCarrito[]=[];
 
 
   precioSubtotal: number = 0;
@@ -27,30 +28,20 @@ export class ProductoAlCarritoService {
 
   constructor(private http: HttpClient, private dniData: DniDataService) {
 
-    
+
 
   }
 
-  pedirDNI(){
-
-    this.dniData.recibirDNI().subscribe(dniTemp => { 
-
-      this.dniRecibido=dniTemp
-
-     })
-
-  }
 
   getCarrito() {
 
-    this.pedirDNI();
-
-    this.http.get<productosCarrito[]>(`https://localhost:8000/api/consultar-carrito/?dni=${this.dniRecibido}`).subscribe(carrito => {
-      this.contenidoCarrito = carrito
-    })
-
+    this.dniData.recibirDNI().subscribe(dniTemp => {
+      this.http.get<productoCarrito[]>(`http://localhost:8000/api/consultar-carrito/?dni=${dniTemp}`).subscribe(carrito => {
+        this.contenidoCarrito = carrito
+      })
+    });
     this.contenidoCarrito.forEach(Precio => {
-      this.precioSubtotal += Precio.Precio;
+      this.precioSubtotal += Precio.precio;
     });
     return this.contenidoCarrito;
   }

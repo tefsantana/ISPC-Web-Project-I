@@ -6,13 +6,13 @@
     <p>Lista de productos</p>
   </div>
   <div class="lista">
-    <div class="ngFOR" *ngFor="let producto of productosCarrito.getCarrito()">
+    <div class="ngFOR" *ngFor="let producto of productos">
 
       <img class="imagen" src={{producto.url}} alt="">
       <div class="p">
-        <p1>{{producto.Nombre}}</p1>
-        <p>${{producto.Precio}}</p>
-        <p2>{{producto.Talle}} | {{producto.Color}}</p2>
+        <p1>{{producto.nombre}}</p1>
+        <p>${{producto.precio}}</p>
+        <p2>{{producto.talla}} | {{producto.color}}</p2>
       </div>
         </div>
   </div>

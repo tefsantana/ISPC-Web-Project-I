@@ -12,7 +12,8 @@ from .models import Categoria, Login, Usuario, Productos, ColoresProductos, Imag
 from django.forms.models import model_to_dict
 import json
 from rest_framework.exceptions import ValidationError
-
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 # Create your views here.
 
 class TallaDeProductoView(View):
@@ -94,7 +95,8 @@ class UsuariosView(View):
         #Return the json
         return JsonResponse(users, safe=False, json_dumps_params={'ensure_ascii': False})
     
-class ProductoAlCarritoView (View):
+
+class ProductoAlCarritoView (APIView):
     print("0")
     def get (self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
