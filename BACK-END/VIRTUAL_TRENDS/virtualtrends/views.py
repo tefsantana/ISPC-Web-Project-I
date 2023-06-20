@@ -6,9 +6,9 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import  IsAdminUser, AllowAny, IsAuthenticated
-from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer
+from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer, ImgProducSerializer, FavoriteSerializer, UsuarioSerializer
 from rest_framework import status
-from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter
+from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter 
 from django.forms.models import model_to_dict
 import json
 from rest_framework.exceptions import ValidationError
@@ -66,25 +66,31 @@ class CrearTallaPersonalizada(View):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-class UsuarioView (View):
-    def get (self, request, pk):
-        user = get_object_or_404 (Usuario, dni= pk)
-        context = {"user": user}
-        return render (request, "editar-cuenta.component.html", context)
-    
-    def post (self, request, pk=None):
-        user = get_object_or_404 (Usuario, dni=pk)
-        user.nombre = request.POST["nombre"]
-        user.apellido = request.POST ["apellido"]
-        user.tel_cel = request.POST ["tel"]
-        user.dir_calle = request.POST ["dir_calle"]
-        user.dir_numero = request.POST ["dir_numero"]
-        user.cp = request.POST ["cp"]
-        user.ciudad = request.POST ["ciudad"]
-        user.provincia = request.POST ["provinica"]
-        user.ph = request.POST ["ph"]
-        user.save () 
-        return redirect ("/")
+class DataUserView (APIView):
+    def get(self, request, dni):
+        logins = Usuario.objects.get(dni = dni)
+        serializer = UsuarioSerializer(logins, many=False)
+        return Response(serializer.data)
+
+class UpdateUserView(APIView):
+    def put(self, request):
+        dni = request.data.get('dni')
+        try:
+            usuario = Usuario.objects.get(dni=dni)
+            usuario.nombre = request.data.get('nombre')
+            usuario.apellido = request.data.get('apellido')
+            usuario.tel_cel = request.data.get('tel')
+            usuario.dir_calle = request.data.get('dir_calle')
+            usuario.dir_numero = request.data.get('dir_numero')
+            usuario.cp = request.data.get('cp')
+            usuario.ciudad = request.data.get('ciudad')
+            usuario.provincia = request.data.get('provincia')
+            usuario.ph = request.data.get('ph')
+            usuario.save()
+        except Usuario.DoesNotExist:
+            return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({'message': 'Usuario se actualizó correctamente'})
 
 class UsuariosView(View):
     def get(self, request):
@@ -333,15 +339,21 @@ class FavoritesView(APIView):
 
 class FavoriteChangeView(APIView):
     def post(self, request):
-        try:
-            Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
-            return Response({'mensaje': 'Producto eliminado de favoritos'})
-        except:
-            producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
-            usuario = Usuario.objects.get(dni=request.data.get('dni'))
-            favorito = Favoritos(id_prod=producto, dni=usuario)
-            favorito.save()
-            return Response({'mensaje': 'Producto agregado a favoritos'})
+        if (request.data.get('favorite')):
+            try:
+                Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
+                return Response({'mensaje': 'Producto eliminado de favoritos'})
+            except: 
+                return Response({'mensaje': 'Producto no se encuentra en favoritos'})
+        elif (not request.data.get('favorite')):
+            try:
+                producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+                usuario = Usuario.objects.get(dni=request.data.get('dni'))
+                favorito = Favoritos(id_prod=producto, dni=usuario)
+                favorito.save()
+                return Response({'mensaje': 'Producto agregado a favoritos'})
+            except:
+                return Response({'mensaje': 'Producto ya se encuentra en favoritos'})
 
 class NewsletterView (View):
     def post (self, request):
@@ -442,3 +454,75 @@ class AddProductView(APIView):
             return Response({'error' : str(e)})
         
         return Response({'message' : 'Se agrego el producto correctamente.'})
+    
+class EliminarUsuarioView(APIView):
+    def post (self,request):
+        id_usuario = request.data.get('dni')
+        try:
+            usuario = Usuario.objects.get(dni=id_usuario)
+           
+        except Usuario.DoesNotExist:
+            return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+        
+        usuario.delete()
+        return Response({'message': 'Usuario eliminado correctamente'})
+
+
+class DeleteProductView(APIView):
+    """
+    Los productos no se pueden eliminar de la tabla directamente,
+    ya que se perdería la persistencia de datos cuando se quiera hacer
+    un historial de compra, por lo que se optó por dejar los productos como 
+    'ocultos' por medio de un atributo. 
+    """
+    def put(self, request):
+        id_prod = request.data.get('id_prod')
+        try:
+            product = Productos.objects.get(id_prod = id_prod, eliminar = False)
+        
+        except Productos.DoesNotExist:
+            return Response({'error': 'El producto no existe o ya fue eliminado'}, status=status.HTTP_404_NOT_FOUND)
+        
+        product.eliminar = True
+        product.save()
+        return Response({'message': 'Producto eliminado correctamente'})
+
+class UpdateProductView(APIView):
+    def put(self, request):
+        id_prod = request.data.get('id_prod')
+        try:
+            producto = Productos.objects.get(id_prod=id_prod)
+        except Productos.DoesNotExist:
+            return Response({'error': 'El producto no existe'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Datos para actualizar en el modelo Productos
+        producto.nombre = request.data.get('nombre')
+        producto.descripcion = request.data.get('descripcion')
+        producto.precio = request.data.get('precio')
+        producto.id_cat = Categoria.objects.get(nombre=request.data.get('categoria'))
+        
+        # Eliminar las imágenes existentes y crear nuevas imágenes
+        nuevas_imagenes = request.data.get('imagenes')
+        ImagenesProducto.objects.filter(id_prod = producto).delete()  # Eliminar todas las imágenes existentes
+        
+        for img in nuevas_imagenes:
+            ImagenesProducto.objects.create(img=img, id_prod=producto)
+        
+        # Eliminar los colores existentes y crear nuevos colores
+        nuevos_colores = request.data.get('colores')
+        ColoresProductos.objects.filter(id_prod=producto).delete()  # Eliminar todos los colores existentes
+        
+        for color in nuevos_colores:
+            color_obj = Colores.objects.get(nombre=color)
+            ColoresProductos.objects.create(id_color=color_obj, id_prod=producto)
+        
+        # Eliminar las tallas existentes y crear nuevas tallas
+        nuevas_tallas = request.data.get('tallas')
+        TallaDelProducto.objects.filter(id_prod=producto).delete()  # Eliminar todas las tallas existentes
+        
+        for talla in nuevas_tallas:
+            talla_obj = Talla.objects.get(inicial_talle=talla)
+            TallaDelProducto.objects.create(id_talle=talla_obj, id_prod=producto)
+        
+        producto.save()
+        return Response({'message': 'Producto actualizado correctamente'})

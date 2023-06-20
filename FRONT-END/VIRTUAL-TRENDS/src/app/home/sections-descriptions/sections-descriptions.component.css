@@ -14,7 +14,7 @@
     align-items: center;
     align-content: center;
     /*clear: both;*/
-    width: 75%;
+    width: 65%;
     /*justify-content: center;*/
   }
 
@@ -22,7 +22,13 @@
     width: 75%;
 }
 
+.main-container p {
+    font-size: 1em;
+}
 
+.main-container h2{
+    font-size: 1.35em;
+}
 
 /*.paragraph {
     font-size: 0.90rem;
@@ -43,6 +49,7 @@
     padding: 5px 0px;
     width: 100%;
     text-align: center;
+    margin-top: 1.5em;
 }
 
 
@@ -87,7 +94,7 @@
     border-radius: 3px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     transition: background-color .5s;
-    margin-top: 40px;
+    margin-top: 2.25em;
     font-size: 16px;
     font-family: 'Archivo', sans-serif;
     cursor: pointer;
@@ -108,11 +115,26 @@
 
 /** Media queries */
 
+/** Media queries MOBILE */
+
+
 @media screen and (max-width: 768px) {
+
+    .main-all-sections {
+        width: 80%;
+        
+    }
+    .main-container h2 {
+        font-size: 1em;
+    }
     
     .main-container {
         /*margin: 0 auto;*/
-        width: 80%;
+        width: 100%;
+    }
+
+    .main-container p {
+        font-size: 0.75em;
     }
     
     .main-nosotros-container {
@@ -125,35 +147,46 @@
     .main-productos-container {
         width: 75%;
     }
+
+
+
+
 }
 
-@media screen and (max-width: 1200px) {
+/** Media queries TABLETS */
+
+@media screen and (min-width: 768px) and (max-width: 1299px) {
+    
+    .main-all-sections {
+        width: 75%;
+      }
+
+      .main-container {
+        width: 100%;
+    }
+
+    .main-container p {
+        font-size: 0.95em;
+    }
+
+  }
+
+
+@media screen and (min-width: 1299px) {
     .main-container {
-        /*margin: 0 auto;*/
+        width: 100%;
+        font-size: larger;
+    }
+    .main-all-sections {
         width: 80%;
-    }
-    .main-nosotros-title
-    {
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    .main-comunidad-title {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .main-productos-title {
-        width: 100%;
-        margin-top: 20px;
-    }
+      }
     
 }
 
-@media screen and (max-width: 2500px) {
+@media screen and (min-width: 2500px) {
     .main-container {
-        /*margin: 0 auto;*/
         width: 100%;
+        font-size: 1.65em;
     }
     
     .main-comunidad-title {

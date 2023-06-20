@@ -18,9 +18,7 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.DNIService.recibirDNI().subscribe(dni => {
-      dni = 11111111;
       this.loadProducts(dni);
-      console.log(dni);
     });
     setTimeout(() => {
       this.isLoading = false;

@@ -1,31 +1,115 @@
-
-<div class="contacto-container">
-    <div class= "contacto-title-container">
-        <h1 class="contacto-title">CONTACTO</h1>
+<div class="main-contacto-container">
+    <div class="title-main-container">
+      <h2>Mandános un mensaje con tus dudas o sugerencias que nos comunicaremos a la brevedad</h2>
     </div>
-    <form class="main-container">
+    <div class="contacto-container">
+      <div class="contacto-title-container">
+        <h1 class="contacto-title">CONTACTO</h1>
+      </div>
+      <form class="main-container" (ngSubmit)="enviarFormularioContacto()">
         <div class="input-container" id="first-textbox">
-            <label for="nombre">Nombre</label>
-            <input class="vertical-center" type="text" id="nombre" name="nombre">
+          <label for="nombre">Nombre completo</label>
+          <input class="vertical-center" type="text" id="nombre" name="nombre" formControlName="nombreCompleto">
         </div>
         <div class="input-container">
-            <label for="telefono">Telefono</label>
-            <input class="vertical-center" type="text" id="telefono" name="telefono">
+          <label for="telefono">Teléfono</label>
+          <input class="vertical-center" type="text" id="telefono" name="telefono" formControlName="telefono">
         </div>
         <div class="input-container">
-            <label for="email">Email</label>
-            <input class="vertical-center" type="text" id="email" name="email">
+          <label for="email">Email</label>
+          <input class="vertical-center" type="text" id="email" name="email" formControlName="email">
         </div>
         <div class="input-container" id="mensaje-container">
-            <label for="mensaje">Mensaje</label>
-            <textarea name="mensaje" id="mensaje" cols="30" rows="5" placeholder="Escribí aquí tu mensaje"></textarea>
-        </div>      
-        <div class="button-container">
-            <button class="center" id="submit-button" >Enviar</button>  
+          <label for="mensaje">Mensaje</label>
+          <textarea name="mensaje" id="mensaje" cols="30" rows="5" placeholder="Escribí aquí tu mensaje" formControlName="mensaje"></textarea>
         </div>
-    </form>
-</div>
+        <div class="button-container">
+          <button class="center" id="submit-button" type="submit">Enviar</button>
+        </div>
+        <div class="redes-container">
+          <div class="redes-info">
+            <div class="redes-icon">
+              <i class="fab fa-twitter"></i> Twitter
+            </div>
+            <div class="redes-direccion">
+              <i class="fa fa-map-marker-alt"></i>
+              <p>Jose Bonifacio 2292.</p>
+              <p>Ciudad Autónoma de Buenos Aires PB</p>
+            </div>
+            <div class="redes-telefono">
+              <i class="fa fa-phone"></i> 011-613-1214
+            </div>
+            <div class="redes-email">
+              <i class="fas fa-envelope"></i> contact@virtualtrends-design.com
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="envioOK" class="modal-reg">
+    <div class="body-ok">
+      <p class="text-success">Formulario Enviado</p>
+      <button (click)="closePopUp()" class="btn btn-success">Cerrar</button>
+    </div>
+  </div>
 
+
+<!--<div class="main-contacto-container">
+
+    <div class="redes-container">
+        <div class="redes-info">
+            <div class="redes-icon">
+                <i class="fab fa-twitter"></i>
+                Twitter 
+            </div>
+            <div class="redes-direccion">
+                <i class="fa fa-map-marker-alt"></i>
+                Jose Bonifacio 2292.Ciudad Autónoma de Buenos Aires PB
+            </div>
+            <div class="redes-telefono">
+                <i class="fa fa-phone"></i>
+                011-613-1214
+            </div>
+            <div class="redes-email">
+                <i class="fas fa-envelope"></i>
+                Correo electrónico de la red social
+            </div>  
+        </div>
+    </div>   
+     
+
+
+    <div class="title-main-container">
+        <h2> Mandános un mensaje con tus dudas o sugerencias que nos comunicaremos a la brevedad</h2>
+    </div>
+    <div class="contacto-container">
+        <div class= "contacto-title-container">
+            <h1 class="contacto-title">CONTACTO</h1>
+        </div>
+        <form class="main-container">
+            <div class="input-container" id="first-textbox">
+                <label for="nombre">Nombre</label>
+                <input class="vertical-center" type="text" id="nombre" name="nombre">
+            </div>
+            <div class="input-container">
+                <label for="telefono">Telefono</label>
+                <input class="vertical-center" type="text" id="telefono" name="telefono">
+            </div>
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input class="vertical-center" type="text" id="email" name="email">
+            </div>
+            <div class="input-container" id="mensaje-container">
+                <label for="mensaje">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" cols="30" rows="5" placeholder="Escribí aquí tu mensaje"></textarea>
+            </div>      
+            <div class="button-container">
+                <button class="center" id="submit-button" >Enviar</button>  
+            </div>
+        </form>
+    </div>
+</div>-->
     
 
     

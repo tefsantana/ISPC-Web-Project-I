@@ -16,9 +16,60 @@
 
   .first {
     border-radius: 2%;
-    width: 75%;
+    /*width: 44%;*/
     margin-top: 0.2%;
-    margin-bottom: 2%;    
+    margin-bottom: 2%;
+    transition: width 0.3s ease;    
     
   }  
 
+  @media (max-width: 768px) {
+    .first {
+      width: 80%;
+    }
+  
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1299px) {
+
+    .first {
+      width: 54%;
+    }
+
+  }
+
+  @media screen and (min-width: 1299px) and (max-width: 1599px) {
+
+    .first {
+      width: 47%;
+    }
+
+  }
+
+  @media screen and (min-width: 1599px) and (max-width: 2500px) {
+
+    .first {
+      width: 44%;
+    }
+
+  }
+
+  @media screen and (min-width: 2500px) and (max-width: 3500px) {
+
+    .first {
+      width: 46%;
+    }
+
+  }
+  
+  /*@media (min-width: 1299px) {
+    .first {
+      width: 48%;
+    }
+  }*/
+
+  /*@media (min-width: 2500px) {
+    .first {
+      width: 60%;
+    }
+  }*/
