@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CategoListView, EliminarUsuarioView, FavoriteChangeView, FavoritesView, RetornarPagado, TallaDeProductoView, LoginListView, LoginUpdateView, LoginValidView, ProductListView, ProductView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada, VerUsuarioView, ConsultProductoCarrito, UsuariosView, AddProductView
+from .views import CategoListView, EliminarUsuarioView, FavoriteChangeView, FavoritesView, RetornarPagado, TallaDeProductoView, LoginListView, LoginUpdateView, LoginValidView, ProductListView, ProductView, ImgProducView, RegistroView, ProductoAlCarritoView, NewsletterView, CrearTallaPersonalizada, VerUsuarioView, ConsultProductoCarrito, UsuariosView, AddProductView, DataUserView, UpdateUserView
 
 urlpatterns = [
     path('talla-de-producto/', TallaDeProductoView.as_view(), name='talle-de-producto'),
@@ -22,4 +22,6 @@ urlpatterns = [
     path('users/', UsuariosView.as_view(), name='users'),
     path('pago/status/', RetornarPagado.as_view(), name='pago-status'),
     path('usuarios/eliminar/', EliminarUsuarioView.as_view(), name='eliminar_usuario'),
+    path('usuarios/data/<int:dni>/', DataUserView.as_view(), name='data-user'), 
+    path('usuarios/update/', UpdateUserView.as_view(), name='update-user')
 ]
