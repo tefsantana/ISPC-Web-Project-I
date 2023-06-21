@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductDataService } from './product-data.service';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,4 +24,11 @@ export class ProductCarritoService {
       );
     } )
   }
+
+  /*agregarCarrito(producto: any): Observable<any>{
+
+    return this.http.post('http://localhost:8000/api/producto-al-carrito/', producto);
+
+  }
+*/
 }
