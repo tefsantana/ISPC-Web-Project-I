@@ -28,7 +28,8 @@ export class ProductCarritoService {
       this.http.post('http://localhost:8000/api/producto-al-carrito/', this.datos_del_producto).subscribe(
         response => {
           console.log("La solicitud POST se realizó con éxito.");
-          console.log(response);
+          console.log(response); 
+
         },
         error => {
           console.error("Error al realizar la solicitud POST:", error);
