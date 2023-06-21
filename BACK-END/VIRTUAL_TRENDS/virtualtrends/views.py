@@ -13,6 +13,7 @@ from django.forms.models import model_to_dict
 from rest_framework.exceptions import ValidationError
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from django import asyncio
 # Create your views here.
 
 class TallaDeProductoView(View):
@@ -139,7 +140,7 @@ class ProductoAlCarritoView (APIView):
     def delete (self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-class ConsultProductoCarrito(APIView):
+class  ConsultProductoCarrito(APIView):
     def get(self, request):
         dni_rec=request.GET.get('dni')
         carrito = Carrito.objects.filter(dni=Usuario.objects.get(dni=dni_rec), concretado=False).first()
