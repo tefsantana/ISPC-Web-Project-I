@@ -131,8 +131,9 @@ export class TallaPersonalizadaComponent implements OnInit{
       this.productData.enviarDatos('personalizado', true);
       this.enviarPersonalizada.enviarTallaPersonalizada(this.tallaPersonalizada);
       console.log("form enviado:", this.tallaPersonalizada)
-      //this.productCarrito.agregarCarrito();
-      //this.navigation.navigateToCarrito();
+      this.productCarrito.datosProducto()
+      this.productCarrito.agregarCarrito();
+      this.navigation.navigateToCarrito();
     }
   }
 
