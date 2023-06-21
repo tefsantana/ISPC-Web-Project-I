@@ -9,22 +9,37 @@ import { PicturesComponent } from 'src/app/products/dashboard-individual-product
   styleUrls: ['./pantalla-del-carrito.component.css']
 })
 export class PantallaDelCarritoComponent implements OnInit {
+  
   productos: any;
+  ver_carrito: boolean=false;
+  estado_button_carrito:string='VER CARRITO';
 
   constructor(public productosCarrito: ProductoAlCarritoService, private navigation: NavigationService) {
-
-    this.productos=this.productosCarrito.getCarrito();
-    console.log(this.productos)
+    
    }
-
 
 
   ngOnInit(): void {
 
+    this.productos=this.productosCarrito.getCarrito()
 
   }
 
+  
+  abrirCarrito(){
 
+    this.ver_carrito=!this.ver_carrito
+    if (this.ver_carrito){
+      
+      this.estado_button_carrito='OCULTAR CARRITO'
+    }
+    else {
+      
+      this.estado_button_carrito='VER CARRITO'
+    }
+    this.productos=this.productosCarrito.getCarrito()
+
+  }
   
 
 

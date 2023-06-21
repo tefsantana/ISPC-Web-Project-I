@@ -139,7 +139,7 @@ class ProductoAlCarritoView (APIView):
     def delete (self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-class ConsultProductoCarrito(APIView):
+class  ConsultProductoCarrito(APIView):
     def get(self, request):
         dni_rec=request.GET.get('dni')
         carrito = Carrito.objects.filter(dni=Usuario.objects.get(dni=dni_rec), concretado=False).first()
