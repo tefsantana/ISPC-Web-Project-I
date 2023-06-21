@@ -8,8 +8,8 @@ import { UserData } from './userdata';
   providedIn: 'root'
 })
 export class LoginService {
-  currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<UserData> = new BehaviorSubject<UserData>({dni:0});
+  currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(JSON.parse(localStorage.getItem('userLoginOn') as string));
+  currentUserData: BehaviorSubject<UserData> = new BehaviorSubject<UserData>(JSON.parse(localStorage.getItem('credentials') as string));
   constructor(private http: HttpClient) {
 
   }
@@ -18,7 +18,10 @@ export class LoginService {
     return  this.http.post<UserData>('http://127.0.0.1:8000/api/valid/', credentials).pipe(
       tap((userData: UserData)  => {
         this.currentUserData.next(userData);
-        this.currentUserLoginOn.next(true);
+        this.currentUserLoginOn.next(true); 
+        // Guardar las credenciales en el localStorage
+        localStorage.setItem('credentials', JSON.stringify(userData));
+        localStorage.setItem('userLoginOn', JSON.stringify(true));
       }),
       catchError(this.handleError)
     )
@@ -35,7 +38,7 @@ export class LoginService {
   }
 
   get userData(): Observable<UserData>{
-    return this.currentUserData.asObservable();
+     return this.currentUserData.asObservable();
   }
 
   get userLoginOn(): Observable<boolean>{
