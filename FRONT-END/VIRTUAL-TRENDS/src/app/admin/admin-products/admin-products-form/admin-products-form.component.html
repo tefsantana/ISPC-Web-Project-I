@@ -7,7 +7,7 @@
     !idProductoValidationDelete? 'form-control is-invalid' : 'form-control is-valid']">
     <button type="button" class="action-button" (click)="deleteProduct()" style="margin-top: 20px;" [disabled]="!idProductoValidationDelete">Eliminar</button>
     <div *ngIf="showSuccessTextDelete" style="color: green; margin-top: 10px;">Producto eliminado correctamente.</div>
-    <div *ngIf="showNotFoundText" style="color: red; margin-top: 10px;">El producto a eliminar no se encontró en la base de datos. Puede ser que haya ocurrido un error. Inténtelo nuevamente.</div>
+    <div *ngIf="showNotFoundTextDelete" style="color: red; margin-top: 10px;">El producto a eliminar no se encontró en la base de datos o ya fue borrado. Puede ser que haya ocurrido un error. Inténtelo nuevamente.</div>
   </form>
 </div>
 <div class="form-container" *ngIf="type === 'add'">
@@ -76,7 +76,7 @@
     <div *ngIf="!idProductoValidationModify" class="invalid-feedback">Ingrese el id de producto.</div>
     <button type="button" style="margin-top: 20px;" (click)="modifyProduct()" id="search-modify-button" class="action-button" [disabled]="!idProductoValidationModify">Buscar</button>
   </form>
-  <div *ngIf="showNotFoundText" style="color: red; margin-top: 10px;">El producto a modificar no se encontró en la base de datos. Puede ser que haya ocurrido un error. Inténtelo nuevamente.</div>
+  <div *ngIf="showNotFoundTextModify" style="color: red; margin-top: 10px;">El producto a modificar no se encontró en la base de datos. Puede ser que haya ocurrido un error. Inténtelo nuevamente.</div>
   <div *ngIf="showModifyForm">
     <p *ngIf="this.modifiedProduct.eliminar" style="margin-top: 20px;"><b>IMPORTANTE</b>: Estás a punto de modificar un producto eliminado que no se encuentra visualmente disponible al cliente.</p>
     <p style="margin-top: 40px;">Puede modificar cualquiera de los siguientes datos.</p>

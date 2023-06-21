@@ -53,7 +53,8 @@ export class AdminProductsFormComponent implements OnInit {
   };
   categoryValidation: boolean = true;
   showErrorText: boolean = false;
-  showNotFoundText: boolean = false;
+  showNotFoundTextDelete: boolean = false;
+  showNotFoundTextModify: boolean = false;
   showProgressTextAdd: boolean = false;
   showProgressTextModify: boolean = false;
   showProgressTextDelete: boolean = false;
@@ -130,28 +131,24 @@ export class AdminProductsFormComponent implements OnInit {
     this.resetState();
     this.id_prod = (document.getElementById('id-producto-modify') as HTMLInputElement).value;
     this.AdminProducts.get(this.id_prod).subscribe((data: any) => {
-      this.showNotFoundText = false;
+      this.showNotFoundTextModify = false;
       this.showModifyForm = true;
       this.modifiedProduct = data;
     });
     setTimeout(() => {
       (document.getElementById('categories-select') as HTMLSelectElement).value = this.modifiedProduct.categoria;
     }, 100);
-    this.showNotFoundText = this.modifiedProduct.id_prod === 0 ? true : false;
+    this.showNotFoundTextModify = this.modifiedProduct.id_prod === 0 ? true : false;
   }
 
   deleteProduct() {
     this.id_prod = (document.getElementById('id-producto-delete') as HTMLInputElement).value;
     this.AdminProducts.delete(Number(this.id_prod)).subscribe((data: any) => {
-      if (data.status === 200) {
-        this.showNotFoundText = false;
-        this.showSuccessTextDelete = true;
-      }
-      else {
-        this.showNotFoundText = true;
-      }
+      this.showNotFoundTextDelete = false;
+      this.showSuccessTextDelete = true;
+    }, error => {
+      this.showNotFoundTextDelete = true;
     });
-
   }
 
   addProduct(e: any) {
