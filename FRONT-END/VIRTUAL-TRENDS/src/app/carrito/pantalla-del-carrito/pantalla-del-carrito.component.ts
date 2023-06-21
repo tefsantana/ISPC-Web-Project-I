@@ -40,7 +40,6 @@ export class PantallaDelCarritoComponent implements OnInit {
       this.estado_button_carrito='VER CARRITO'
     }
     this.productos=this.productosCarrito.getCarrito()
-    debugger;
     this.productsFactoryService.saveProductCarrito(this.productos);
 
   }
