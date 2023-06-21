@@ -5,7 +5,7 @@
 
 <div>  
 
-    <div class="datos-container" *ngIf="showEditarCuenta == false">
+    <div class="datos-container" *ngIf="showEditarCuenta === false">
         <h2>INFORMACION DEL USUARIO</h2>
         <div class="dato-element">
             <div class="dato-content">    
@@ -70,7 +70,7 @@
 
     </div>
 
-    <app-editar-cuenta *ngIf="showEditarCuenta == true" ></app-editar-cuenta>
+    <app-editar-cuenta *ngIf="showEditarCuenta === true" ></app-editar-cuenta>
 
 </div>
 
@@ -80,5 +80,6 @@
     
 <button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == false">EDITA TU PERFIL</button>
 <button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == true">DEJAR DE EDITAR</button>
+<button type="button" class="btn btn-dark" (click)="logout()">CERRAR SESIÓN</button>
 
 <button type="button" class="btn btn-dark" (click)="navigateToAdmin()" *ngIf="cuentaData.id_lvl == 1">ADMIN</button>

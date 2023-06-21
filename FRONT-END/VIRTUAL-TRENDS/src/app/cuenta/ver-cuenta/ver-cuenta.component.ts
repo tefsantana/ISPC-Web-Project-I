@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { UsuarioVerService } from 'src/app/services/usuario/usuario-ver.service';
 
@@ -31,10 +32,10 @@ export class VerCuentaComponent {
 
   constructor(
     private navigationService: NavigationService,
-    private cuentaTemp: UsuarioVerService) {}
+    private cuentaTemp: UsuarioVerService,
+    private loginService: LoginService) {}
 
   ngOnInit() {
-
     this.cuentaData = this.cuentaTemp.recibirDatosDeUsuario()
 
   }
@@ -49,6 +50,10 @@ export class VerCuentaComponent {
 
   navigateToAdmin(){
     this.navigationService.navigateToAdmin();
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 
 
