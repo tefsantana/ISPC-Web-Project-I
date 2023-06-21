@@ -13,7 +13,6 @@ from django.forms.models import model_to_dict
 from rest_framework.exceptions import ValidationError
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from django import asyncio
 # Create your views here.
 
 class TallaDeProductoView(View):
