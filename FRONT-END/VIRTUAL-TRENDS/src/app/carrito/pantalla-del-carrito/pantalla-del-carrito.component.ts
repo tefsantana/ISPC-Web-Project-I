@@ -11,13 +11,16 @@ import { PicturesComponent } from 'src/app/products/dashboard-individual-product
 export class PantallaDelCarritoComponent implements OnInit {
   productos: any;
 
-  constructor(public productosCarrito: ProductoAlCarritoService, private navigation: NavigationService) { }
+  constructor(public productosCarrito: ProductoAlCarritoService, private navigation: NavigationService) {
+
+    this.productos=this.productosCarrito.getCarrito();
+    console.log(this.productos)
+   }
 
 
 
   ngOnInit(): void {
 
-    this.productos=this.productosCarrito.getCarrito();
 
   }
 
