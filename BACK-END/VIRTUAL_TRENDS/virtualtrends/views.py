@@ -31,27 +31,28 @@ class TallaDeProductoView(View):
     def delete(self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
-class CrearTallaPersonalizada(View):
+class CrearTallaPersonalizada(APIView):
     def get(self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def post(self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
-        permission_classes = [AllowAny]
         talla = request.data
         dni_entrante = talla['dni']
+        tallas_entrantes = talla['tallas'] 
+        print("talla_pers llamada")
 
         talla_personalizada, created = TallesPersonalizados.objects.get_or_create(dni = dni_entrante)
-        talla_personalizada.cuello = talla['cuello']
-        talla_personalizada.busto = talla['busto']
-        talla_personalizada.con_rodilla = talla['conRodilla']
-        talla_personalizada.larg_talle = talla['largTalle']
-        talla_personalizada.con_cintura = talla['conCintura']
-        talla_personalizada.con_cadera = talla['conCadera']
-        talla_personalizada.larg_manga = talla['largManga']
-        talla_personalizada.con_muneca = talla['conMuneca']
-        talla_personalizada.larg_pierna = talla['largPierna']
-        talla_personalizada.altura_rodilla = talla['alturaRodilla']
+        talla_personalizada.cuello = tallas_entrantes['cuello']
+        talla_personalizada.busto = tallas_entrantes['busto']
+        talla_personalizada.con_rodilla = tallas_entrantes['conRodilla']
+        talla_personalizada.larg_talle = tallas_entrantes['largTalle']
+        talla_personalizada.con_cintura = tallas_entrantes['conCintura']
+        talla_personalizada.con_cadera = tallas_entrantes['conCadera']
+        talla_personalizada.larg_manga = tallas_entrantes['largManga']
+        talla_personalizada.con_muneca = tallas_entrantes['conMuneca']
+        talla_personalizada.larg_pierna = tallas_entrantes['largPierna']
+        talla_personalizada.altura_rodilla = tallas_entrantes['alturaRodilla']
 
         talla_personalizada.save()
 
@@ -111,16 +112,16 @@ class ProductoAlCarritoView (APIView):
         dni = request.data.get('id_usuario')
         try:
             carrito = Carrito.objects.get(dni=dni)
-            id_car = carrito.id_car
-            print("2")
+
         except Carrito.DoesNotExist:
-            carrito = Carrito.objects.create(dni=dni)
-            id_car = carrito.id_car
-            print("3")
+            carrito = Carrito.objects.create(dni=Usuario.objects.get(dni=dni))
+
+        producto = request.data.get('id_producto')
+        producto_seleccionado = Productos.objects.get(id_prod=producto)
 
         producto_en_carrito = ProductosEnCarrito(
-            id_prod=request.data.get('id_producto'),
-            id_car=id_car,
+            id_prod=producto_seleccionado,
+            id_car=carrito,
             cantidad=request.data.get('cantidad'),
             talla=request.data.get('talla'),
             color=request.data.get('color'),
@@ -128,7 +129,8 @@ class ProductoAlCarritoView (APIView):
         )
 
         producto_en_carrito.save()
-        print("4")
+
+        return Response({'message': 'Producto guardado'}, status=status.HTTP_201_CREATED)
 
     def put (self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
