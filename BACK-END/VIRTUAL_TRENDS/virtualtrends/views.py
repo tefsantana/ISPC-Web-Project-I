@@ -194,18 +194,18 @@ class LoginValidView(APIView):
 
         usuario = Usuario.objects.get(dni=login.dni_id)
         response_data = {
-            'nombre': usuario.nombre,'apellido': usuario.apellido,'dni': usuario.dni, 'menssaje':'OK'
+            'nombre': usuario.nombre,'apellido': usuario.apellido,'dni': usuario.dni, 'id_lvl': usuario.id_lvl.id_lvl, 'menssaje':'OK'
             }
         return Response(response_data)
 
 class ProductListView(APIView):
-    def get(self, request):
+    def post(self, request):
         products = Productos.objects.filter(eliminar=False)
         lib = []
         for prod in products:
             color = ColoresProductos.objects.filter(id_prod=prod.id_prod)
             picture = ImagenesProducto.objects.filter(id_prod=prod.id_prod)
-            if (Favoritos.objects.filter(id_prod=prod.id_prod)):
+            if (Favoritos.objects.filter(id_prod=prod.id_prod, dni=request.data.get('dni')).exists()):
                 favorite = True
             else:
                 favorite = False
@@ -339,21 +339,14 @@ class FavoritesView(APIView):
 
 class FavoriteChangeView(APIView):
     def post(self, request):
-        if (request.data.get('favorite')):
-            try:
-                Favoritos.objects.get(dni=request.data.get('dni'), id_prod=request.data.get('id_prod')).delete()
-                return Response({'mensaje': 'Producto eliminado de favoritos'})
-            except: 
-                return Response({'mensaje': 'Producto no se encuentra en favoritos'})
-        elif (not request.data.get('favorite')):
-            try:
-                producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
-                usuario = Usuario.objects.get(dni=request.data.get('dni'))
-                favorito = Favoritos(id_prod=producto, dni=usuario)
-                favorito.save()
-                return Response({'mensaje': 'Producto agregado a favoritos'})
-            except:
-                return Response({'mensaje': 'Producto ya se encuentra en favoritos'})
+        producto = Productos.objects.get(id_prod=request.data.get('id_prod'))
+        usuario = Usuario.objects.get(dni=request.data.get('dni'))
+        try:
+            Favoritos.objects.get(id_prod = producto, dni = usuario).delete()
+            return Response({'mensaje': 'Favorito eliminado exitosamente'})
+        except:
+            Favoritos.objects.create(id_prod = producto, dni = usuario)
+            return Response({'mensaje': 'Favorito agregado exitosamente'})
 
 class NewsletterView (View):
     def post (self, request):
