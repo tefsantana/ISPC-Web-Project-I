@@ -10,7 +10,6 @@ from .serializers import CategoriaSerializer, LoginSerializer, ProductSerializer
 from rest_framework import status
 from .models import Categoria, Login, Usuario, Productos, ColoresProductos, ImagenesProducto, Colores, Talla, TallaDelProducto, ProductosEnCarrito, TallesPersonalizados, Carrito, Favoritos, Newsletter 
 from django.forms.models import model_to_dict
-import json
 from rest_framework.exceptions import ValidationError
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -201,7 +200,7 @@ class LoginValidView(APIView):
 
 class ProductListView(APIView):
     def get(self, request):
-        products = Productos.objects.all()
+        products = Productos.objects.filter(eliminar=False)
         lib = []
         for prod in products:
             color = ColoresProductos.objects.filter(id_prod=prod.id_prod)
@@ -259,7 +258,8 @@ class ProductView(APIView):
                 'imagenes': b, 
                 'colores': a, 
                 'tallas': talles_disponibles,
-                'categoria': product.id_cat.__str__()
+                'categoria': product.id_cat.__str__(),
+                'eliminar': product.eliminar
             }
 
         except Productos.DoesNotExist:
@@ -361,39 +361,6 @@ class NewsletterView (View):
         newsletter.email = request.POST ["email"]
         newsletter.save()
 
-class ProcessPaymentAPIView(APIView):
-    def post(self, request):
-        try:
-            request_values = json.loads(request.body)
-            payment_data = {
-                "transaction_amount": float(request_values["transaction_amount"]),
-                "token": request_values["token"],
-                "installments": int(request_values["installments"]),
-                "payment_method_id": request_values["issuer_id"],
-                "payer": {
-                    "email": request_values["payer"]["email"],
-                    "identification": {
-                        "type": request_values["payer"]["identification"]["type"],
-                        "number": request_values["payer"]["identification"]["number"],
-                    },
-                },
-            }
-
-            sdk = mercadopago.SDK("ACCESS_TOKEN")
-
-            payment_response = sdk.payment().create(payment_data)
-
-            payment = payment_response["response"]
-            status = {
-                "id": payment["id"],
-                "status": payment["status"],
-                "status_detail": payment["status_detail"],
-            }
-
-            return Response(data={"body": status, "statusCode": payment_response["status"]}, status=201)
-        except Exception as e:
-            return Response(data={"body": payment_response}, status=400)
-
 class RetornarPagado(APIView): # Retornar custom json
     def get(self, request):
         return Response({"transaccion": "aprobada"}, status=status.HTTP_200_OK)
@@ -401,7 +368,7 @@ class RetornarPagado(APIView): # Retornar custom json
 class VerUsuarioView(View):
     def get(self, request):
         dniRecibido = request.GET.get('dni')
-        usuario = get_object_or_404(Usuario, dni = dniRecibido)  
+        usuario = get_object_or_404(Usuario, dni = dniRecibido)
         usuario_data = {
             'dni': usuario.dni,
             'nombre': usuario.nombre,
@@ -441,15 +408,15 @@ class AddProductView(APIView):
         size = request.data.get('tallas')
 
         try: 
-            addprod = Productos.objects.create(nombre=nombre, precio=precio, id_cat=id_cat, stock=stock, desc=desc)
+            addprod = Productos.objects.create(nombre=nombre, precio=precio, id_cat=id_cat, stock=stock, desc=desc, eliminar=False)
             for list in imgs:
                 ImagenesProducto.objects.create(img=list, id_prod=addprod)
             for list in colors:
                 colores = Colores.objects.get(nombre = list)
-                addcolor = ColoresProductos.objects.create(id_color = colores, id_prod=addprod)
+                ColoresProductos.objects.create(id_color = colores, id_prod=addprod)
             for list in size:
                 tallas = Talla.objects.get(inicial_talle = list)
-                addtalle = TallaDelProducto.objects.create(id_talle=tallas, id_prod=addprod)
+                TallaDelProducto.objects.create(id_talle=tallas, id_prod=addprod)
         except Exception as e:
             return Response({'error' : str(e)})
         
