@@ -23,13 +23,14 @@ export class FavoritesComponent implements OnInit {
     });
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+      this.emptyFavorites = this.products.length === 0;
+    }, 1000);
+
   }
 
   public loadProducts(dni: number) {
     this.FavoritesService.get(dni).subscribe((data: any) => {
       this.products = data;
     });
-    this.emptyFavorites = this.products.length == 0
   }
 }
