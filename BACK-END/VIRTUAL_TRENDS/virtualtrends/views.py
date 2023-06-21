@@ -124,7 +124,7 @@ class ProductoAlCarritoView (APIView):
         producto_en_carrito = ProductosEnCarrito(
             id_prod=producto_seleccionado,
             id_car=carrito,
-            cantidad=request.data.get('cantidad'),
+            cantidad=1,
             talla=request.data.get('talla'),
             color=request.data.get('color'),
             espersonalizado=request.data.get('personalizado')
