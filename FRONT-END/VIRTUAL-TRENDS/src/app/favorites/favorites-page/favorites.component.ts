@@ -13,6 +13,7 @@ export class FavoritesComponent implements OnInit {
   hasFavorite: boolean = false;
   hasAmount: boolean = false;
   isLoading: boolean = false;
+  emptyFavorites: boolean = false;
   constructor(private FavoritesService: FavoritesService, private DNIService: DniDataService) {}
 
   ngOnInit(): void {
@@ -29,5 +30,6 @@ export class FavoritesComponent implements OnInit {
     this.FavoritesService.get(dni).subscribe((data: any) => {
       this.products = data;
     });
+    this.emptyFavorites = this.products.length == 0
   }
 }
