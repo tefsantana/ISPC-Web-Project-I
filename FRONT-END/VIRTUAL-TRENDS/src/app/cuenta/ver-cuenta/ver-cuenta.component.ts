@@ -30,13 +30,22 @@ export class VerCuentaComponent {
   }
   */
 
+  ver_usuario: boolean = false;
+  estado_button_usuario: string ='VER INFORMACION';
+  user_data: any;
+
   constructor(
     private navigationService: NavigationService,
     private cuentaTemp: UsuarioVerService,
     private loginService: LoginService) {}
 
   ngOnInit() {
+    
     this.cuentaData = this.cuentaTemp.recibirDatosDeUsuario()
+    this.loginService.userData.subscribe(response => {
+      this.user_data = response
+    })
+    console.log(this.user_data.id_lvl)
 
   }
 
@@ -50,6 +59,22 @@ export class VerCuentaComponent {
 
   navigateToAdmin(){
     this.navigationService.navigateToAdmin();
+  }
+
+  toggleInfoUsuario(){
+    this.ver_usuario = !this.ver_usuario
+    if(this.ver_usuario){
+
+      this.estado_button_usuario='OCULTAR INFORMACION'
+      
+      this.cuentaData = this.cuentaTemp.recibirDatosDeUsuario()
+
+    }
+    else{
+
+      this.estado_button_usuario='VER INFORMACION'
+
+    }
   }
 
   logout() {

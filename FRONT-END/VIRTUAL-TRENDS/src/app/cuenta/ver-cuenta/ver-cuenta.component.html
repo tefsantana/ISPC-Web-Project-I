@@ -1,9 +1,13 @@
 <div class="saludo">
-    <h1>HOLA {{cuentaData.nombre | uppercase}}!</h1>
+    <h1>BIENVENIDO!</h1>
     <p>Te damos la bienvenida a tu perfil.</p>
 </div>
 
-<div>  
+<div class="buttons">
+    <button class="btn btn-dark top_button" (click)="toggleInfoUsuario()">{{estado_button_usuario}}</button>
+</div>
+
+<div *ngIf="ver_usuario">  
 
     <div class="datos-container" *ngIf="showEditarCuenta === false">
         <h2>INFORMACION DEL USUARIO</h2>
@@ -72,14 +76,20 @@
 
     <app-editar-cuenta *ngIf="showEditarCuenta === true" ></app-editar-cuenta>
 
+        
+
 </div>
 
 
 
 
+<div class="buttons">
+    <button type="button" class="btn btn-dark" (click)="logout()">CERRAR SESIÓN</button>
     
-<button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == false">EDITA TU PERFIL</button>
-<button type="button" class="btn btn-dark" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta == true">DEJAR DE EDITAR</button>
-<button type="button" class="btn btn-dark" (click)="logout()">CERRAR SESIÓN</button>
+    <button type="button" class="btn btn-dark right_buttons" (click)="navigateToAdmin()" *ngIf="user_data.id_lvl == 1">ADMIN</button>
+    <div *ngIf="ver_usuario">    
+        <button type="button" class="btn btn-dark right_buttons" (click)="showEditarCuentaForm()" *ngIf="!showEditarCuenta">EDITA TU PERFIL</button>
+        <button type="button" class="btn btn-dark right_buttons" (click)="showEditarCuentaForm()" *ngIf="showEditarCuenta">DEJAR DE EDITAR</button>
+    </div>
+</div>
 
-<button type="button" class="btn btn-dark" (click)="navigateToAdmin()" *ngIf="cuentaData.id_lvl == 1">ADMIN</button>
