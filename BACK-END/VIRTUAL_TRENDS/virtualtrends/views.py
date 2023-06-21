@@ -34,33 +34,35 @@ class TallaDeProductoView(View):
 class CrearTallaPersonalizada(APIView):
     def get(self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    def post(self, request):
-        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     def put(self, request):
+        return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    def post(self, request):
         talla = request.data
         dni_entrante = talla['dni']
         tallas_entrantes = talla['tallas'] 
         print("talla_pers llamada")
 
-        talla_personalizada, created = TallesPersonalizados.objects.get_or_create(dni = dni_entrante)
-        talla_personalizada.cuello = tallas_entrantes['cuello']
-        talla_personalizada.busto = tallas_entrantes['busto']
-        talla_personalizada.con_rodilla = tallas_entrantes['conRodilla']
-        talla_personalizada.larg_talle = tallas_entrantes['largTalle']
-        talla_personalizada.con_cintura = tallas_entrantes['conCintura']
-        talla_personalizada.con_cadera = tallas_entrantes['conCadera']
-        talla_personalizada.larg_manga = tallas_entrantes['largManga']
-        talla_personalizada.con_muneca = tallas_entrantes['conMuneca']
-        talla_personalizada.larg_pierna = tallas_entrantes['largPierna']
-        talla_personalizada.altura_rodilla = tallas_entrantes['alturaRodilla']
+        try:
+            talla_guardada = TallesPersonalizados.objects.get(dni=dni_entrante)
 
-        talla_personalizada.save()
+        except TallesPersonalizados.DoesNotExist:
+            talla_guardada = TallesPersonalizados.objects.create(dni=Usuario.objects.get(dni=dni_entrante))
 
-        if created:
-            return Response({'message': 'Talle personalizado creado con éxito'}, status=status.HTTP_201_CREATED)
-        else:
-            return Response({'message':'Talle personalizado actualizado cone éxito'}, status=status.HTTP_200_OK)
+        talla_guardada.cuello = tallas_entrantes['cuello']
+        talla_guardada.busto = tallas_entrantes['busto']
+        talla_guardada.con_rodilla = tallas_entrantes['conRodilla']
+        talla_guardada.larg_talle = tallas_entrantes['largTalle']
+        talla_guardada.con_cintura = tallas_entrantes['conCintura']
+        talla_guardada.con_cadera = tallas_entrantes['conCadera']
+        talla_guardada.larg_manga = tallas_entrantes['largManga']
+        talla_guardada.con_muneca = tallas_entrantes['conMuneca']
+        talla_guardada.larg_pierna = tallas_entrantes['largPierna']
+        talla_guardada.altura_rodilla = tallas_entrantes['alturaRodilla']
 
+        talla_guardada.save()
+
+    
+        return Response({'message': 'Producto guardado'}, status=status.HTTP_201_CREATED)
 
     def delete(self, request):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
