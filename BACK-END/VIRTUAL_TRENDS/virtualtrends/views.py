@@ -140,12 +140,13 @@ class ProductoAlCarritoView (APIView):
         return Response({'message': 'Peticion erronea'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 class ConsultProductoCarrito(APIView):
-    def get(self, request, dni):
-        carrito = Carrito.objects.filter(dni=dni, concretado=False).first()
+    def get(self, request):
+        dni_rec=request.GET.get('dni')
+        carrito = Carrito.objects.filter(dni=Usuario.objects.get(dni=dni_rec), concretado=False).first()
 
         if carrito:
             products = []
-            productos_en_carrito = ProductosEnCarrito.objects.filter(id_car=carrito.id_car)
+            productos_en_carrito = ProductosEnCarrito.objects.filter(id_car=carrito)
             for list in productos_en_carrito:  
                 products.append({
                     'id_prod': list.id_prod.id_prod,
